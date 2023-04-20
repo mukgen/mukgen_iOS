@@ -1,3 +1,5 @@
+.DS_Store
+
 # Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods,objective-c
 # Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,cocoapods,objective-c
 
@@ -142,4 +144,4 @@ Dependencies/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods,objective-c
+# End of https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods,objective-c.DS_Store
