@@ -35,6 +35,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D1102E452A0A581D00CB926C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D1102E482A0A587600CB926C /* Supporting Files */,
+				D1102E472A0A586200CB926C /* Storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D1102E462A0A583100CB926C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		D1102E472A0A586200CB926C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D11A5D9D29EEB68900771067 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		D1102E482A0A587600CB926C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D1102E492A0A58B500CB926C /* Assets */,
+				D11A5D9229EEB68800771067 /* AppDelegate.swift */,
+				D11A5D9429EEB68800771067 /* SceneDelegate.swift */,
+				D11A5DA029EEB68900771067 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D1102E492A0A58B500CB926C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D11A5D9B29EEB68900771067 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		D11A5D8629EEB68800771067 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +97,9 @@
 		D11A5D9129EEB68800771067 /* Mukgen */ = {
 			isa = PBXGroup;
 			children = (
-				D11A5D9229EEB68800771067 /* AppDelegate.swift */,
-				D11A5D9429EEB68800771067 /* SceneDelegate.swift */,
+				D1102E452A0A581D00CB926C /* Resource */,
+				D1102E462A0A583100CB926C /* Source */,
 				D11A5D9629EEB68800771067 /* ViewController.swift */,
-				D11A5D9B29EEB68900771067 /* Assets.xcassets */,
-				D11A5D9D29EEB68900771067 /* LaunchScreen.storyboard */,
-				D11A5DA029EEB68900771067 /* Info.plist */,
 			);
 			path = Mukgen;
 			sourceTree = "<group>";
@@ -204,6 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "/Users/eunho/Desktop/mukgen_iOS_V1/Mukgen/Mukgen/Resource/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -258,6 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "/Users/eunho/Desktop/mukgen_iOS_V1/Mukgen/Mukgen/Resource/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -277,7 +319,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 66Q2NAKW7M;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Mukgen/Info.plist;
+				INFOPLIST_FILE = "/Users/eunho/Desktop/mukgen_iOS_V1/Mukgen/Mukgen/Resource/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -305,7 +347,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 66Q2NAKW7M;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Mukgen/Info.plist;
+				INFOPLIST_FILE = "/Users/eunho/Desktop/mukgen_iOS_V1/Mukgen/Mukgen/Resource/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
