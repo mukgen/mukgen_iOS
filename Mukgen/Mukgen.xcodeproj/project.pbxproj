@@ -47,6 +47,7 @@
 		D1102E462A0A583100CB926C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D1102E4A2A0A5DD700CB926C /* ViewControllers */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -78,6 +79,14 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		D1102E4A2A0A5DD700CB926C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D11A5D9629EEB68800771067 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		D11A5D8629EEB68800771067 = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +108,6 @@
 			children = (
 				D1102E452A0A581D00CB926C /* Resource */,
 				D1102E462A0A583100CB926C /* Source */,
-				D11A5D9629EEB68800771067 /* ViewController.swift */,
 			);
 			path = Mukgen;
 			sourceTree = "<group>";
