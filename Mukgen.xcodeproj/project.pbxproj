@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EC4A2202A0B0BAC00BC9402 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC4A21F2A0B0BAC00BC9402 /* UIColor+Extension.swift */; };
+		0EC4A2222A0B0BD500BC9402 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EC4A2212A0B0BD500BC9402 /* Colors.xcassets */; };
+		0EC4A2282A0B1ECF00BC9402 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC4A2272A0B1ECF00BC9402 /* CustomButton.swift */; };
 		D11A5D9329EEB68800771067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A5D9229EEB68800771067 /* AppDelegate.swift */; };
 		D11A5D9529EEB68800771067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A5D9429EEB68800771067 /* SceneDelegate.swift */; };
 		D11A5D9729EEB68800771067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A5D9629EEB68800771067 /* ViewController.swift */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EC4A21F2A0B0BAC00BC9402 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0EC4A2212A0B0BD500BC9402 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		0EC4A2272A0B1ECF00BC9402 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D11A5D8F29EEB68800771067 /* Mukgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mukgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11A5D9229EEB68800771067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D11A5D9429EEB68800771067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +41,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EC4A21E2A0B0BA000BC9402 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0EC4A21F2A0B0BAC00BC9402 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0EC4A2242A0B1E8000BC9402 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				0EC4A2272A0B1ECF00BC9402 /* CustomButton.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
 		D1102E452A0A581D00CB926C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -47,7 +69,9 @@
 		D1102E462A0A583100CB926C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0EC4A2242A0B1E8000BC9402 /* DesignSystem */,
 				D1102E4A2A0A5DD700CB926C /* ViewControllers */,
+				0EC4A21E2A0B0BA000BC9402 /* Extensions */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -75,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D11A5D9B29EEB68900771067 /* Assets.xcassets */,
+				0EC4A2212A0B0BD500BC9402 /* Colors.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -170,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EC4A2222A0B0BD500BC9402 /* Colors.xcassets in Resources */,
 				D11A5D9F29EEB68900771067 /* LaunchScreen.storyboard in Resources */,
 				D11A5D9C29EEB68900771067 /* Assets.xcassets in Resources */,
 			);
@@ -183,8 +209,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D11A5D9729EEB68800771067 /* ViewController.swift in Sources */,
+				0EC4A2282A0B1ECF00BC9402 /* CustomButton.swift in Sources */,
 				D11A5D9329EEB68800771067 /* AppDelegate.swift in Sources */,
 				D11A5D9529EEB68800771067 /* SceneDelegate.swift in Sources */,
+				0EC4A2202A0B0BAC00BC9402 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "/Users/eunho/Desktop/mukgen_iOS_V1/Mukgen/Mukgen/Resource/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "/Users/junha/Desktop/mukgen_iOS_V1/Mukgen/Resource/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -307,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "/Users/eunho/Desktop/mukgen_iOS_V1/Mukgen/Mukgen/Resource/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "/Users/junha/Desktop/mukgen_iOS_V1/Mukgen/Resource/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -327,7 +355,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 66Q2NAKW7M;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "/Users/eunho/Desktop/mukgen_iOS_V1/Mukgen/Mukgen/Resource/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "/Users/junha/Desktop/mukgen_iOS_V1/Mukgen/Resource/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -355,7 +383,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 66Q2NAKW7M;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "/Users/eunho/Desktop/mukgen_iOS_V1/Mukgen/Mukgen/Resource/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "/Users/junha/Desktop/mukgen_iOS_V1/Mukgen/Resource/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
