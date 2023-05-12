@@ -10,6 +10,9 @@
 		0EC4A2202A0B0BAC00BC9402 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC4A21F2A0B0BAC00BC9402 /* UIColor+Extension.swift */; };
 		0EC4A2222A0B0BD500BC9402 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EC4A2212A0B0BD500BC9402 /* Colors.xcassets */; };
 		0EC4A2282A0B1ECF00BC9402 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC4A2272A0B1ECF00BC9402 /* CustomButton.swift */; };
+		0EDB05F72A0E4BA3009E46A8 /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB05F62A0E4BA3009E46A8 /* StartPageViewController.swift */; };
+		0EDB05FA2A0E4BCC009E46A8 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDB05F92A0E4BCC009E46A8 /* Then */; };
+		0EDB05FD2A0E4BDF009E46A8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0EDB05FC2A0E4BDF009E46A8 /* SnapKit */; };
 		D11A5D9329EEB68800771067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A5D9229EEB68800771067 /* AppDelegate.swift */; };
 		D11A5D9529EEB68800771067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A5D9429EEB68800771067 /* SceneDelegate.swift */; };
 		D11A5D9729EEB68800771067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A5D9629EEB68800771067 /* ViewController.swift */; };
@@ -22,6 +25,7 @@
 		0EC4A21F2A0B0BAC00BC9402 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		0EC4A2212A0B0BD500BC9402 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		0EC4A2272A0B1ECF00BC9402 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0EDB05F62A0E4BA3009E46A8 /* StartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartPageViewController.swift; path = Mukgen/Source/ViewControllers/StartPageViewController.swift; sourceTree = SOURCE_ROOT; };
 		D11A5D8F29EEB68800771067 /* Mukgen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mukgen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11A5D9229EEB68800771067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D11A5D9429EEB68800771067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EDB05FA2A0E4BCC009E46A8 /* Then in Frameworks */,
+				0EDB05FD2A0E4BDF009E46A8 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				D131A39C2A0E4B91002FF48C /* StartPageViewController.swift */,
+				0EDB05F62A0E4BA3009E46A8 /* StartPageViewController.swift */,
 				D11A5D9629EEB68800771067 /* ViewController.swift */,
 			);
 			path = ViewControllers;
@@ -156,6 +163,10 @@
 			dependencies = (
 			);
 			name = Mukgen;
+			packageProductDependencies = (
+				0EDB05F92A0E4BCC009E46A8 /* Then */,
+				0EDB05FC2A0E4BDF009E46A8 /* SnapKit */,
+			);
 			productName = Mukgen;
 			productReference = D11A5D8F29EEB68800771067 /* Mukgen.app */;
 			productType = "com.apple.product-type.application";
@@ -184,6 +195,10 @@
 				Base,
 			);
 			mainGroup = D11A5D8629EEB68800771067;
+			packageReferences = (
+				0EDB05F82A0E4BCC009E46A8 /* XCRemoteSwiftPackageReference "Then" */,
+				0EDB05FB2A0E4BDF009E46A8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = D11A5D9029EEB68800771067 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -215,7 +230,7 @@
 				0EC4A2282A0B1ECF00BC9402 /* CustomButton.swift in Sources */,
 				D11A5D9329EEB68800771067 /* AppDelegate.swift in Sources */,
 				D11A5D9529EEB68800771067 /* SceneDelegate.swift in Sources */,
-				D131A39D2A0E4B91002FF48C /* StartPageViewController.swift in Sources */,
+				0EDB05F72A0E4BA3009E46A8 /* StartPageViewController.swift in Sources */,
 				0EC4A2202A0B0BAC00BC9402 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,7 +372,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 66Q2NAKW7M;
+				DEVELOPMENT_TEAM = 92YDTRVDUA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "/Users/junha/Desktop/mukgen_iOS_V1/Mukgen/Resource/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -385,7 +400,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 66Q2NAKW7M;
+				DEVELOPMENT_TEAM = 92YDTRVDUA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "/Users/junha/Desktop/mukgen_iOS_V1/Mukgen/Resource/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -428,6 +443,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0EDB05F82A0E4BCC009E46A8 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		0EDB05FB2A0E4BDF009E46A8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0EDB05F92A0E4BCC009E46A8 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EDB05F82A0E4BCC009E46A8 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		0EDB05FC2A0E4BDF009E46A8 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EDB05FB2A0E4BDF009E46A8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D11A5D8729EEB68800771067 /* Project object */;
 }
