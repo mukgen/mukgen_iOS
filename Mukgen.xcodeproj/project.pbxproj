@@ -15,6 +15,7 @@
 		D11A5D9729EEB68800771067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11A5D9629EEB68800771067 /* ViewController.swift */; };
 		D11A5D9C29EEB68900771067 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D11A5D9B29EEB68900771067 /* Assets.xcassets */; };
 		D11A5D9F29EEB68900771067 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11A5D9D29EEB68900771067 /* LaunchScreen.storyboard */; };
+		D131A39D2A0E4B91002FF48C /* StartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D131A39C2A0E4B91002FF48C /* StartPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D11A5D9B29EEB68900771067 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D11A5D9E29EEB68900771067 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D11A5DA029EEB68900771067 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D131A39C2A0E4B91002FF48C /* StartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		D1102E4A2A0A5DD700CB926C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D131A39C2A0E4B91002FF48C /* StartPageViewController.swift */,
 				D11A5D9629EEB68800771067 /* ViewController.swift */,
 			);
 			path = ViewControllers;
@@ -212,6 +215,7 @@
 				0EC4A2282A0B1ECF00BC9402 /* CustomButton.swift in Sources */,
 				D11A5D9329EEB68800771067 /* AppDelegate.swift in Sources */,
 				D11A5D9529EEB68800771067 /* SceneDelegate.swift in Sources */,
+				D131A39D2A0E4B91002FF48C /* StartPageViewController.swift in Sources */,
 				0EC4A2202A0B0BAC00BC9402 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
