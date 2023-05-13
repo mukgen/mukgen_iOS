@@ -81,8 +81,7 @@ class StartMukgenViewController: UIViewController {
     }
     
     @objc func startButtonDidTap(_ sender: Any) {
-        //다음 페이지로 넘기는 코드에요
-//        self.navigationController?.pushViewController(InputNicknameController(), animated: true)
+        self.navigationController?.pushViewController(InputNicknameViewController(), animated: true)
     }
 }
 
