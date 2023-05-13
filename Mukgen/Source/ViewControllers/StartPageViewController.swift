@@ -11,13 +11,15 @@ import Then
 
 class StartPageViewController: UIViewController {
     
+    
+    
     var startButton = UIButton().then {
         $0.layer.cornerRadius = 10
         $0.setTitle("시작하기", for: .normal)
         $0.setTitleColor(UIColor.white, for: .normal)
         $0.backgroundColor = .pointLight1
         $0.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .medium)
-        $0.addTarget(StartPageViewController.self, action: #selector(StartButtonDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(StartButtonDidTap), for: .touchUpInside)
         
     }
     
@@ -36,6 +38,8 @@ class StartPageViewController: UIViewController {
     var mukgenLogo = UIImageView().then {
         $0.image = UIImage(named: "MukgenIcon")
     }
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +82,8 @@ class StartPageViewController: UIViewController {
     }
     
     @objc func StartButtonDidTap(_ sender: Any) {
-//self.navigationController?.pushViewController(StartViewControllers(), animated: true)
+        self.navigationController?.pushViewController(StartMukgenViewController(), animated: true)
     }
+    
 
 }
