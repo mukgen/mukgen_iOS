@@ -106,8 +106,9 @@ class InputNicknameViewController: UIViewController {
     }
     
     @objc func nextPageButtonDidTap(_ sender: Any) {
-        self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
-    }
+            self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
+        }
+
 }
 
 extension InputNicknameViewController: UITextFieldDelegate {

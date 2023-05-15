@@ -50,7 +50,9 @@ class InputIdPasswordViewController: UIViewController {
     let nextPageButton = CustomButton(title: "다음",
                                    backgroundColor: .primaryLight2,
                                    font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-    )
+    .then {
+        $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
+    }
         
     override func viewDidLoad() {
         
@@ -132,6 +134,9 @@ class InputIdPasswordViewController: UIViewController {
             line.alpha = 1
         }
     }
+    @objc func nextPageButtonDidTap(_ sender: Any) {
+            self.navigationController?.pushViewController(InputTelViewController(), animated: true)
+        }
 }
 
 extension InputIdPasswordViewController: UITextFieldDelegate {
