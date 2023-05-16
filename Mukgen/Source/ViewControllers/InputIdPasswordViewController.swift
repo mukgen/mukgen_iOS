@@ -49,8 +49,8 @@ class InputIdPasswordViewController: UIViewController {
     
     let nextPageButton = CustomButton(title: "다음",
                                    backgroundColor: .primaryLight2,
-                                      font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-        ).then{
+                                   font: UIFont.systemFont(ofSize: 16, weight: .semibold)
+    ).then {
         $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
     }
                                       
