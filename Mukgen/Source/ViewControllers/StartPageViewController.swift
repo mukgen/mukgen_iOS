@@ -4,23 +4,23 @@ import Then
 
 final class StartPageViewController: UIViewController {
     
-    let startButton = CustomButton(title: "시작하기",
+    private let startButton = CustomButton(title: "시작하기",
                                    backgroundColor: .pointBase, titleColor: .white,
                                    font: UIFont.systemFont(ofSize: 16, weight: .bold)
     ).then {
         $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
-    let loginButton = CustomButton(title: "로그인",
+    private let loginButton = CustomButton(title: "로그인",
                                    backgroundColor: .primaryLight3, titleColor: .black,
                                    font: UIFont.systemFont(ofSize: 16, weight: .bold)
     )
     
-    var whiteBox = UILabel().then {
+    private let whiteBox = UILabel().then {
         $0.backgroundColor = .white
     }
     
-    var mukgenLogo = UIImageView().then {
+    private let mukgenLogo = UIImageView().then {
         $0.image = UIImage(named: "MukgenIcon")
     }
     
@@ -31,7 +31,7 @@ final class StartPageViewController: UIViewController {
         attribute()
     }
     
-    func layout() {
+    private func layout() {
         
         [
             whiteBox,
@@ -72,7 +72,7 @@ final class StartPageViewController: UIViewController {
         }
     }
     
-    func attribute() {
+    private func attribute() {
         view.backgroundColor = .primaryLight3
     }
     
