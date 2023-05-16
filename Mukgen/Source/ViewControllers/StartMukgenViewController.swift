@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class StartMukgenViewController: UIViewController {
+final class StartMukgenViewController: UIViewController {
     
     private let startButton = CustomButton(title: "시작하기",
                                            backgroundColor: .primaryDark1, titleColor: .white,
