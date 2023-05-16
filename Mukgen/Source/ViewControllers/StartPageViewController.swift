@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class StartPageViewController: UIViewController {
+final class StartPageViewController: BaseViewController {
     
     private let startButton = CustomButton(title: "시작하기",
                                    backgroundColor: .pointBase, titleColor: .white,
@@ -24,14 +24,7 @@ final class StartPageViewController: UIViewController {
         $0.image = UIImage(named: "MukgenIcon")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        layout()
-        attribute()
-    }
-    
-    private func layout() {
+    override func layout() {
         
         [
             whiteBox,
@@ -72,7 +65,7 @@ final class StartPageViewController: UIViewController {
         }
     }
     
-    private func attribute() {
+    override func attribute() {
         view.backgroundColor = .primaryLight3
     }
     
