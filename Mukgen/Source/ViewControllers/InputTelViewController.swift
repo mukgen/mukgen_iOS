@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class InputTelViewController: UIViewController {
+final class InputTelViewController: BaseViewController {
     
     private let inputNicknameLabel = UILabel().then {
         $0.text = "전화번호를 입력해주세요."
@@ -90,14 +90,7 @@ final class InputTelViewController: UIViewController {
                                    font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     )
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        layout()
-        attribute()
-    }
-    
-    private func layout() {
+    override func layout() {
         view.addSubview(inputNicknameLabel)
         view.addSubview(useInDeilivery)
         view.addSubview(firstTextField)
@@ -191,7 +184,7 @@ final class InputTelViewController: UIViewController {
         }
     }
     
-    private func attribute() {
+    override func attribute() {
         view.backgroundColor = .white
         
         lazy var textFields = [firstTextField, secondTextField, thirdTextField]
