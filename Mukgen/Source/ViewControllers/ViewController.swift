@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let button = CustomButton(title: "시작하기",
-                              backgroundColor: .primaryDark1,
+                              backgroundColor: .primaryDark1, titleColor: .white,
                               font: UIFont.systemFont(ofSize: 20, weight: .bold)
     )
 

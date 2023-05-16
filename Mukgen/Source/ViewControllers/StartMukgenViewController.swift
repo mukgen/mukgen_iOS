@@ -12,7 +12,7 @@ import Then
 class StartMukgenViewController: UIViewController {
     
     let startButton = CustomButton(title: "시작하기",
-                                   backgroundColor: .primaryDark1,
+                                   backgroundColor: .primaryDark1, titleColor: .white,
                                    font: UIFont.systemFont(ofSize: 16, weight: .bold)
     ).then {
         $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
