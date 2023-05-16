@@ -9,27 +9,27 @@ import UIKit
 import SnapKit
 import Then
 
-class InputTelViewController: UIViewController {
+final class InputTelViewController: UIViewController {
     
-    let inputNicknameLabel = UILabel().then {
+    private let inputNicknameLabel = UILabel().then {
         $0.text = "전화번호를 입력해주세요."
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
     
-    let useInDeilivery = UILabel().then {
+    private let useInDeilivery = UILabel().then {
         $0.text = "배달 파티 모집 시 사용됩니다."
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 14, weight: .regular)
     }
     
-    let minusLabel = UILabel().then {
+    private let minusLabel = UILabel().then {
         $0.text = "-"
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
     }
     
-    let minusLabel1 = UILabel().then {
+    private let minusLabel1 = UILabel().then {
         $0.text = "-"
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
@@ -37,7 +37,7 @@ class InputTelViewController: UIViewController {
     
     
     
-    let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
+    private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
                           .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
     
     internal var firstTextField = UITextField().then {
@@ -85,7 +85,7 @@ class InputTelViewController: UIViewController {
     
     
    
-    let nextPageButton = CustomButton(title: "다음",
+    private let nextPageButton = CustomButton(title: "다음",
                                       backgroundColor: .primaryLight2, titleColor: .white,
                                    font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     )
@@ -93,19 +93,11 @@ class InputTelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
-        lazy var textFields = [firstTextField, secondTextField, thirdTextField]
-        let placeholders = ["", "", ""]
-        
-        var index = 0
-        for textField in textFields {
-            textField.attributedPlaceholder = NSAttributedString(string: placeholders[index],
-                                                                 attributes: attributes)
-            textField.delegate = self
-            index += 1
-        }
-        
+        layout()
+        attribute()
+    }
+    
+    private func layout() {
         view.addSubview(inputNicknameLabel)
         view.addSubview(useInDeilivery)
         view.addSubview(firstTextField)
@@ -197,7 +189,21 @@ class InputTelViewController: UIViewController {
             $0.width.equalTo(buttonWidth)
             $0.height.equalTo(buttonHeigh)
         }
+    }
+    
+    private func attribute() {
+        view.backgroundColor = .white
         
+        lazy var textFields = [firstTextField, secondTextField, thirdTextField]
+        let placeholders = ["", "", ""]
+        
+        var index = 0
+        for textField in textFields {
+            textField.attributedPlaceholder = NSAttributedString(string: placeholders[index],
+                                                                 attributes: attributes)
+            textField.delegate = self
+            index += 1
+        }
     }
     
     func animate(line: UIView) {
