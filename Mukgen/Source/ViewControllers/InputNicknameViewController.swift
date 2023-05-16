@@ -11,15 +11,15 @@ import UIKit
 import SnapKit
 import Then
 
-class InputNicknameViewController: UIViewController {
+final class InputNicknameViewController: UIViewController {
     
-    let inputNicknameLabel = UILabel().then {
+    private let inputNicknameLabel = UILabel().then {
         $0.text = "별명을 입력해주세요."
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
     
-    let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
+    private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
                           .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
     
     internal var firstTextField = UITextField().then {
@@ -35,7 +35,7 @@ class InputNicknameViewController: UIViewController {
         $0.backgroundColor = .primaryLight2
     }
     
-    let nextPageButton = CustomButton(title: "다음",
+    private let nextPageButton = CustomButton(title: "다음",
                                       backgroundColor: .primaryLight2, titleColor: .white,
                                    font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     ).then {
@@ -43,26 +43,20 @@ class InputNicknameViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
-        lazy var textFields = [firstTextField]
-        let placeholders = ["별명"]
-        
-        var index = 0
-        for textField in textFields {
-            textField.attributedPlaceholder = NSAttributedString(string: placeholders[index],
-                                                                 attributes: attributes)
-            textField.delegate = self
-            index += 1
-        }
-        
-        view.addSubview(inputNicknameLabel)
-        view.addSubview(firstTextField)
-        view.addSubview(nicknameLine)
-        view.addSubview(nextPageButton)
+        layout()
+        attribute()
+    }
+    
+    private func layout() {
+        [
+            inputNicknameLabel,
+            firstTextField,
+            nicknameLine,
+            nextPageButton
+        ].forEach { view.addSubview($0) }
+
         
         let buttonWidth = 353
         let buttonHeigh = 55
@@ -95,10 +89,24 @@ class InputNicknameViewController: UIViewController {
             $0.width.equalTo(buttonWidth)
             $0.height.equalTo(buttonHeigh)
         }
-
     }
     
-    func animate(line: UIView) {
+    private func attribute() {
+        view.backgroundColor = .white
+        
+        lazy var textFields = [firstTextField]
+        let placeholders = ["별명"]
+        
+        var index = 0
+        for textField in textFields {
+            textField.attributedPlaceholder = NSAttributedString(string: placeholders[index],
+                                                                 attributes: attributes)
+            textField.delegate = self
+            index += 1
+        }
+    }
+    
+    private func animate(line: UIView) {
         line.alpha = 0.3
         UIView.animate(withDuration: 1) {
             line.alpha = 1
