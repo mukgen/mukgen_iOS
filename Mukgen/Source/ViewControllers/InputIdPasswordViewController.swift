@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class InputIdPasswordViewController: UIViewController {
+final class InputIdPasswordViewController: BaseViewController {
     
     private let inputIdPasswordLabel = UILabel().then {
         $0.numberOfLines = 2
@@ -67,14 +67,9 @@ final class InputIdPasswordViewController: UIViewController {
         $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        layout()
-        attribute()
-    }
+
     
-    private func layout() {
+    override func layout() {
         
         view.addSubview(inputIdPasswordLabel)
         view.addSubview(firstTextField)
@@ -148,7 +143,7 @@ final class InputIdPasswordViewController: UIViewController {
         }
     }
     
-    private func attribute() {
+    override func attribute() {
         view.backgroundColor = .white
         
         lazy var textFields = [firstTextField, secondTextField, thirdTextField]
