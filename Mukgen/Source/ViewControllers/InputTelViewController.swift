@@ -62,6 +62,7 @@ class InputTelViewController: UIViewController {
     
     internal var thirdTextField = UITextField().then {
         $0.textAlignment = .center
+
         $0.tintColor = .black
         $0.borderStyle = UITextField.BorderStyle.none
         $0.returnKeyType = UIReturnKeyType.done
