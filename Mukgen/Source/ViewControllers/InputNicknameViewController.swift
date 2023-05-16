@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class InputNicknameViewController: UIViewController {
+final class InputNicknameViewController: BaseViewController {
     
     private let inputNicknameLabel = UILabel().then {
         $0.text = "별명을 입력해주세요."
@@ -42,14 +42,7 @@ final class InputNicknameViewController: UIViewController {
         $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        layout()
-        attribute()
-    }
-    
-    private func layout() {
+    override func layout() {
         [
             inputNicknameLabel,
             firstTextField,
@@ -91,7 +84,7 @@ final class InputNicknameViewController: UIViewController {
         }
     }
     
-    private func attribute() {
+    override func attribute() {
         view.backgroundColor = .white
         
         lazy var textFields = [firstTextField]
