@@ -11,43 +11,46 @@ import Then
 
 class StartMukgenViewController: UIViewController {
     
-    let startButton = CustomButton(title: "시작하기",
-                                   backgroundColor: .primaryDark1, titleColor: .white,
-                                   font: UIFont.systemFont(ofSize: 16, weight: .bold)
+    private let startButton = CustomButton(title: "시작하기",
+                                           backgroundColor: .primaryDark1, titleColor: .white,
+                                           font: UIFont.systemFont(ofSize: 16, weight: .bold)
     ).then {
         $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
-    var startLabel = UILabel().then {
+    private let startLabel = UILabel().then {
         $0.text = "시작하기"
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
     
-    var mukgenInfo = UILabel().then {
+    private let mukgenInfo = UILabel().then {
         $0.text = "먹젠과 함께 학교에서 즐거운 식생활을 누려보세요."
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 16, weight: .regular)
     }
     
-    var mukgenStartIcon = UIImageView().then {
+    private let mukgenStartIcon = UIImageView().then {
         $0.image = UIImage(named: "StartMukgenIcon")
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        // Do any additional setup after loading the view.
+        layout()
+        attribute()
+    }
+    
+    private func layout() {
         
-        view.addSubview(startButton)
-        view.addSubview(startLabel)
-        view.addSubview(mukgenInfo)
-        view.addSubview(mukgenStartIcon)
-        
+        [
+            startButton,
+            startLabel,
+            mukgenInfo,
+            mukgenStartIcon
             
+        ].forEach { view.addSubview($0) }
+        
         let buttonWidth = 353
         let buttonHeigh = 55
         
@@ -70,14 +73,17 @@ class StartMukgenViewController: UIViewController {
             $0.top.equalTo(mukgenInfo.snp.bottom).offset(151)
             $0.width.height.equalTo(160)
         }
-
+        
         startButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(mukgenStartIcon.snp.bottom).offset(257)
             $0.width.equalTo(buttonWidth)
             $0.height.equalTo(buttonHeigh)
         }
-        
+    }
+    
+    private func attribute() {
+        view.backgroundColor = .white
     }
     
     @objc func startButtonDidTap(_ sender: Any) {
