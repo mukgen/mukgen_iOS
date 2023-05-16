@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class StartMukgenViewController: UIViewController {
+final class StartMukgenViewController: BaseViewController {
     
     private let startButton = CustomButton(title: "시작하기",
                                            backgroundColor: .primaryDark1, titleColor: .white,
@@ -34,14 +34,7 @@ final class StartMukgenViewController: UIViewController {
         $0.image = UIImage(named: "StartMukgenIcon")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        layout()
-        attribute()
-    }
-    
-    private func layout() {
+    override func layout() {
         
         [
             startButton,
@@ -82,7 +75,7 @@ final class StartMukgenViewController: UIViewController {
         }
     }
     
-    private func attribute() {
+    override func attribute() {
         view.backgroundColor = .white
     }
     
