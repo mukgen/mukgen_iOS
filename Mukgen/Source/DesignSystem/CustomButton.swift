@@ -9,12 +9,12 @@ import UIKit
 
 class CustomButton: UIButton {
     
-    init(title: String, backgroundColor: UIColor, font: UIFont? = UIFont.systemFont(ofSize: 15, weight: .bold)) {
+    init(title: String, backgroundColor: UIColor, titleColor: UIColor, font: UIFont? = UIFont.systemFont(ofSize: 15, weight: .bold)) {
         let frame = CGRect(x: 0, y: 0, width: 353, height: 55)
         super.init(frame: frame)
         
         self.backgroundColor = backgroundColor
-        setTitleColor(.white, for: .normal)
+        setTitleColor(titleColor, for: .normal)
         
         layer.cornerRadius = 10
         
