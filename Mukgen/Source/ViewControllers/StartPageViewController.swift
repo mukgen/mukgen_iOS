@@ -6,14 +6,14 @@ final class StartPageViewController: BaseViewController {
     
     private let startButton = CustomButton(title: "시작하기",
                                    backgroundColor: .pointBase, titleColor: .white,
-                                   font: UIFont.systemFont(ofSize: 16, weight: .bold)
+                                           font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     ).then {
         $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
     private let loginButton = CustomButton(title: "로그인",
                                    backgroundColor: .primaryLight3, titleColor: .black,
-                                   font: UIFont.systemFont(ofSize: 16, weight: .bold)
+                                           font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     )
     
     private let whiteBox = UILabel().then {

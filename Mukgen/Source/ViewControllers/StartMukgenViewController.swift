@@ -13,7 +13,7 @@ final class StartMukgenViewController: BaseViewController {
     
     private let startButton = CustomButton(title: "시작하기",
                                            backgroundColor: .primaryDark1, titleColor: .white,
-                                           font: UIFont.systemFont(ofSize: 16, weight: .bold)
+                                           font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     ).then {
         $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
@@ -44,9 +44,6 @@ final class StartMukgenViewController: BaseViewController {
             
         ].forEach { view.addSubview($0) }
         
-        let buttonWidth = 353
-        let buttonHeigh = 55
-        
         startLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(123)
             $0.left.equalToSuperview().offset(20)
@@ -70,8 +67,8 @@ final class StartMukgenViewController: BaseViewController {
         startButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(mukgenStartIcon.snp.bottom).offset(257)
-            $0.width.equalTo(buttonWidth)
-            $0.height.equalTo(buttonHeigh)
+            $0.width.equalTo(353)
+            $0.height.equalTo(55)
         }
     }
     

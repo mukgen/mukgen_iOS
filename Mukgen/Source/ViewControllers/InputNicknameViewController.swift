@@ -13,16 +13,16 @@ import Then
 
 final class InputNicknameViewController: BaseViewController {
     
+    private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
+                          .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
+    
     private let inputNicknameLabel = UILabel().then {
         $0.text = "별명을 입력해주세요."
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
     
-    private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
-                          .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
-    
-    internal var firstTextField = UITextField().then {
+    private var firstTextField = UITextField().then {
         $0.tintColor = .black
         $0.borderStyle = UITextField.BorderStyle.none
         $0.returnKeyType = UIReturnKeyType.done
@@ -31,7 +31,7 @@ final class InputNicknameViewController: BaseViewController {
         $0.textColor = .black
     }
     
-    internal var nicknameLine = UIView().then {
+    private var nicknameLine = UIView().then {
         $0.backgroundColor = .primaryLight2
     }
     
@@ -50,9 +50,6 @@ final class InputNicknameViewController: BaseViewController {
             nextPageButton
         ].forEach { view.addSubview($0) }
 
-        
-        let buttonWidth = 353
-        let buttonHeigh = 55
         
         inputNicknameLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().offset(123)
@@ -79,8 +76,8 @@ final class InputNicknameViewController: BaseViewController {
         nextPageButton.snp.makeConstraints() {
             $0.top.equalTo(firstTextField.snp.bottom).offset(531)
             $0.left.equalToSuperview().offset(20)
-            $0.width.equalTo(buttonWidth)
-            $0.height.equalTo(buttonHeigh)
+            $0.width.equalTo(353)
+            $0.height.equalTo(55)
         }
     }
     
@@ -88,11 +85,11 @@ final class InputNicknameViewController: BaseViewController {
         view.backgroundColor = .white
         
         lazy var textFields = [firstTextField]
-        let placeholders = ["별명"]
+        let placeholders = "별명"
         
         var index = 0
         for textField in textFields {
-            textField.attributedPlaceholder = NSAttributedString(string: placeholders[index],
+            textField.attributedPlaceholder = NSAttributedString(string: placeholders,
                                                                  attributes: attributes)
             textField.delegate = self
             index += 1
@@ -108,7 +105,7 @@ final class InputNicknameViewController: BaseViewController {
     
     @objc func nextPageButtonDidTap(_ sender: Any) {
             self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
-        }
+    }
 
 }
 
