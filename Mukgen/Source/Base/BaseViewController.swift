@@ -16,9 +16,8 @@ class BaseViewController: UIViewController {
         
         layout()
         attribute()
-
     }
     
-    func layout() { }
-    func attribute() { }
+    func layout() {}
+    func attribute() {}
 }

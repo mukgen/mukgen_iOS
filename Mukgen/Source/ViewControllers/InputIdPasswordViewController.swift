@@ -11,6 +11,10 @@ import Then
 
 final class InputIdPasswordViewController: BaseViewController {
     
+    private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
+                              .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
+    
+    
     private let inputIdPasswordLabel = UILabel().then {
         $0.numberOfLines = 2
         $0.text = "아이디와\n비밀번호를 입력해주세요."
@@ -18,10 +22,7 @@ final class InputIdPasswordViewController: BaseViewController {
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
     
-    private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
-                              .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
-    
-    internal var firstTextField = UITextField().then {
+    private var firstTextField = UITextField().then {
         $0.tintColor = .black
         $0.borderStyle = UITextField.BorderStyle.none
         $0.returnKeyType = UIReturnKeyType.done
@@ -30,7 +31,7 @@ final class InputIdPasswordViewController: BaseViewController {
         $0.textColor = .black
     }
     
-    internal var secondTextField = UITextField().then {
+    private var secondTextField = UITextField().then {
         $0.tintColor = .black
         $0.borderStyle = UITextField.BorderStyle.none
         $0.returnKeyType = UIReturnKeyType.done
@@ -39,7 +40,7 @@ final class InputIdPasswordViewController: BaseViewController {
         $0.textColor = .black
     }
     
-    internal var thirdTextField = UITextField().then {
+    private var thirdTextField = UITextField().then {
         $0.tintColor = .black
         $0.borderStyle = UITextField.BorderStyle.none
         $0.returnKeyType = UIReturnKeyType.done
@@ -48,15 +49,15 @@ final class InputIdPasswordViewController: BaseViewController {
         $0.textColor = .black
     }
     
-    internal var idLine = UIView().then {
+    private var idLine = UIView().then {
         $0.backgroundColor = .primaryLight2
     }
     
-    internal var passwordLine = UIView().then {
+    private var passwordLine = UIView().then {
         $0.backgroundColor = .primaryLight2
     }
     
-    internal var checkPasswordLine = UIView().then {
+    private var checkPasswordLine = UIView().then {
         $0.backgroundColor = .primaryLight2
     }
     
@@ -71,18 +72,17 @@ final class InputIdPasswordViewController: BaseViewController {
     
     override func layout() {
         
-        view.addSubview(inputIdPasswordLabel)
-        view.addSubview(firstTextField)
-        view.addSubview(idLine)
-        view.addSubview(secondTextField)
-        view.addSubview(nextPageButton)
-        view.addSubview(thirdTextField)
-        view.addSubview(checkPasswordLine)
-        view.addSubview(passwordLine)
-        
-        let buttonWidth = 353
-        let buttonHeigh = 55
-        
+        [
+            inputIdPasswordLabel,
+            firstTextField,
+            idLine,
+            secondTextField,
+            nextPageButton,
+            thirdTextField,
+            checkPasswordLine,
+            passwordLine
+        ].forEach  { view.addSubview($0) }
+
         inputIdPasswordLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().offset(123)
             $0.left.equalToSuperview().offset(20)
@@ -138,8 +138,8 @@ final class InputIdPasswordViewController: BaseViewController {
         nextPageButton.snp.makeConstraints() {
             $0.top.equalTo(secondTextField.snp.bottom).offset(422)
             $0.left.equalToSuperview().offset(20)
-            $0.width.equalTo(buttonWidth)
-            $0.height.equalTo(buttonHeigh)
+            $0.width.equalTo(353)
+            $0.height.equalTo(55)
         }
     }
     
@@ -164,6 +164,7 @@ final class InputIdPasswordViewController: BaseViewController {
             line.alpha = 1
         }
     }
+    
     @objc func nextPageButtonDidTap(_ sender: Any) {
         self.navigationController?.pushViewController(InputTelViewController(), animated: true)
     }

@@ -35,12 +35,10 @@ final class InputTelViewController: BaseViewController {
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
     }
     
-    
-    
     private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
                           .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
     
-    internal var firstTextField = UITextField().then {
+    private var firstTextField = UITextField().then {
         $0.textAlignment = .center
         $0.tintColor = .black
         $0.borderStyle = UITextField.BorderStyle.none
@@ -49,8 +47,7 @@ final class InputTelViewController: BaseViewController {
         $0.textColor = .black
     }
     
-    
-    internal var secondTextField = UITextField().then {
+    private var secondTextField = UITextField().then {
         $0.textAlignment = .center
         $0.tintColor = .black
         $0.borderStyle = UITextField.BorderStyle.none
@@ -60,7 +57,7 @@ final class InputTelViewController: BaseViewController {
         $0.textColor = .black
     }
     
-    internal var thirdTextField = UITextField().then {
+    private var thirdTextField = UITextField().then {
         $0.textAlignment = .center
 
         $0.tintColor = .black
@@ -71,19 +68,17 @@ final class InputTelViewController: BaseViewController {
         $0.textColor = .black
     }
     
-    internal var firstLine = UIView().then {
+    private var firstLine = UIView().then {
         $0.backgroundColor = .primaryLight2
     }
     
-    internal var secondLine = UIView().then {
+    private var secondLine = UIView().then {
         $0.backgroundColor = .primaryLight2
     }
     
-    internal var thirdLine = UIView().then {
+    private var thirdLine = UIView().then {
         $0.backgroundColor = .primaryLight2
     }
-    
-    
    
     private let nextPageButton = CustomButton(title: "다음",
                                       backgroundColor: .primaryLight2, titleColor: .white,
@@ -91,21 +86,21 @@ final class InputTelViewController: BaseViewController {
     )
     
     override func layout() {
-        view.addSubview(inputNicknameLabel)
-        view.addSubview(useInDeilivery)
-        view.addSubview(firstTextField)
-        view.addSubview(firstLine)
-        view.addSubview(minusLabel)
-        view.addSubview(secondTextField)
-        view.addSubview(secondLine)
-        view.addSubview(minusLabel1)
-        view.addSubview(thirdTextField)
-        view.addSubview(thirdLine)
-        view.addSubview(nextPageButton)
         
-        let buttonWidth = 353
-        let buttonHeigh = 55
-        
+        [
+            inputNicknameLabel,
+            useInDeilivery,
+            firstTextField,
+            firstLine,
+            minusLabel,
+            secondTextField,
+            secondLine,
+            minusLabel1,
+            thirdTextField,
+            thirdLine,
+            nextPageButton
+        ].forEach { view.addSubview($0) }
+
         inputNicknameLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().offset(123)
             $0.left.equalToSuperview().offset(20)
@@ -179,8 +174,8 @@ final class InputTelViewController: BaseViewController {
         nextPageButton.snp.makeConstraints() {
             $0.top.equalTo(secondTextField.snp.bottom).offset(502)
             $0.left.equalToSuperview().offset(20)
-            $0.width.equalTo(buttonWidth)
-            $0.height.equalTo(buttonHeigh)
+            $0.width.equalTo(353)
+            $0.height.equalTo(55)
         }
     }
     
