@@ -1,8 +1,8 @@
 //
-//  BaseButton.swift
+//  CustomButton.swift
 //  Mukgen
 //
-//  Created by 박준하 on 2023/05/10.
+//  Created by 이은호 on 2023/05/19.
 //
 
 import UIKit
