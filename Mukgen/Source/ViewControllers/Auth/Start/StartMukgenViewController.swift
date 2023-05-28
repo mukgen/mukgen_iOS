@@ -80,4 +80,3 @@ final class StartMukgenViewController: BaseViewController {
         self.navigationController?.pushViewController(InputNicknameViewController(), animated: true)
     }
 }
-
