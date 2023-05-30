@@ -2,7 +2,7 @@
 //  MainViewController.swift
 //  Mukgen
 //
-//  Created by 이은호 on 2023/05/19.
+//  Created by 이은호 on 2023/05/30.
 //
 
 import UIKit
@@ -49,8 +49,6 @@ class MainViewController: BaseViewController {
             spacingView
         ].forEach { stackView.addArrangedSubview($0) }
     }
-    
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,5 +101,6 @@ private extension MainViewController {
             $0.top.equalTo(mukgenPick.snp.bottom).offset(35.5)
             $0.right.equalToSuperview().inset(20)
         }
+
     }
 }
