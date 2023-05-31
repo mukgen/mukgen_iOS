@@ -1,10 +1,3 @@
-//
-//  Dependencies.swift
-//  Config
-//
-//  Created by inforex on 2022/10/13.
-//
-
 import ProjectDescription
 
 let dependencies = Dependencies(

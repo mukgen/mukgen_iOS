@@ -1,10 +1,3 @@
-//
-//  Dependencies+Module.swift
-//  ProjectDescriptionHelpers
-//
-//  Created by inforex on 2022/10/13.
-//
-
 import ProjectDescription
 
 
