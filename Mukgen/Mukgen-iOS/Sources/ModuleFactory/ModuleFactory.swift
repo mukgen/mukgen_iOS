@@ -7,6 +7,11 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    public func MainVC() -> Presentation.MainViewController {
+        let vc = MainViewController()
+        return vc
+    }
+    
     public func InputNameVC() -> Presentation.InputNicknameViewController {
         let vc = InputNicknameViewController()
         return vc
