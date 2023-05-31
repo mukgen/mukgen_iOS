@@ -14,7 +14,9 @@ let project = Project.app(
     dependencies: [
         .Module.presentation,
         .Module.thirdPartyLib,
-        .Module.mukgenKit
+        .Module.mukgenKit,
+        .external(name: "SnapKit"),
+        .external(name: "Then")
     ],
     resources: .default
 )

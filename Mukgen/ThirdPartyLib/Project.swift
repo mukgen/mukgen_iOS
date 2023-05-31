@@ -15,5 +15,7 @@ let project = Project.framework(
 //        .SPM.Then,
 //        .SPM.Kingfisher,
 //        .SPM.SnapKit
+        .external(name: "SnapKit"),
+        .external(name: "Then")
     ]
 )

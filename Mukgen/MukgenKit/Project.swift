@@ -12,6 +12,8 @@ import UtilityPlugin
 let project = Project.framework(
     name: "MukgenKit",
     dependencies: [
-        .Module.thirdPartyLib
+        .Module.thirdPartyLib,
+        .external(name: "SnapKit"),
+        .external(name: "Then")
     ]
 )
