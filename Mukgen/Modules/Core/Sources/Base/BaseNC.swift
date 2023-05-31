@@ -1,13 +1,7 @@
-//
-//  BaseNC.swift
-//  Mukgen
-//
-//  Created by 이은호 on 2023/05/19.
-//
-
 import UIKit
+import Foundation
 
-class BaseNC: UINavigationController {
+open class BaseNC: UINavigationController {
 
     private var backButtonImage: UIImage? {
         return UIImage(systemName: "arrow.left")!
@@ -26,7 +20,7 @@ class BaseNC: UINavigationController {
         return navigationController
     }
 
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarAppearance()
     }

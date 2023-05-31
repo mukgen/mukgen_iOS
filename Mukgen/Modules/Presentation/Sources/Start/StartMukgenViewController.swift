@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 import Then
-import MukgenKit
+import Core
 
 final class StartMukgenViewController: BaseVC {
     

@@ -2,9 +2,10 @@ import UIKit
 import SnapKit
 import Then
 import MukgenKit
+import Core
 
 final class StartPageViewController: BaseVC {
-    
+        
     private let startButton = CustomButton(title: "시작하기",
                                    backgroundColor: .pointBase, titleColor: .white,
                                            font: UIFont.systemFont(ofSize: 16, weight: .semibold)

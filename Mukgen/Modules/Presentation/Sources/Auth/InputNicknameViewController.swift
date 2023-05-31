@@ -1,8 +1,9 @@
 import UIKit
 import SnapKit
 import Then
+import Core
 
-final class InputNicknameViewController: BaseViewController {
+final class InputNicknameViewController: BaseVC {
     
     private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
                           .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]

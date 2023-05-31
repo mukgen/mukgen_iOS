@@ -8,6 +8,7 @@ let project = Project.app(
         .Module.presentation,
         .Module.thirdPartyLib,
         .Module.mukgenKit,
+        .Module.core,
         .external(name: "SnapKit"),
         .external(name: "Then")
     ],

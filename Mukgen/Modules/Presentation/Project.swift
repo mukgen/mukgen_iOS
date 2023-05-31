@@ -7,6 +7,7 @@ let project = Project.framework(
     dependencies: [
         .Module.mukgenKit,
         .Module.thirdPartyLib,
+        .Module.core,
         .external(name: "SnapKit"),
         .external(name: "Then")
     ],
