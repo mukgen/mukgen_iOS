@@ -9,6 +9,7 @@ let workspace = Workspace(
         "Mukgen/Service/AuthService",
         "Mukgen/Service/BoardService",
         "Mukgen/Service/DeliveryService",
+        "Mukgen/Modules/Core",
         "Mukgen/Service/MealSaggestionService",
         "Mukgen/Service/MealService",
         "Mukgen/Service/ReViewService",
