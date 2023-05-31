@@ -4,7 +4,9 @@ import Then
 import MukgenKit
 import Core
 
-final class InputNicknameViewController: BaseVC {
+public class InputNicknameViewController: BaseVC {
+    
+    public var factory: ModuleFactoryInterface!
     
     private let attributes = [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.primaryLight2.color,
                           .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
@@ -35,7 +37,7 @@ final class InputNicknameViewController: BaseVC {
         $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
     }
     
-    override func layout() {
+    public override func layout() {
         [
             inputNicknameLabel,
             firstTextField,
@@ -74,7 +76,7 @@ final class InputNicknameViewController: BaseVC {
         }
     }
     
-    override func attribute() {
+    public override func attribute() {
         view.backgroundColor = .white
         
         lazy var textFields = [firstTextField]
@@ -103,7 +105,7 @@ final class InputNicknameViewController: BaseVC {
 }
 
 extension InputNicknameViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case firstTextField:
             animate(line: nicknameLine)

@@ -4,7 +4,9 @@ import Then
 import Core
 import MukgenKit
 
-final class InputIdPasswordViewController: BaseVC {
+public class InputIdPasswordViewController: BaseVC {
+    
+    public var factory: ModuleFactoryInterface!
     
     private let attributes = [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.primaryLight2,
                               .font : UIFont.systemFont(ofSize: 20, weight: .semibold)] as [NSAttributedString.Key : Any]
@@ -66,7 +68,7 @@ final class InputIdPasswordViewController: BaseVC {
     
 
     
-    override func layout() {
+    public override func layout() {
         
         [
             inputIdPasswordLabel,
@@ -139,7 +141,7 @@ final class InputIdPasswordViewController: BaseVC {
         }
     }
     
-    override func attribute() {
+    public override func attribute() {
         view.backgroundColor = .white
         
         lazy var textFields = [firstTextField, secondTextField, thirdTextField]
@@ -167,7 +169,7 @@ final class InputIdPasswordViewController: BaseVC {
 }
 
 extension InputIdPasswordViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case firstTextField: animate(line: idLine)
             idLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
