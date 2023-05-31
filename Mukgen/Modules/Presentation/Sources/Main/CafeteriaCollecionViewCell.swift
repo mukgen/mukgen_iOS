@@ -9,7 +9,7 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
     var breakfastText = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .semibold)
         $0.text = "아침"
-        $0.textColor = MukgenKitAsset.Colors.pointBase.color
+        $0.textColor = PresentationAsset.Colors.pointBase.color
     }
 
     var breakfastImage = UIImageView().then {

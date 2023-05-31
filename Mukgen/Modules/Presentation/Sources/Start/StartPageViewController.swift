@@ -9,7 +9,7 @@ final class StartPageViewController: BaseVC {
     private let startButton: CustomButton = {
         let button = CustomButton(
             title: "시작하기",
-            backgroundColor: MukgenKitAsset.Colors.pointBase.color,
+            backgroundColor: PresentationAsset.Colors.pointBase.color,
             titleColor: UIColor.white,
             font: UIFont.systemFont(ofSize: 16, weight: .semibold)
         )
@@ -19,7 +19,7 @@ final class StartPageViewController: BaseVC {
     }()
     
     private let loginButton = CustomButton(title: "로그인",
-                                           backgroundColor: MukgenKitAsset.Colors.primaryLight3.color, titleColor: UIColor.black,
+                                           backgroundColor: PresentationAsset.Colors.primaryLight3.color, titleColor: UIColor.black,
                                            font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     )
     
@@ -73,7 +73,7 @@ final class StartPageViewController: BaseVC {
     }
     
     override func attribute() {
-        view.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        view.backgroundColor = PresentationAsset.Colors.primaryLight3.color
     }
     
     @objc func startButtonDidTap(_ sender: Any) {

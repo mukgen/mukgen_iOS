@@ -94,7 +94,7 @@ extension CafeteriaView: UICollectionViewDataSource {
         cell.layout()
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 10.0
-        cell.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        cell.backgroundColor = PresentationAsset.Colors.primaryLight3.color
 
         if indexPath.row == 1 {
             cell.breakfastImage.image = UIImage(named: "Lunch")

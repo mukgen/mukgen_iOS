@@ -9,7 +9,7 @@ public class MainViewController: BaseVC {
     public var factory: ModuleFactoryInterface!
     
     var mukgenPick = UIView().then {
-        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
     }
     
     var popularPosts = UILabel().then {
@@ -21,7 +21,7 @@ public class MainViewController: BaseVC {
     var morePosts = UILabel().then {
         $0.font = .systemFont(ofSize: 14.0, weight: .regular)
         $0.text = "더보기"
-        $0.textColor = MukgenKitAsset.Colors.pointLight1.color
+        $0.textColor = PresentationAsset.Colors.pointLight1.color
     }
     
     private let scrollView = UIScrollView()
