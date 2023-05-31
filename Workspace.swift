@@ -11,8 +11,8 @@ let workspace = Workspace(
     name: "Mukgen-iOS",
     projects: [
         "Mukgen/Mukgen-iOS",
-        "Mukgen/MukgenKit",
-        "Mukgen/Presentation",
+        "Mukgen/Modules/MukgenKit",
+        "Mukgen/Modules/Presentation",
         "Mukgen/Service/AuthService",
         "Mukgen/Service/BoardService",
         "Mukgen/Service/DeliveryService",
@@ -20,6 +20,6 @@ let workspace = Workspace(
         "Mukgen/Service/MealService",
         "Mukgen/Service/ReViewService",
         "Mukgen/Service/UserService",
-        "Mukgen/ThirdPartyLib"
+        "Mukgen/Modules/ThirdPartyLib"
     ]
 )

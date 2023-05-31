@@ -14,9 +14,9 @@ extension TargetDependency {
 }
 
 extension TargetDependency.Module {
-    public static let presentation = TargetDependency.project(target: "Presentation", path: .relativeToRoot("Mukgen/Presentation"))
-    public static let mukgenKit = TargetDependency.project(target: "MukgenKit", path: .relativeToRoot("Mukgen/MukgenKit"))
-    public static let thirdPartyLib = TargetDependency.project(target: "ThirdPartyLib", path: .relativeToRoot("Mukgen/ThirdPartyLib"))
+    public static let presentation = TargetDependency.project(target: "Presentation", path: .relativeToRoot("Mukgen/Modules/Presentation"))
+    public static let mukgenKit = TargetDependency.project(target: "MukgenKit", path: .relativeToRoot("Mukgen/Modules/MukgenKit"))
+    public static let thirdPartyLib = TargetDependency.project(target: "ThirdPartyLib", path: .relativeToRoot("Mukgen/Modules/ThirdPartyLib"))
     
     //service
     public static let authService = TargetDependency.project(target: "AuthService", path: .relativeToRoot("Mukgen/Service/AuthService"))
