@@ -1,13 +1,17 @@
-project:
-	tuist clean
+generate:
 	tuist fetch
-	tuist generate --no-open && open TuistSample.xcworkspace
-#	tuist generate --no-open && pod install &&  open TuistSample.xcworkspace
-	
-open:
-	tuist generate --no-open && open TuistSample.xcworkspace
-#	tuist generate --no-open && pod install &&  open TuistSample.xcworkspace.xcworkspace
-
-asset:
 	tuist generate
-	pod install
+
+clean:
+	rm -rf **/*.xcodeproj
+	rm -rf *.xcworkspace
+
+reset:
+	tuist clean
+	rm -rf **/*.xcodeproj
+	rm -rf *.xcworkspace
+
+regenerate:
+	rm -rf **/*.xcodeproj
+	rm -rf *.xcworkspace
+	tuist generate

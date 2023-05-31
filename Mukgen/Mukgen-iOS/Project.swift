@@ -1,10 +1,3 @@
-//
-//  Projects.swift
-//  ProjectDescriptionHelpers
-//
-//  Created by inforex on 2022/10/12.
-//
-
 import ProjectDescription
 import ProjectDescriptionHelpers
 import UtilityPlugin
@@ -14,7 +7,10 @@ let project = Project.app(
     dependencies: [
         .Module.presentation,
         .Module.thirdPartyLib,
-        .Module.mukgenKit
+        .Module.mukgenKit,
+        .Module.core,
+        .external(name: "SnapKit"),
+        .external(name: "Then")
     ],
     resources: .default
 )
