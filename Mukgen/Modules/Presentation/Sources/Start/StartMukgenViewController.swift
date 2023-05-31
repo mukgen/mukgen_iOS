@@ -2,14 +2,21 @@ import UIKit
 import SnapKit
 import Then
 import Core
+import MukgenKit
 
 final class StartMukgenViewController: BaseVC {
     
-    private let startButton = CustomButton(title: "시작하기",
-                                           backgroundColor: .primaryDark1, titleColor: .white,
-                                           font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-    ).then {
-        $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
+    private let startButton: CustomButton = {
+        let button = CustomButton(title: "시작하기",
+                                  backgroundColor: MukgenKitAsset.Colors.primaryDark1.color,
+                                  titleColor: UIColor.white,
+                                  font: UIFont.systemFont(ofSize: 16, weight: .semibold))
+        button.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
+        return button
+    }()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     private let startLabel = UILabel().then {

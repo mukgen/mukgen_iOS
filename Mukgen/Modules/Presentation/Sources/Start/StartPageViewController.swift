@@ -6,15 +6,20 @@ import Core
 
 final class StartPageViewController: BaseVC {
         
-    private let startButton = CustomButton(title: "시작하기",
-                                   backgroundColor: .pointBase, titleColor: .white,
-                                           font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-    ).then {
-        $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
-    }
+    private let startButton: CustomButton = {
+        let button = CustomButton(
+            title: "시작하기",
+            backgroundColor: MukgenKitAsset.Colors.pointBase.color,
+            titleColor: UIColor.white,
+            font: UIFont.systemFont(ofSize: 16, weight: .semibold)
+        )
+        return button.then {
+            $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
+        }
+    }()
     
     private let loginButton = CustomButton(title: "로그인",
-                                   backgroundColor: .primaryLight3, titleColor: .black,
+                                           backgroundColor: MukgenKitAsset.Colors.primaryLight3.color, titleColor: UIColor.black,
                                            font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     )
     
@@ -68,10 +73,10 @@ final class StartPageViewController: BaseVC {
     }
     
     override func attribute() {
-        view.backgroundColor = .primaryLight3
+        view.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
     }
     
     @objc func startButtonDidTap(_ sender: Any) {
-        self.navigationController?.pushViewController(StartMukgenViewController(), animated: true)
+//        self.navigationController?.pushViewController(StartMukgenViewController(), animated: true)
     }
 }

@@ -1,12 +1,13 @@
 import UIKit
 import SnapKit
 import Then
+import Core
 import MukgenKit
 
 final class InputIdPasswordViewController: BaseVC {
     
-    private let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primaryLight2,
-                              .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
+    private let attributes = [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.primaryLight2,
+                              .font : UIFont.systemFont(ofSize: 20, weight: .semibold)] as [NSAttributedString.Key : Any]
     
     
     private let inputIdPasswordLabel = UILabel().then {
@@ -44,19 +45,20 @@ final class InputIdPasswordViewController: BaseVC {
     }
     
     private var idLine = UIView().then {
-        $0.backgroundColor = .primaryLight2
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     private var passwordLine = UIView().then {
-        $0.backgroundColor = .primaryLight2
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     private var checkPasswordLine = UIView().then {
-        $0.backgroundColor = .primaryLight2
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
+    
     private let nextPageButton = CustomButton(title: "다음",
-                                              backgroundColor: .primaryLight2, titleColor: .white,
+                                              backgroundColor: MukgenKitAsset.Colors.primaryLight2.color, titleColor: UIColor.white,
                                               font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     ).then {
         $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
@@ -160,7 +162,7 @@ final class InputIdPasswordViewController: BaseVC {
     }
     
     @objc func nextPageButtonDidTap(_ sender: Any) {
-        self.navigationController?.pushViewController(InputTelViewController(), animated: true)
+//        self.navigationController?.pushViewController(InputTelViewController(), animated: true)
     }
 }
 
@@ -168,11 +170,11 @@ extension InputIdPasswordViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case firstTextField: animate(line: idLine)
-            idLine.backgroundColor = .pointBase
+            idLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         case secondTextField: animate(line: passwordLine)
-            passwordLine.backgroundColor = .pointBase
+            passwordLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         case thirdTextField: animate(line: checkPasswordLine)
-            checkPasswordLine.backgroundColor = .pointBase
+            checkPasswordLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         default: return
         }
     }
