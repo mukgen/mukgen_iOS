@@ -4,25 +4,25 @@
 
 ## 프로젝트 시작
 
-- tuist가 없다면?
+- 🍔 tuist가 없다면?
 
 ```swift
 curl -Ls https://install.tuist.io|bash
 ```
 
-- 프로젝트를 시작하고 싶다면?
+- 🥝 프로젝트를 시작하고 싶다면?
 
 ```swift
 make generate
 ```
 
-- 프로젝트 구조를 수정하고 싶다면?
+- 🍱 프로젝트 구조를 수정하고 싶다면?
 
 ```swift
 tuist edit
 ```
 
-- 그 밖에
+- 🧃 그 밖에
 
 ```swift
 // xcodeproj를 제거해줍니다.
@@ -40,28 +40,34 @@ tuist fetch
 
 ## 프로젝트 구조 파악하기
 
-### Core
+### 🟩 Core
 
 - 프로젝트의 핵심 기능을 나타내는 모듈
 - ex) **Base, DesignSystem, +extension**
 
-### MukgenKit
+### 🟥 MukgenKit
 
 - 사진과 color를 모아둡니다.
 
-### ThirdPartyLib
+### 🟦 ThirdPartyLib
 
 - 라이브러리를 모아둡니다.
 - snpkit과 then 가지고 있음
 
-### Mukgen-iOS
+### 🟨 Presentation
+
+- 화면에 view를 구성합니다.
+- 모든 view들이 모여있는 곳
+- view들만 모아져 있습니다.
+
+### 🟧 Mukgen-iOS
 
 - 프로젝트의 iOS 앱 타겟 파일
 - 앱의 중심
 - 앱의 이동흐름 제어
 - 런치스크림, 앱델리,씬델리 포함
 
-### Service
+### ⬜️ Service
 
 - **`AuthService`**: 인증 서비스를 나타내는 모듈입니다.
 - **`BoardService`**: 게시판 서비스를 나타내는 모듈입니다
