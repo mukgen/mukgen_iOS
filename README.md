@@ -2,7 +2,7 @@
 ![graph](https://github.com/mukgen/mukgen_iOS_V1/assets/102890390/6077ef25-03ed-4c7a-aab5-c5eb183f1f5a)
 
 
-## 프로젝트 시작
+## 🍴 프로젝트 시작
 
 - 🍔 tuist가 없다면?
 
