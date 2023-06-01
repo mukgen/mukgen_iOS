@@ -34,16 +34,12 @@ public class MainViewController: BaseVC {
         
         let cafeteriaView = CafeteriaView(frame: .zero, viewController: self)
         
-        
-        stackView.snp.makeConstraints {
-            $0.height.equalTo(256)
-        }
-        
         let spacingView = UIView()
         
         [
             cafeteriaView,
             spacingView
+            
         ].forEach { stackView.addArrangedSubview($0) }
     }
     
@@ -77,7 +73,8 @@ private extension MainViewController {
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        view.addSubview(mukgenPick)
+        
+        stackView.addSubview(mukgenPick)
         mukgenPick.snp.makeConstraints {
             $0.width.equalTo(353)
             $0.height.equalTo(69)
@@ -85,7 +82,7 @@ private extension MainViewController {
             $0.left.equalToSuperview().offset(20)
         }
     
-        view.addSubview(popularPosts)
+        stackView.addSubview(popularPosts)
         popularPosts.snp.makeConstraints {
             $0.width.equalTo(52)
             $0.height.equalTo(24)
@@ -93,7 +90,7 @@ private extension MainViewController {
             $0.left.equalToSuperview().offset(20)
         }
         
-        view.addSubview(morePosts)
+        stackView.addSubview(morePosts)
         morePosts.snp.makeConstraints {
             $0.width.equalTo(37)
             $0.height.equalTo(17)
