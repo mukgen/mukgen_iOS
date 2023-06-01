@@ -73,91 +73,93 @@ tuist fetch
 
 ## 전체적인 구조
 
-├── Makefile
-├── Mukgen
-│   ├── Modules
-│   │   ├── `Core`
-│   │   │   ├── Core.xcodeproj
-│   │   │   ├── Project.swift
-│   │   │   ├── Sources
-│   │   │   │   ├── Base
-│   │   │   │   ├── DesignSystem
-│   │   │   │   ├── Foundation+extension
-│   │   │   │   ├── Protocols
-│   │   │   └── Tests
-│   │   ├── `MukgenKit`
-│   │   │   ├── MukgenKit.xcodeproj
-│   │   │   ├── Project.swift
-│   │   │   ├── Sources
-│   │   │   └── Tests
-│   │   ├── Presentation
-│   │   │   ├── Derived
-│   │   │   │   └── Sources
-│   │   │   │       ├── TuistAssets+Presentation.swift
-│   │   │   │       └── TuistBundle+Presentation.swift
-│   │   │   ├── Presentation.xcodeproj
-│   │   │   ├── Project.swift
-│   │   │   ├── Resources
-│   │   │   ├── Sources
-│   │   │   └── Tests
-│   │   └── `ThirdPartyLib`
-│   │       ├── Project.swift
-│   │       ├── Sources
-│   │       ├── Tests
-│   │       └── ThirdPartyLib.xcodeproj
-│   ├── `Mukgen-iOS`
-│   │   ├── Derived
-│   │   │   └── Sources
-│   │   │       ├── TuistAssets+MukgenIOS.swift
-│   │   │       └── TuistBundle+MukgenIOS.swift
-│   │   ├── Project.swift
-│   │   ├── Resources
-│   │   │   ├── Assets.xcassets
-│   │   │   └── LaunchScreen.storyboard
-│   │   ├── Sources
-│   │   │   ├── Application
-│   │   │   │   ├── AppDelegate.swift
-│   │   │   │   └── SceneDelegate.swift
-│   │   │   └── ModuleFactory
-│   │   └── Tests
-│   └── Service
-│       ├── `AuthService`
-│       │   ├── Project.swift
-│       │   ├── Sources
-│       │   └── Tests
-│       ├── `BoardService`
-│       │   ├── Project.swift
-│       │   ├── Sources
-│       │   └── Tests
-│       ├── `DeliveryService`
-│       │   ├── Project.swift
-│       │   ├── Sources
-│       │   └── Tests
-│       ├── `MealSaggestionService`
-│       │   ├── Project.swift
-│       │   ├── Sources
-│       │   └── Tests
-│       ├── `MealService`
-│       │   ├── MealService.xcodeproj
-│       │   ├── Project.swift
-│       │   ├── Sources
-│       │   └── Tests
-│       ├── `ReViewService`
-│       │   ├── Project.swift
-│       │   ├── Sources
-│       │   └── Tests
-│       └── `UserService`
-│           ├── Project.swift
-│           ├── Sources
-│           ├── Tests
-├── `Plugins`
-│   └── UtilityPlugin
-│       ├── Plugin.swift
-│       └── ProjectDescriptionHelpers
-│           ├── Dependencies+Module.swift
-│           ├── Dependencies+SPM.swift
-│           ├── DeploymentTarget+.swift
-│           ├── InfoPlist+.swift
-│           └── Resources+.swift
-├── [`README.md`](http://readme.md/)
+<pre>
+├── Makefile<br>
+├── Mukgen<br>
+│   ├── Modules<br>
+│   │   ├── 🟩Core<br>
+│   │   │   ├── Core.xcodeproj<br>
+│   │   │   ├── Project.swift<br>
+│   │   │   ├── Sources<br>
+│   │   │   │   ├── Base<br>
+│   │   │   │   ├── DesignSystem<br>
+│   │   │   │   ├── Foundation+extension<br>
+│   │   │   │   ├── Protocols<br>
+│   │   │   └── Tests<br>
+│   │   ├── 🟥MukgenKit<br>
+│   │   │   ├── MukgenKit.xcodeproj<br>
+│   │   │   ├── Project.swift<br>
+│   │   │   ├── Sources<br>
+│   │   │   └── Tests<br>
+│   │   ├── 🟨Presentation<br>
+│   │   │   ├── Derived<br>
+│   │   │   │   └── Sources<br>
+│   │   │   │       ├── TuistAssets+Presentation.swift<br>
+│   │   │   │       └── TuistBundle+Presentation.swift<br>
+│   │   │   ├── Presentation.xcodeproj<br>
+│   │   │   ├── Project.swift<br>
+│   │   │   ├── Resources<br>
+│   │   │   ├── Sources<br>
+│   │   │   └── Tests<br>
+│   │   └── 🟦ThirdPartyLib<br>
+│   │       ├── Project.swift<br>
+│   │       ├── Sources<br>
+│   │       ├── Tests<br>
+│   │       └── ThirdPartyLib.xcodeproj<br>
+│   ├── 🟧Mukgen-iOS<br>
+│   │   ├── Derived<br>
+│   │   │   └── Sources<br>
+│   │   │       ├── TuistAssets+MukgenIOS.swift<br>
+│   │   │       └── TuistBundle+MukgenIOS.swift<br>
+│   │   ├── Project.swift<br>
+│   │   ├── Resources<br>
+│   │   │   ├── Assets.xcassets<br>
+│   │   │   └── LaunchScreen.storyboard<br>
+│   │   ├── Sources<br>
+│   │   │   ├── Application<br>
+│   │   │   │   ├── AppDelegate.swift<br>
+│   │   │   │   └── SceneDelegate.swift<br>
+│   │   │   └── ModuleFactory<br>
+│   │   └── Tests<br>
+│   └── Service<br>
+│       ├── ⬜️AuthService<br>
+│       │   ├── Project.swift<br>
+│       │   ├── Sources<br>
+│       │   └── Tests<br>
+│       ├── ⬜️BoardService<br>
+│       │   ├── Project.swift<br>
+│       │   ├── Sources<br>
+│       │   └── Tests<br>
+│       ├── ⬜️DeliveryService<br>
+│       │   ├── Project.swift<br>
+│       │   ├── Sources<br>
+│       │   └── Tests<br>
+│       ├── ⬜️MealSaggestionService<br>
+│       │   ├── Project.swift<br>
+│       │   ├── Sources<br>
+│       │   └── Tests<br>
+│       ├── ⬜️MealService<br>
+│       │   ├── MealService.xcodeproj<br>
+│       │   ├── Project.swift<br>
+│       │   ├── Sources<br>
+│       │   └── Tests<br>
+│       ├── ⬜️ReViewService<br>
+│       │   ├── Project.swift<br>
+│       │   ├── Sources<br>
+│       │   └── Tests<br>
+│       └── ⬜️UserService<br>
+│           ├── Project.swift<br>
+│           ├── Sources<br>
+│           ├── Tests<br>
+├── Plugins<br>
+│   └── UtilityPlugin<br>
+│       ├── Plugin.swift<br>
+│       └── ProjectDescriptionHelpers<br>
+│           ├── Dependencies+Module.swift<br>
+│           ├── Dependencies+SPM.swift<br>
+│           ├── DeploymentTarget+.swift<br>
+│           ├── InfoPlist+.swift<br>
+│           └── Resources+.swift<br>
+├── README.md<br>
 └── graph.png
+<pre>
