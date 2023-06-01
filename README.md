@@ -71,7 +71,7 @@ tuist fetch
 - **`ReViewService`**: 리뷰 서비스를 나타내는 모듈입니다.
 - **`UserService`**: 사용자 서비스를 나타내는 모듈입니다.
 
-## 전체적인 구조
+## 전체적인 모듈 구조
 
 <pre>
 ├── Makefile<br>
