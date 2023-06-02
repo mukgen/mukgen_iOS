@@ -5,7 +5,7 @@ import SnapKit
 class MukgenPickView: UIView {
     private final var controller: UIViewController
     
-    private lazy var collectionView: UICollectionView = {
+    private lazy var mukgenPickCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -22,17 +22,17 @@ class MukgenPickView: UIView {
     init(frame: CGRect ,viewController: UIViewController) {
         self.controller = viewController
         super.init(frame: frame)
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        mukgenPickCollectionView.delegate = self
+        mukgenPickCollectionView.dataSource = self
         
         layout()
-        collectionView.reloadData()
+        mukgenPickCollectionView.reloadData()
     }
     
     func layout() {
-        self.addSubview(collectionView)
+        self.addSubview(mukgenPickCollectionView)
         
-        collectionView.snp.makeConstraints {
+        mukgenPickCollectionView.snp.makeConstraints {
             $0.height.equalTo(69.0)
             $0.top.leading.trailing.equalToSuperview()
         }
@@ -56,15 +56,6 @@ extension MukgenPickView: UICollectionViewDelegateFlowLayout {
         return 20
     }
 }
-
-
-//func setBorderShadow(borderWidth : CGFloat, borderColor : CGColor = PresentationAsset.Colors.pointBase.color, useShadowEffect boolean : Bool) {
-//    self.layer.borderWidth = borderWidth
-//
-//    self.layer.cornerRadius = borderColor
-//
-//    self.layer.borderColor = borderColor
-//    }
 
 extension MukgenPickView: UICollectionViewDelegate {
     
