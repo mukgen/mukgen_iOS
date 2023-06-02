@@ -15,7 +15,7 @@ class CafeteriaView: UIView {
             (UIScreen.main.bounds.width - Self.itemSize.width) / 2.0
         }
         static var collectionViewContentInset: UIEdgeInsets {
-            UIEdgeInsets(top: 0, left: Self.insetX, bottom: 0, right: Self.insetX)
+            UIEdgeInsets(top: 36.0, left: Self.insetX, bottom: 0, right: Self.insetX)
         }
     }
     
@@ -65,16 +65,14 @@ class CafeteriaView: UIView {
         ].forEach { addSubview($0) }
 
         todayCafeteriaTitle.snp.makeConstraints {
-            $0.width.equalToSuperview()
-            $0.height.equalTo(29)
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().offset(0)
             $0.left.equalToSuperview().offset(20)
         }
 
         collectionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(todayCafeteriaTitle.snp.bottom).offset(25.0)
-            $0.height.equalTo(240)
+            $0.top.equalToSuperview().offset(0.0)
+            $0.height.equalTo(256)
             $0.bottom.equalToSuperview()
         }
     }

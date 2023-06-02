@@ -27,7 +27,7 @@ public class MainViewController: BaseVC {
         
         let spacingView2 = UIView()
         spacingView2.snp.makeConstraints {
-            $0.height.equalTo(133.0)
+            $0.height.equalTo(91.0)
         }
         
         [
