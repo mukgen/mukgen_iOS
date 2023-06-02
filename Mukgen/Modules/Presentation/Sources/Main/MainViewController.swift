@@ -25,10 +25,16 @@ public class MainViewController: BaseVC {
             $0.height.equalTo(32.0)
         }
         
+        let spacingView2 = UIView()
+        spacingView2.snp.makeConstraints {
+            $0.height.equalTo(133.0)
+        }
+        
         [
             cafeteriaView,
             spacingView,
             mukgenPickView,
+            spacingView2,
             popularPostView
         ].forEach { stackView.addArrangedSubview($0) }
     }

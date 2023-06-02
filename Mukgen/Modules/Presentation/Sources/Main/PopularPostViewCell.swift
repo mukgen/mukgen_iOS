@@ -5,7 +5,7 @@ import Then
 
 class PopularPostViewCell: UICollectionViewCell {
     
-    static let id = "PopularPostViewCell"
+    static let PopularPostViewCellid = "PopularPostViewCell"
     
     var popularText1 = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)

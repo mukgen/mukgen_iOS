@@ -5,16 +5,28 @@ import Then
 class PopularPostView: UIView {
     private final var controller: UIViewController
     
+    private lazy var popularPost = UILabel().then {
+        $0.font = .systemFont(ofSize: 20.0, weight: .semibold)
+        $0.text = "인기글"
+        $0.textColor = .black
+    }
+    
+    private lazy var morePost = UIButton().then {
+        $0.setTitle("더보기", for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
+        $0.setTitleColor(PresentationAsset.Colors.pointLight1.color, for: .normal)
+    }
+    
     private lazy var popularPostCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = false
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
         
-        collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.id)
+        collectionView.register(PopularPostViewCell.self, forCellWithReuseIdentifier: PopularPostViewCell.PopularPostViewCellid)
         
         return collectionView
         
@@ -32,10 +44,22 @@ class PopularPostView: UIView {
     
     func layout() {
         self.addSubview(popularPostCollectionView)
+        self.addSubview(popularPost)
+        self.addSubview(morePost)
         
         popularPostCollectionView.snp.makeConstraints {
-            $0.height.equalTo(150.0)
+            $0.height.equalTo(199.0)
             $0.top.leading.trailing.equalToSuperview()
+        }
+        
+        popularPost.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(0)
+            $0.left.equalToSuperview().offset(20)
+        }
+        
+        morePost.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(3.5)
+            $0.right.equalToSuperview().inset(20)
         }
     }
     
@@ -50,11 +74,11 @@ extension PopularPostView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+        UIEdgeInsets(top: 36.0, left: 20.0, bottom: 0.0, right: 20.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 8.0
     }
 }
 
@@ -69,7 +93,7 @@ extension PopularPostView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularPostViewCell.id, for: indexPath) as! PopularPostViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularPostViewCell.PopularPostViewCellid, for: indexPath) as! PopularPostViewCell
         cell.backView.backgroundColor = PresentationAsset.Colors.primaryLight3.color
         cell.layer.cornerRadius = 10.0
         return cell
