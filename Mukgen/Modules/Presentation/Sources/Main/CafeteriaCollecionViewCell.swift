@@ -13,7 +13,7 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
     }
 
     var breakfastImage = UIImageView().then {
-        $0.image = UIImage(named: "breakfastImage")
+        $0.image = PresentationAsset.Images.breakfastImage.image
     }
     
     var breakfastMenu1 = UILabel().then {

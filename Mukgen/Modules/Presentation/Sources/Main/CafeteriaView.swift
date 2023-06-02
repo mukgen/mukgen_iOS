@@ -97,11 +97,11 @@ extension CafeteriaView: UICollectionViewDataSource {
         cell.backgroundColor = PresentationAsset.Colors.primaryLight3.color
 
         if indexPath.row == 1 {
-            cell.breakfastImage.image = UIImage(named: "Lunch")
+            cell.breakfastImage.image = PresentationAsset.Images.lunch.image
             cell.breakfastText.text = "점심"
         }
         if indexPath.row == 2 {
-            cell.breakfastImage.image = UIImage(named: "Night")
+            cell.breakfastImage.image = PresentationAsset.Images.night.image
             cell.breakfastText.text = "저녁"
         }
         
