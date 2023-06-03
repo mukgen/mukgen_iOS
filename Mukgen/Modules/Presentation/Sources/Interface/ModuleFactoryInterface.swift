@@ -5,4 +5,6 @@ public protocol ModuleFactoryInterface {
     func InputIdPasswordVC() -> InputIdPasswordViewController
     
     func MainVC() -> MainViewController
+    
+    func TapBarVC() -> TapBarViewController
 }
