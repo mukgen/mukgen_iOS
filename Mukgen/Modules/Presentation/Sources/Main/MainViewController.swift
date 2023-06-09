@@ -6,6 +6,7 @@ import Core
 
 public class MainViewController: BaseVC {
     
+    
     public var factory: ModuleFactoryInterface!
     
     private let scrollView = UIScrollView()
@@ -19,6 +20,7 @@ public class MainViewController: BaseVC {
         let cafeteriaView = CafeteriaView(frame: .zero, viewController: self)
         let mukgenPickView = MukgenPickView(frame: .zero, viewController: self)
         let popularPostView = PopularPostView(frame: .zero, viewController: self)
+//        let customNC = CustomNV(frame: .zero, viewController: self)
         
         let spacingView = UIView()
         spacingView.snp.makeConstraints {
@@ -31,6 +33,7 @@ public class MainViewController: BaseVC {
         }
         
         [
+//            customNC,
             cafeteriaView,
             spacingView,
             mukgenPickView,

@@ -4,6 +4,11 @@ import SnapKit
 
 public class TapBarViewController : UITabBarController {
     
+    
+//    func tabBar(tabBar: UITabBar, didSelectItem item: ) {
+//           print("ddd")
+//       }
+    
     public var factory: ModuleFactoryInterface!
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -20,7 +25,6 @@ public class TapBarViewController : UITabBarController {
         let tabTwoBarItem2 = UITabBarItem(title: "게시판",
                                           image: PresentationAsset.Images.board.image,
                                           tag: 2)
-        
         chartVC.tabBarItem = tabTwoBarItem2
         
         let searchVC = UINavigationController(rootViewController: MainViewController())
@@ -47,5 +51,13 @@ public class TapBarViewController : UITabBarController {
         self.tabBar.unselectedItemTintColor = PresentationAsset.Colors.primaryLight1.color
         self.viewControllers = [homeVC, chartVC, searchVC, shopVC, userVC]
         self.tabBar.backgroundColor = .white
+
+        
     }
+    
+
+    
+//    @objc func shareVCDidTap(_ sender: Any) {
+//        self.navigationController?.popToViewController(UIViewController: BoardMainViewcontroller(), animated: true)
+//    }
 }
