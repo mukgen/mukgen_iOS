@@ -1,13 +1,15 @@
+//
+//  TabBarViewController.swift
+//  Presentation
+//
+//  Created by 박준하 on 2023/06/09.
+//
+
 import UIKit
 import Then
 import SnapKit
 
 public class TapBarViewController : UITabBarController {
-    
-    
-//    func tabBar(tabBar: UITabBar, didSelectItem item: ) {
-//           print("ddd")
-//       }
     
     public var factory: ModuleFactoryInterface!
     
@@ -21,35 +23,35 @@ public class TapBarViewController : UITabBarController {
         
         homeVC.tabBarItem = tabOneBarItem
         
-        let chartVC = UINavigationController(rootViewController: MainViewController())
+        let boardVC = UINavigationController(rootViewController: BoardMainViewcontroller())
         let tabTwoBarItem2 = UITabBarItem(title: "게시판",
                                           image: PresentationAsset.Images.board.image,
                                           tag: 2)
-        chartVC.tabBarItem = tabTwoBarItem2
+        boardVC.tabBarItem = tabTwoBarItem2
         
-        let searchVC = UINavigationController(rootViewController: MainViewController())
+        let tendinousVC = UINavigationController(rootViewController: TendinousViewController())
         let tabThrBarItem3 = UITabBarItem(title: "급식 건의",
                                           image: PresentationAsset.Images.suggestion.image,
                                           tag: 3)
         
-        searchVC.tabBarItem = tabThrBarItem3
+        tendinousVC.tabBarItem = tabThrBarItem3
         
-        let shopVC = UINavigationController(rootViewController: MainViewController())
+        let reviewVC = UINavigationController(rootViewController: ReviewController())
         let tabFouBarItem4 = UITabBarItem(title: "급식 리뷰",
                                           image: PresentationAsset.Images.review.image,
                                           tag: 4)
         
-        shopVC.tabBarItem = tabFouBarItem4
+        reviewVC.tabBarItem = tabFouBarItem4
         
-        let userVC = UINavigationController(rootViewController: MainViewController())
+        let deliveryVC = UINavigationController(rootViewController: DeliveryViewController())
         let tabFiveBarItem5 = UITabBarItem(title: "배달 파티",
                                            image: PresentationAsset.Images.delivery.image,
                                            tag: 5)
-        userVC.tabBarItem = tabFiveBarItem5
+        deliveryVC.tabBarItem = tabFiveBarItem5
         
         self.tabBar.tintColor = PresentationAsset.Colors.pointBase.color
         self.tabBar.unselectedItemTintColor = PresentationAsset.Colors.primaryLight1.color
-        self.viewControllers = [homeVC, chartVC, searchVC, shopVC, userVC]
+        self.viewControllers = [homeVC, boardVC, tendinousVC, reviewVC, deliveryVC]
         self.tabBar.backgroundColor = .white
 
         

@@ -14,7 +14,7 @@ class MukgenPickView: UIView {
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         
-        collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.id)
+        collectionView.register(MukgenPickCell.self, forCellWithReuseIdentifier: MukgenPickCell.id)
         
         return collectionView
     }()
@@ -71,7 +71,7 @@ extension MukgenPickView: UICollectionViewDataSource {
 
     //cell에 관련된 것을 정의합니다.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.id, for: indexPath) as! CustomCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MukgenPickCell.id, for: indexPath) as! MukgenPickCell
         cell.backView.backgroundColor = PresentationAsset.Colors.primaryLight3.color
         cell.layer.cornerRadius = 10.0
         return cell

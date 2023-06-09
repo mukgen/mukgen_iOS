@@ -11,7 +11,6 @@ public class InputIdPasswordViewController: BaseVC {
     private let attributes = [NSAttributedString.Key.foregroundColor: PresentationAsset.Colors.primaryLight2,
                               .font : UIFont.systemFont(ofSize: 20, weight: .semibold)] as [NSAttributedString.Key : Any]
     
-    
     private let inputIdPasswordLabel = UILabel().then {
         $0.numberOfLines = 2
         $0.text = "아이디와\n비밀번호를 입력해주세요."
