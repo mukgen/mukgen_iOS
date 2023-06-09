@@ -29,21 +29,21 @@ public class TapBarViewController : UITabBarController {
                                           tag: 2)
         boardVC.tabBarItem = tabTwoBarItem2
         
-        let tendinousVC = UINavigationController(rootViewController: MainViewController())
+        let tendinousVC = UINavigationController(rootViewController: TendinousViewController())
         let tabThrBarItem3 = UITabBarItem(title: "급식 건의",
                                           image: PresentationAsset.Images.suggestion.image,
                                           tag: 3)
         
         tendinousVC.tabBarItem = tabThrBarItem3
         
-        let reviewVC = UINavigationController(rootViewController: MainViewController())
+        let reviewVC = UINavigationController(rootViewController: ReviewController())
         let tabFouBarItem4 = UITabBarItem(title: "급식 리뷰",
                                           image: PresentationAsset.Images.review.image,
                                           tag: 4)
         
         reviewVC.tabBarItem = tabFouBarItem4
         
-        let deliveryVC = UINavigationController(rootViewController: MainViewController())
+        let deliveryVC = UINavigationController(rootViewController: DeliveryViewController())
         let tabFiveBarItem5 = UITabBarItem(title: "배달 파티",
                                            image: PresentationAsset.Images.delivery.image,
                                            tag: 5)

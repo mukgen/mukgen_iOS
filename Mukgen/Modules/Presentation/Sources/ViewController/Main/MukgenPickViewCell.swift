@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
-class CustomCell: UICollectionViewCell {
+class MukgenPickCell: UICollectionViewCell {
     
     static let id = "customCell"
     
