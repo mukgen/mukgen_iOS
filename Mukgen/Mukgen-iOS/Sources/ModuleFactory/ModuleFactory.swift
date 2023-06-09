@@ -7,6 +7,12 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    
+    public func BoardVC() -> Presentation.BoardMainViewcontroller {
+        let vc = BoardMainViewcontroller()
+        return vc
+    }
+    
     public func TapBarVC() -> Presentation.TapBarViewController {
         let vc = TapBarViewController()
         return vc

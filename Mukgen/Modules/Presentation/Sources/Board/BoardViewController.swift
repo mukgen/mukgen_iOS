@@ -1,8 +1,12 @@
-//
-//  BoardViewController.swift
-//  Presentation
-//
-//  Created by 이은호 on 2023/06/04.
-//
+import UIKit
+import Then
+import SnapKit
 
-import Foundation
+class BoardMainViewcontroller: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .red
+    }
+}
