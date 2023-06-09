@@ -7,4 +7,7 @@ public protocol ModuleFactoryInterface {
     func MainVC() -> MainViewController
     
     func TapBarVC() -> TapBarViewController
+    
+    func BoardVC() -> BoardMainViewcontroller
 }
+
