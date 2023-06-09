@@ -6,7 +6,6 @@ import Core
 
 public class MainViewController: BaseVC {
     
-    
     public var factory: ModuleFactoryInterface!
     
     private let scrollView = UIScrollView()
