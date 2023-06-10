@@ -6,21 +6,11 @@ class ShowFilterCell: UICollectionViewCell {
     
     static let id = "customCell"
     
-    var boardText = UILabel().then {
-        $0.font = .systemFont(ofSize: 24, weight: .semibold)
-        $0.text = "급식 게시판"
-        $0.textColor = .black
-    }
-    
-    var tasteGoodText = UIButton().then {
+    var firstFilter = UIButton().then {
+        $0.backgroundColor = .white
+        $0.setTitleColor(PresentationAsset.Colors.primaryLight1.color, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
-        $0.setTitle("일간", for: .normal)
-//        $0.layer.borderWidth = 1
-//        $0.layer.borderColor =
-//        $0.layer.cornerRadius = 100.0
-//        $0.font = .systemFont(ofSize: 12, weight: .regular)
-//        $0.text = "맛있을 것 같은 급식의 날"
-        $0.tintColor = PresentationAsset.Colors.pointBase.color
+        $0.setTitle("전체", for: .normal)
     }
     
     var todayDate = UILabel().then {
@@ -30,10 +20,8 @@ class ShowFilterCell: UICollectionViewCell {
     }
 
     public var backView = UIImageView().then {
-        $0.backgroundColor = .red
-//        $0.layer.cornerRadius = 10.0
-//        $0.layer.borderWidth = 2
-//        $0.layer.borderColor = PresentationAsset.Colors.pointLight4.color.cgColor
+        $0.backgroundColor = .white
+
     }
 
     override init(frame: CGRect) {
@@ -44,10 +32,13 @@ class ShowFilterCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
-        contentView.addSubview(boardText)
-        boardText.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(0)
-            $0.left.equalToSuperview().offset(0)
+        contentView.addSubview(firstFilter)
+        firstFilter.snp.makeConstraints {
+            $0.width.equalTo(60)
+            $0.height.equalTo(35.0)
+            $0.left.equalToSuperview()
+            $0.top.equalToSuperview()
+            
         }
         
 //        contentView.addSubview(tasteGoodText)

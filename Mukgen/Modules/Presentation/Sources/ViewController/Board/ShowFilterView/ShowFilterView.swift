@@ -33,7 +33,7 @@ class ShowFilterView: UIView {
         self.addSubview(showFilterCollectionView)
         
         showFilterCollectionView.snp.makeConstraints {
-            $0.height.equalTo(96)
+            $0.height.equalTo(35.0)
             $0.top.leading.trailing.equalToSuperview()
         }
     }
@@ -45,15 +45,15 @@ class ShowFilterView: UIView {
 
 extension ShowFilterView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 353.0, height: 96.0)
+        CGSize(width: 60, height: 35.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+        UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
 }
 
@@ -66,13 +66,16 @@ extension ShowFilterView: UICollectionViewDelegate {
 
 extension ShowFilterView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
 
     //cell에 관련된 것을 정의합니다.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowFilterCell.id, for: indexPath) as! ShowFilterCell
         cell.backView.backgroundColor = .white
+        cell.backView.layer.borderWidth = 1
+        cell.backView.layer.borderColor = PresentationAsset.Colors.primaryLight2.color.cgColor
+        cell.backView.layer.cornerRadius = 100.0
         return cell
     }
 }
