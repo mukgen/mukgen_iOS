@@ -13,14 +13,15 @@ public class CustomTextView: UIView {
     var maxCharacterCount: Int
     var textViewHeight: CGFloat
     
-    public init(maxCharacterCount: Int = 300, textViewHeight: CGFloat = 190) {
+    public init(maxCharacterCount: Int = 300, textViewHeight: CGFloat = 190, titleText: String) {
         self.maxCharacterCount = maxCharacterCount
         self.textViewHeight = textViewHeight
         
         titleLabel = UILabel().then {
-            $0.text = "제목"
+            $0.text = titleText
             $0.font = .systemFont(ofSize: 20)
             $0.textColor = .black
+            $0.font = .systemFont(ofSize: <#T##CGFloat#>, weight: <#T##UIFont.Weight#>)
             $0.textAlignment = .right
         }
         

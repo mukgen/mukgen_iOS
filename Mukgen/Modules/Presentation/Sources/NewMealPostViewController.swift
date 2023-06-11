@@ -8,7 +8,9 @@ public class NewMealPostViewController: UIViewController {
     
     public var factory: ModuleFactoryInterface!
     
-    var titleTextView: CustomTextView = CustomTextView(maxCharacterCount: 60, textViewHeight: 56)
+    private var titleTextView: CustomTextView = CustomTextView(maxCharacterCount: 60, textViewHeight: 56, titleText: "제목")
+    
+    private var detailTextView: CustomTextView = CustomTextView(maxCharacterCount: 300, textViewHeight: 496, titleText: "내용")
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +21,27 @@ public class NewMealPostViewController: UIViewController {
         
         view.backgroundColor = .white
         view.addSubview(titleTextView)
+        view.addSubview(detailTextView)
         
         titleTextView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20.0)
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview()
+            $0.height.equalTo(106)
+        }
+        
+        detailTextView.snp.makeConstraints {
+            $0.top.equalTo(titleTextView.snp.bottom).offset(20.0)
+            $0.centerX.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalTo(566)
+            $0.bottom.lessThanOrEqualToSuperview().offset(-20.0)
         }
     }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         titleTextView.textView.becomeFirstResponder()
+        detailTextView.textView.becomeFirstResponder()
     }
 }
