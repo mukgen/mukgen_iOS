@@ -19,14 +19,13 @@ public class CustomTextView: UIView {
         
         titleLabel = UILabel().then {
             $0.text = titleText
-            $0.font = .systemFont(ofSize: 20)
             $0.textColor = .black
-            $0.font = .systemFont(ofSize: <#T##CGFloat#>, weight: <#T##UIFont.Weight#>)
+            $0.font = .systemFont(ofSize: 18, weight: .bold)
             $0.textAlignment = .right
         }
         
         textView = UITextView().then {
-            $0.font = .systemFont(ofSize: 14)
+            $0.font = .systemFont(ofSize: 20, weight: .bold)
             $0.layer.cornerRadius = 10
             $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
             $0.tintColor = .black
@@ -42,15 +41,15 @@ public class CustomTextView: UIView {
         
         super.init(frame: .zero)
         
-        setupLayout()
-        setupTextView()
+        layout()
+        attribute()
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLayout() {
+    private func layout() {
         addSubview(titleLabel)
         addSubview(textView)
         addSubview(countLabel)
@@ -72,7 +71,7 @@ public class CustomTextView: UIView {
         }
     }
     
-    private func setupTextView() {
+    private func attribute() {
         textView.delegate = self
         textView.text = placeholder
         textView.textColor = .gray

@@ -12,10 +12,17 @@ public class NewMealPostViewController: UIViewController {
     
     private var detailTextView: CustomTextView = CustomTextView(maxCharacterCount: 300, textViewHeight: 496, titleText: "내용")
     
+    private var customButton = UIButton(type: .custom).then {
+        $0.setTitle("등록", for: .normal)
+        $0.setTitleColor(PresentationAsset.Colors.pointBase.color, for: .normal)
+        // 나중에 액션 구현해줘
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "등록", style: .plain, target: nil, action: nil)
+        let customBarButtonItem = UIBarButtonItem(customView: customButton)
+        navigationItem.rightBarButtonItem = customBarButtonItem
         
         title = "글쓰기"
         
