@@ -7,7 +7,8 @@ class ShowFilterCell: UICollectionViewCell {
     static let id = "customCell"
     
     var firstFilter = UIButton().then {
-        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 100
+        $0.backgroundColor = .red
         $0.setTitleColor(PresentationAsset.Colors.primaryLight1.color, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
         $0.setTitle("전체", for: .normal)
@@ -20,7 +21,7 @@ class ShowFilterCell: UICollectionViewCell {
     }
 
     public var backView = UIImageView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .red
 
     }
 
