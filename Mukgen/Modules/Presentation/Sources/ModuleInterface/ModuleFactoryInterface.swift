@@ -9,5 +9,7 @@ public protocol ModuleFactoryInterface {
     func TapBarVC() -> TapBarViewController
     
     func BoardVC() -> BoardMainViewcontroller
+    
+    func NewMealPostVC() -> NewMealPostViewController
 }
 

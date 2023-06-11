@@ -8,6 +8,11 @@ public class ModuleFactory {
 
 extension ModuleFactory: ModuleFactoryInterface {
     
+    public func NewMealPostVC() -> NewMealPostViewController {
+        let vc = NewMealPostViewController()
+        return vc
+    }
+    
     public func BoardVC() -> Presentation.BoardMainViewcontroller {
         let vc = BoardMainViewcontroller()
         return vc
