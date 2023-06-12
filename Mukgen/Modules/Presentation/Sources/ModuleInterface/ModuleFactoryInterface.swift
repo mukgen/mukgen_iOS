@@ -11,5 +11,6 @@ public protocol ModuleFactoryInterface {
     func BoardVC() -> BoardMainViewcontroller
     
     func NewMealPostVC() -> NewMealPostViewController
+  
 }
 

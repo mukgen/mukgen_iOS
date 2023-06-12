@@ -23,7 +23,7 @@ public class TapBarViewController : UITabBarController {
         
         homeVC.tabBarItem = tabOneBarItem
         
-        let boardVC = UINavigationController(rootViewController: BoardMainViewcontroller())
+        let boardVC = UINavigationController(rootViewController: BoardMainViewController())
         let tabTwoBarItem2 = UITabBarItem(title: "게시판",
                                           image: PresentationAsset.Images.board.image,
                                           tag: 2)
