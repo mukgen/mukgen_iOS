@@ -2,9 +2,9 @@ import UIKit
 import SnapKit
 import Then
 
-class BoardContentsCell: UICollectionViewCell {
+class BoardHotContentsCell: UICollectionViewCell {
     
-    static let id = "customCell"
+    static let id = "BoardHotContentsCell"
     
     var boardText = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -17,7 +17,7 @@ class BoardContentsCell: UICollectionViewCell {
     }
 
     public var backView = UIImageView().then {
-        $0.backgroundColor = .red
+        $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
     }
     
     private var chatImage = UIImageView().then {
@@ -30,13 +30,13 @@ class BoardContentsCell: UICollectionViewCell {
     
     private var chatCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
-        $0.text = "24"
+        $0.text = "5"
         $0.textColor = PresentationAsset.Colors.primaryLight2.color
     }
     
     private var viewCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
-        $0.text = "16"
+        $0.text = "101"
         $0.textColor = PresentationAsset.Colors.primaryLight2.color
     }
 
