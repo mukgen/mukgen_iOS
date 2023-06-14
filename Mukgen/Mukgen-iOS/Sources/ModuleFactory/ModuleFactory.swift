@@ -13,8 +13,8 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
     
-    public func BoardVC() -> Presentation.BoardMainViewcontroller {
-        let vc = BoardMainViewcontroller()
+    public func BoardVC() -> Presentation.BoardMainViewController {
+        let vc = BoardMainViewController()
         return vc
     }
     
