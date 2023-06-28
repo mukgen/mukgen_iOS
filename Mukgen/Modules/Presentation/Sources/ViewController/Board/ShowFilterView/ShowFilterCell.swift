@@ -6,7 +6,7 @@ class ShowFilterCell: UICollectionViewCell {
     
     static let id = "customCell"
     
-    var firstFilter = UIButton().then {
+    public var filterToggle = UIButton().then {
         $0.layer.cornerRadius = 100
         $0.backgroundColor = .red
         $0.setTitleColor(PresentationAsset.Colors.primaryLight1.color, for: .normal)
@@ -19,22 +19,22 @@ class ShowFilterCell: UICollectionViewCell {
         $0.text = "5월 10일"
         $0.textColor = PresentationAsset.Colors.pointBase.color
     }
-
-    public var backView = UIImageView().then {
-        $0.backgroundColor = .red
-
+    
+    public var filterBackView = UIImageView().then {
+        $0.backgroundColor = .white
+        
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(backView)
-        backView.snp.makeConstraints {
+        contentView.addSubview(filterBackView)
+        filterBackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        contentView.addSubview(firstFilter)
-        firstFilter.snp.makeConstraints {
+        contentView.addSubview(filterToggle)
+        filterToggle.snp.makeConstraints {
             $0.width.equalTo(60)
             $0.height.equalTo(35.0)
             $0.left.equalToSuperview()
@@ -42,20 +42,10 @@ class ShowFilterCell: UICollectionViewCell {
             
         }
         
-//        contentView.addSubview(tasteGoodText)
-//        tasteGoodText.snp.makeConstraints {
-//            $0.top.equalTo(pickText.snp.bottom).offset(20)
-//            $0.left.equalToSuperview().offset(24)
-//        }
-//
-//        contentView.addSubview(todayDate)
-//        todayDate.snp.makeConstraints {
-//            $0.top.equalToSuperview().offset(20)
-//            $0.left.equalTo(tasteGoodText.snp.right).offset(100)
-//        }
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

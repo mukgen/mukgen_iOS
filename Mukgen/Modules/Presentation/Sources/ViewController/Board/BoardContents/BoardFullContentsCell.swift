@@ -41,19 +41,19 @@ class BoardFullContentsCell: UICollectionViewCell {
         $0.image = PresentationAsset.Images.heart.image
     }
     
-    private var heartCount = UILabel().then {
+     var heartCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "18"
         $0.textColor = PresentationAsset.Colors.pointLight1.color
     }
     
-    private var chatCount = UILabel().then {
+     var chatCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "24"
         $0.textColor = PresentationAsset.Colors.primaryLight2.color
     }
     
-    private var viewCount = UILabel().then {
+     var viewCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "16"
         $0.textColor = PresentationAsset.Colors.primaryLight2.color

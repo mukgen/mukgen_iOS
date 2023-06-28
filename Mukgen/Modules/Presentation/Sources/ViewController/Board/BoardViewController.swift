@@ -22,33 +22,40 @@ public class BoardMainViewController: BaseVC {
         let showFilterView =  ShowFilterView(frame: .zero, viewController: self)
         let boardContentsView =  BoardContentsView(frame: .zero, viewController: self)
         
-        let spacingView = UIView()
-        spacingView.snp.makeConstraints {
-            $0.height.equalTo(61.0)
-        }
-        
         let spacingView1 = UIView()
         spacingView1.snp.makeConstraints {
-            $0.height.equalTo(93.0)
+            $0.height.equalTo(64)
+        }
+        
+        let spacingView2 = UIView()
+        spacingView2.snp.makeConstraints {
+            $0.height.equalTo(64)
         }
 
         [
             boardTitleView,
-            spacingView,
-            showFilterView,
             spacingView1,
+            showFilterView,
+            spacingView2,
             boardContentsView
             
         ].forEach { stackView.addArrangedSubview($0) }
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.isScrollEnabled = false
+        scrollView.showsHorizontalScrollIndicator = false
     }
     
    
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.isHidden = true
         setupLayout()
         view.backgroundColor = .white
+    }
+    
+    @objc public func plusButtonDidTap(_ sender: Any) {
+        self.navigationController?.pushViewController(NewMealPostViewController(), animated: true)
     }
 }
 

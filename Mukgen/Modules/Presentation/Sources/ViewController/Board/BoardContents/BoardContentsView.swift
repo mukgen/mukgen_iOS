@@ -7,20 +7,18 @@ class BoardContentsView: UIView {
     public var heightCell = 51.0
     
     private final var controller: UIViewController
-    
+
     private lazy var BoardContentsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.showsVerticalScrollIndicator = true
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = true
         collectionView.backgroundColor = .clear
-        collectionView.clipsToBounds = true
         collectionView.register(BoardHotContentsCell.self, forCellWithReuseIdentifier: BoardHotContentsCell.id)
-        collectionView.register(BoardFullContentsCell.self, forCellWithReuseIdentifier: BoardFullContentsCell.id)
-        
+        collectionView.register(BoardFullContentsCell.self, forCellWithReuseIdentifier: BoardFullContentsCell.id)        
         return collectionView
     }()
     
@@ -34,18 +32,45 @@ class BoardContentsView: UIView {
         BoardContentsCollectionView.reloadData()
     }
     
+    public var plusButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "plus"), for: .normal)
+        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.layer.cornerRadius = 30
+        $0.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+    }
+    
     func layout() {
         self.addSubview(BoardContentsCollectionView)
+        self.addSubview(plusButton)
         
         BoardContentsCollectionView.snp.makeConstraints {
-            $0.height.equalTo(482.0)
+            $0.height.equalTo(533.0)
             $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        plusButton.snp.makeConstraints {
+            $0.width.height.equalTo(60)
+            $0.bottom.equalToSuperview().inset(20.0)
+            $0.right.equalToSuperview().inset(20.0)
         }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func plusButtonTapped(_ sender: UIButton) {
+        
+//           var responder: UIResponder? = self
+//           while responder != nil {
+//               responder = responder?.next
+//               if let viewController = responder as? UIViewController {
+//                   let newViewController = NewMealPostViewController()
+//                   viewController.navigationController?.pushViewController(NewMealPostViewController(), animated: true)
+//                   break
+//               }
+//           }
+       }
 }
 
 extension BoardContentsView: UICollectionViewDelegateFlowLayout {
@@ -80,7 +105,7 @@ extension BoardContentsView: UICollectionViewDelegate {
 
 extension BoardContentsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 20
     }
 
     //cell에 관련된 것을 정의합니다.
@@ -98,19 +123,23 @@ extension BoardContentsView: UICollectionViewDataSource {
         case 0, 1, 2:
             hotCell.hotImage.image = PresentationAsset.Images.hot.image
             hotCell.boardText.text = "제주도 가고싶다"
-            heightCell = 51.0
-            collectionView.reloadData()
             return hotCell
-            
         case 3:
-            heightCell = 144.0
-            collectionView.reloadData()
+            fullCell.boardText.text = "무슨 노래 듣고 계세요"
+            fullCell.boardContentsText.text = "오늘 급식 맛도리"
+            fullCell.boardWriter.text = "이은호"
+            fullCell.heartCount.text = "7"
+            fullCell.chatCount.text = "13"
+            fullCell.viewCount.text = "107"
             return fullCell
-            
         default:
-            heightCell = 51.0
-            collectionView.reloadData()
-            fullCell.boardText.text = "이태영은 개초딩"
+            fullCell.boardText.text = "이태영은 잼민이"
+            fullCell.boardContentsText.text = "부현수 한라방 쩔더라"
+            fullCell.boardWriter.text = "유지우"
+            fullCell.heartCount.text = "1"
+            fullCell.chatCount.text = "2"
+            fullCell.viewCount.text = "3"
+
             return fullCell
         }
         
