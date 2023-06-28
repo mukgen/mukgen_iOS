@@ -136,6 +136,10 @@ extension BoardContentsView: UICollectionViewDataSource {
             fullCell.boardText.text = "이태영은 잼민이"
             fullCell.boardContentsText.text = "부현수 한라방 쩔더라"
             fullCell.boardWriter.text = "유지우"
+            fullCell.heartCount.text = "1"
+            fullCell.chatCount.text = "2"
+            fullCell.viewCount.text = "3"
+
             return fullCell
         }
         
