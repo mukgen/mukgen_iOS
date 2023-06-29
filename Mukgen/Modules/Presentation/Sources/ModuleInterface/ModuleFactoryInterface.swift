@@ -10,6 +10,8 @@ public protocol ModuleFactoryInterface {
     
     func BoardVC() -> BoardMainViewController
     
+    func TendiousVC() -> TendinousViewController
+    
     func NewMealPostVC() -> NewMealPostViewController
   
 }
