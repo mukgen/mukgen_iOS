@@ -7,8 +7,13 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    public func TendiousVC() -> Presentation.TendinousViewController {
+        let vc = TendinousViewController()
+        return vc
+    }
     
-  public func NewMealPostVC() -> NewMealPostViewController {
+    
+    public func NewMealPostVC() -> NewMealPostViewController {
         let vc = NewMealPostViewController()
         return vc
     }
@@ -17,7 +22,6 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = BoardMainViewController()
         return vc
     }
-    
     
     public func TapBarVC() -> Presentation.TapBarViewController {
         let vc = TapBarViewController()
