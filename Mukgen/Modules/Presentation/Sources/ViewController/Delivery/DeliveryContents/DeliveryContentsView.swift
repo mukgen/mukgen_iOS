@@ -3,6 +3,11 @@ import Then
 import SnapKit
 
     public class DeliveryContentsView: UIView {
+        
+        var bigHeight = -1
+        var width = 353.0
+        var height = 90.0
+    
     
     private final var controller: UIViewController
 
@@ -58,8 +63,13 @@ import SnapKit
 
 extension DeliveryContentsView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 353.0, height: 90)
+        if bigHeight == indexPath.row {
+            return CGSize(width: 353.0, height: 191)
+        }
+        else
+        {
+            return CGSize(width: 353.0, height: 90)
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -73,18 +83,43 @@ extension DeliveryContentsView: UICollectionViewDelegateFlowLayout {
 
 extension DeliveryContentsView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("asdf")
+        bigHeight = indexPath.row
+        collectionView.reloadData()
     }
 }
 
 extension DeliveryContentsView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
 
     //cell에 관련된 것을 정의합니다.
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let deliveryContentsCell = collectionView.dequeueReusableCell(withReuseIdentifier: DeliveryContentsCell.id, for: indexPath) as! DeliveryContentsCell
+        if bigHeight == indexPath.row {
+            deliveryContentsCell.profileImage1.image = PresentationAsset.Images.testProfile1.image
+            deliveryContentsCell.profileImage2.image = PresentationAsset.Images.testProfile2.image
+            deliveryContentsCell.profileImage3.image = PresentationAsset.Images.testProfile3.image
+            deliveryContentsCell.perticipatePerson1.text = "이은호"
+            deliveryContentsCell.perticipatePerson2.text = "햄스터"
+            deliveryContentsCell.perticipatePerson3.text = "이태영"
+            deliveryContentsCell.writer.textColor = PresentationAsset.Colors.primaryBase.color
+            deliveryContentsCell.contents.textColor = .black
+            deliveryContentsCell.contents.font = .systemFont(ofSize: 14.0, weight: .semibold)
+            deliveryContentsCell.perticipateIn.isHidden = false
+        }
+        else {
+            deliveryContentsCell.profileImage1.image = nil
+            deliveryContentsCell.profileImage2.image = nil
+            deliveryContentsCell.profileImage3.image = nil
+            deliveryContentsCell.perticipatePerson1.text = nil
+            deliveryContentsCell.perticipatePerson2.text = nil
+            deliveryContentsCell.perticipatePerson3.text = nil
+            deliveryContentsCell.perticipateIn.isHidden = true
+            deliveryContentsCell.writer.textColor = .black
+            deliveryContentsCell.contents.textColor = .black
+            deliveryContentsCell.contents.font = .systemFont(ofSize: 14.0, weight: .regular)
+        }
         deliveryContentsCell.backView.backgroundColor = PresentationAsset.Colors.primaryLight3.color
         deliveryContentsCell.backView.layer.cornerRadius = 10.0
         return deliveryContentsCell
