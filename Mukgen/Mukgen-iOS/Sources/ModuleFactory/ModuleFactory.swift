@@ -12,7 +12,6 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
     
-    
     public func NewMealPostVC() -> NewMealPostViewController {
         let vc = NewMealPostViewController()
         return vc
@@ -20,6 +19,11 @@ extension ModuleFactory: ModuleFactoryInterface {
     
     public func BoardVC() -> Presentation.BoardMainViewController {
         let vc = BoardMainViewController()
+        return vc
+    }
+    
+    public func DeliveryVC() -> Presentation.DeliveryViewController {
+        let vc = DeliveryViewController()
         return vc
     }
     

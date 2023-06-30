@@ -12,6 +12,8 @@ public protocol ModuleFactoryInterface {
     
     func TendiousVC() -> TendinousViewController
     
+    func DeliveryVC() -> DeliveryViewController
+    
     func NewMealPostVC() -> NewMealPostViewController
   
 }
