@@ -34,25 +34,12 @@ import SnapKit
         deliveryContentsCollectionView.reloadData()
     }
     
-    public var plusButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
-        $0.layer.cornerRadius = 30
-    }
-    
     func layout() {
         self.addSubview(deliveryContentsCollectionView)
-        self.addSubview(plusButton)
         
         deliveryContentsCollectionView.snp.makeConstraints {
             $0.height.equalTo(640.0)
             $0.top.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        plusButton.snp.makeConstraints {
-            $0.width.height.equalTo(60)
-            $0.bottom.equalToSuperview().inset(20.0)
-            $0.right.equalToSuperview().inset(20.0)
         }
     }
     
