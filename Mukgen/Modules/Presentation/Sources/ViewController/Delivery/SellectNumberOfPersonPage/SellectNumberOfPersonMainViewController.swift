@@ -50,8 +50,22 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
     }
     
     public var beforePageButton = UIButton().then {
+        $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        $0.setTitle("이전", for: .normal)
+        $0.setTitleColor(PresentationAsset.Colors.pointBase.color, for: .normal)
+        $0.layer.borderWidth = 2
+        $0.layer.borderColor = UIColor.systemOrange.cgColor
         $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
         $0.layer.cornerRadius = 10.0
+        $0.addTarget(self, action: #selector(beforePageButtonDidTap(_:)), for: .touchUpInside)
+    }
+    
+    public var nextPageButton = UIButton().then {
+        $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        $0.setTitle("다음", for: .normal)
+        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.layer.cornerRadius = 10.0
+        $0.addTarget(self, action: #selector(nextPageButtonDidTap(_:)), for: .touchUpInside)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +81,16 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
         self.navigationController?.navigationBar.isHidden = true
         setupLayout()
         view.backgroundColor = .white
+    }
+    
+    @objc func beforePageButtonDidTap(_ sender: UIButton) {
+        print("아ㅣㄴㅇㄹㄴ")
+//        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func nextPageButtonDidTap(_ sender: UIButton) {
+        print("아ㅣㄴㅇㄹㄴ")
+//        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
@@ -96,6 +120,14 @@ private extension SellectNumberOfPersonMainViewController {
             $0.height.equalTo(55.0)
             $0.top.equalTo(stackView.snp.bottom).offset(263.0)
             $0.left.equalToSuperview().offset(30.0)
+        }
+        
+        contentView.addSubview(nextPageButton)
+        nextPageButton.snp.makeConstraints {
+            $0.width.equalTo(161.5)
+            $0.height.equalTo(55.0)
+            $0.top.equalTo(stackView.snp.bottom).offset(263.0)
+            $0.left.equalTo(beforePageButton.snp.right).offset(10.0)
         }
 
     }
