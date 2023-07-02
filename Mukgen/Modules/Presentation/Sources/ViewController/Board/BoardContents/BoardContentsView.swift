@@ -18,7 +18,7 @@ class BoardContentsView: UIView {
         collectionView.isScrollEnabled = true
         collectionView.backgroundColor = .clear
         collectionView.register(BoardHotContentsCell.self, forCellWithReuseIdentifier: BoardHotContentsCell.id)
-        collectionView.register(BoardFullContentsCell.self, forCellWithReuseIdentifier: BoardFullContentsCell.id)        
+        collectionView.register(BoardFullContentsCell.self, forCellWithReuseIdentifier: BoardFullContentsCell.id)
         return collectionView
     }()
     
