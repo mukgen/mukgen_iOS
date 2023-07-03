@@ -65,7 +65,7 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
         $0.setTitle("다음", for: .normal)
         $0.backgroundColor = PresentationAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 10.0
-        $0.addTarget(self, action: #selector(nextPageButtonDidTap(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -99,18 +99,20 @@ private extension SellectNumberOfPersonMainViewController {
     func setupLayout() {
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.bottom.leading.trailing.equalToSuperview()
+            $0.edges.equalToSuperview()
+//            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+//            $0.bottom.leading.trailing.equalToSuperview()
         }
         
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
-            $0.width.equalToSuperview()
+            $0.width.equalTo(scrollView)
         }
         
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints {
+            $0.top.equalToSuperview()
             $0.edges.equalToSuperview()
         }
         

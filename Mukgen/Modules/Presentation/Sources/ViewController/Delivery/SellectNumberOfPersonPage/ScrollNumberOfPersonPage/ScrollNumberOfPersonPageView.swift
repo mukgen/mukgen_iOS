@@ -15,6 +15,7 @@ class ScrollNumberOfPersonPageView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = true
         collectionView.isScrollEnabled = true
         collectionView.backgroundColor = .clear
         collectionView.clipsToBounds = true
