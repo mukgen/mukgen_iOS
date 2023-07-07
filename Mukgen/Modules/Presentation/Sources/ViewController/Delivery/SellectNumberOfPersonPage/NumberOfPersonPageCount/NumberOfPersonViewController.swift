@@ -16,7 +16,7 @@ public class NumberOfPersonViewController: BaseVC {
         stackView.distribution = .equalSpacing
         stackView.spacing = 0.0
         
-        let numberOfPersonPageCount = (frame: .zero, viewController: self)
+        let deliveryContentsView = DeliveryContentsView(frame: .zero, viewController: self)
         
         let spacingView1 = UIView()
         spacingView1.snp.makeConstraints {
