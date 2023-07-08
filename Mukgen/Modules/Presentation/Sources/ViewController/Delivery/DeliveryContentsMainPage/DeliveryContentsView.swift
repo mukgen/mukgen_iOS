@@ -7,6 +7,8 @@ public class DeliveryContentsView: UIView {
     var width = 353.0
     var height = 90.0
     var bigHeight = -1
+    var count = 0
+    var indexPathCount = -1
     
     
     private final var controller: UIViewController
@@ -50,8 +52,8 @@ public class DeliveryContentsView: UIView {
 
 extension DeliveryContentsView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if bigHeight == indexPath.row {height = 191}
-        else {height = 90}
+        if bigHeight == 0 && indexPathCount == indexPath.row { height = 191 }
+        if bigHeight == 1 && indexPathCount == indexPath.row { height = 90 }
         return CGSize(width: width, height: height)
     }
     
@@ -66,8 +68,11 @@ extension DeliveryContentsView: UICollectionViewDelegateFlowLayout {
 
 extension DeliveryContentsView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if count % 2 == 0 {bigHeight = 0}
+        if count % 2 != 0 {bigHeight = 1}
         height = 191
-        bigHeight = indexPath.row
+        count += 1
+        indexPathCount = indexPath.row
         collectionView.reloadData()
     }
 }
@@ -80,7 +85,7 @@ extension DeliveryContentsView: UICollectionViewDataSource {
     //cell에 관련된 것을 정의합니다.
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let deliveryContentsCell = collectionView.dequeueReusableCell(withReuseIdentifier: DeliveryContentsCell.id, for: indexPath) as! DeliveryContentsCell
-        if bigHeight == indexPath.row {
+        if bigHeight == 0 && indexPathCount == indexPath.row {
             deliveryContentsCell.profileImage1.image = PresentationAsset.Images.testProfile1.image
             deliveryContentsCell.profileImage2.image = PresentationAsset.Images.testProfile2.image
             deliveryContentsCell.profileImage3.image = PresentationAsset.Images.testProfile3.image
@@ -92,7 +97,7 @@ extension DeliveryContentsView: UICollectionViewDataSource {
             deliveryContentsCell.contents.font = .systemFont(ofSize: 14.0, weight: .semibold)
             deliveryContentsCell.perticipateIn.isHidden = false
         }
-        else {
+        if bigHeight == 1 && indexPathCount == indexPath.row || indexPathCount == -1 {
             deliveryContentsCell.profileImage1.image = nil
             deliveryContentsCell.profileImage2.image = nil
             deliveryContentsCell.profileImage3.image = nil

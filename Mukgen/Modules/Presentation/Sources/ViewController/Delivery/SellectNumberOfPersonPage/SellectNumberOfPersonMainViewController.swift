@@ -134,5 +134,3 @@ private extension SellectNumberOfPersonMainViewController {
 
     }
 }
-
-

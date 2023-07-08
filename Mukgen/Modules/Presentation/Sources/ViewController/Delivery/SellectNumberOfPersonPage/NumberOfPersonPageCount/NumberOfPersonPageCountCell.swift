@@ -4,7 +4,7 @@ import Then
 
 class NumberOfPersonPageCountCell: UICollectionViewCell {
     
-    static let id = "SellectPageCell"
+    static let id = "NumberOfPersonPageCountCell"
     
     var countPage = UILabel().then {
         $0.text = "2 / 4"
