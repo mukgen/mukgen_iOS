@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class PopularPostView: UIView {
     private final var controller: UIViewController
@@ -14,7 +15,7 @@ class PopularPostView: UIView {
     private lazy var morePost = UIButton().then {
         $0.setTitle("더보기", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
-        $0.setTitleColor(PresentationAsset.Colors.pointLight1.color, for: .normal)
+        $0.setTitleColor(MukgenKitAsset.Colors.pointLight1.color, for: .normal)
     }
     
     private lazy var popularPostCollectionView: UICollectionView = {
@@ -94,7 +95,7 @@ extension PopularPostView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularPostViewCell.PopularPostViewCellid, for: indexPath) as! PopularPostViewCell
-        cell.backView.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+        cell.backView.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
         cell.layer.cornerRadius = 10.0
         return cell
     }

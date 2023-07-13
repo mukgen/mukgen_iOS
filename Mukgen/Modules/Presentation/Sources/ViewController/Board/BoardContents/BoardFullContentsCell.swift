@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class BoardFullContentsCell: UICollectionViewCell {
     
@@ -21,7 +22,7 @@ class BoardFullContentsCell: UICollectionViewCell {
     var boardWriter = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "유지우"
-        $0.textColor = PresentationAsset.Colors.primaryLight1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight1.color
     }
 
     public var backView = UIImageView().then {
@@ -29,34 +30,34 @@ class BoardFullContentsCell: UICollectionViewCell {
     }
     
     private var viewImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.eye.image
+        $0.image = MukgenKitAsset.Images.eye.image
     }
 
     
     private var chatImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.chat.image
+        $0.image = MukgenKitAsset.Images.chat.image
     }
     
     private var HeartImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.heart.image
+        $0.image = MukgenKitAsset.Images.heart.image
     }
     
      var heartCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "18"
-        $0.textColor = PresentationAsset.Colors.pointLight1.color
+        $0.textColor = MukgenKitAsset.Colors.pointLight1.color
     }
     
      var chatCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "24"
-        $0.textColor = PresentationAsset.Colors.primaryLight2.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
      var viewCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "16"
-        $0.textColor = PresentationAsset.Colors.primaryLight2.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
     }
 
     override init(frame: CGRect) {

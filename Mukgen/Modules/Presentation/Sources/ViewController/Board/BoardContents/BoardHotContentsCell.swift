@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class BoardHotContentsCell: UICollectionViewCell {
     
@@ -13,31 +14,31 @@ class BoardHotContentsCell: UICollectionViewCell {
     }
     
     var hotImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.hot.image
+        $0.image = MukgenKitAsset.Images.hot.image
     }
 
     public var backView = UIImageView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
     }
     
     private var chatImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.chat.image
+        $0.image = MukgenKitAsset.Images.chat.image
     }
     
     private var viewImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.eye.image
+        $0.image = MukgenKitAsset.Images.eye.image
     }
     
     private var chatCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "5"
-        $0.textColor = PresentationAsset.Colors.primaryLight2.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     private var viewCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "101"
-        $0.textColor = PresentationAsset.Colors.primaryLight2.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
     }
 
     override init(frame: CGRect) {

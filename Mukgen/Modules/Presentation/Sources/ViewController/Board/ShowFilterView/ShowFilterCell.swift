@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class ShowFilterCell: UICollectionViewCell {
     
@@ -9,7 +10,7 @@ class ShowFilterCell: UICollectionViewCell {
     public var filterToggle = UIButton().then {
         $0.layer.cornerRadius = 100
         $0.backgroundColor = .red
-        $0.setTitleColor(PresentationAsset.Colors.primaryLight1.color, for: .normal)
+        $0.setTitleColor(MukgenKitAsset.Colors.primaryLight1.color, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
         $0.setTitle("전체", for: .normal)
     }
@@ -17,7 +18,7 @@ class ShowFilterCell: UICollectionViewCell {
     var todayDate = UILabel().then {
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
         $0.text = "5월 10일"
-        $0.textColor = PresentationAsset.Colors.pointBase.color
+        $0.textColor = MukgenKitAsset.Colors.pointBase.color
     }
     
     public var filterBackView = UIImageView().then {

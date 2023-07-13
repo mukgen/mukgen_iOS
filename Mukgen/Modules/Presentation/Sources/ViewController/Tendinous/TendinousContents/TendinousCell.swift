@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class TendinousCell: UICollectionViewCell {
     
@@ -9,7 +10,7 @@ class TendinousCell: UICollectionViewCell {
     var writer = UILabel().then {
         $0.font = .systemFont(ofSize: 14.12, weight: .semibold)
         $0.text = "이은호"
-        $0.textColor = PresentationAsset.Colors.primaryLight1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight1.color
     }
     
     var contents = UILabel().then {
@@ -19,7 +20,7 @@ class TendinousCell: UICollectionViewCell {
     }
     
     public var checkImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.check.image
+        $0.image = MukgenKitAsset.Images.check.image
     }
 
     var heartBackView = UIView().then {
@@ -28,7 +29,7 @@ class TendinousCell: UICollectionViewCell {
     }
     
     var heartImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.tendinousHeart.image
+        $0.image = MukgenKitAsset.Images.tendinousHeart.image
     }
 
     public var backView = UIImageView().then {
@@ -38,7 +39,7 @@ class TendinousCell: UICollectionViewCell {
      var heartCount = UILabel().then {
         $0.font = .systemFont(ofSize: 12.11, weight: .bold)
         $0.text = "9"
-        $0.textColor = PresentationAsset.Colors.primaryLight1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight1.color
     }
     
     var noHeartBackView = UIView().then {
@@ -47,13 +48,13 @@ class TendinousCell: UICollectionViewCell {
     }
     
     var noHeartImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.noHeart.image
+        $0.image = MukgenKitAsset.Images.noHeart.image
     }
     
     var noHeartCount = UILabel().then {
        $0.font = .systemFont(ofSize: 12.11, weight: .bold)
        $0.text = "9"
-       $0.textColor = PresentationAsset.Colors.primaryLight1.color
+       $0.textColor = MukgenKitAsset.Colors.primaryLight1.color
    }
 
     override init(frame: CGRect) {

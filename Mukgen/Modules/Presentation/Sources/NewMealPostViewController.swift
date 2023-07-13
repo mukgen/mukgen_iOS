@@ -14,7 +14,7 @@ public class NewMealPostViewController: UIViewController {
     
     private var customButton = UIButton(type: .custom).then {
         $0.setTitle("등록", for: .normal)
-        $0.setTitleColor(PresentationAsset.Colors.pointBase.color, for: .normal)
+        $0.setTitleColor(MukgenKitAsset.Colors.pointBase.color, for: .normal)
         // 나중에 액션 구현해줘
     }
     

@@ -30,7 +30,7 @@ final class InputTelViewController: BaseVC {
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
     }
     
-    private let attributes = [NSAttributedString.Key.foregroundColor: PresentationAsset.Colors.primaryLight2.color,
+    private let attributes = [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.primaryLight2.color,
                           .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
     
     private var firstTextField = UITextField().then {
@@ -64,19 +64,19 @@ final class InputTelViewController: BaseVC {
     }
     
     private var firstLine = UIView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight2.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     private var secondLine = UIView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight2.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     private var thirdLine = UIView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight2.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
    
     private let nextPageButton = CustomButton(title: "다음",
-                                      backgroundColor: PresentationAsset.Colors.primaryLight2.color, titleColor: .white,
+                                      backgroundColor: MukgenKitAsset.Colors.primaryLight2.color, titleColor: .white,
                                    font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     )
     
@@ -204,13 +204,13 @@ extension InputTelViewController: UITextFieldDelegate {
         switch textField {
         case firstTextField:
             animate(line: firstLine)
-            firstLine.backgroundColor =  PresentationAsset.Colors.pointBase.color
+            firstLine.backgroundColor =  MukgenKitAsset.Colors.pointBase.color
         case secondTextField:
             animate(line: secondLine)
-            secondLine.backgroundColor =  PresentationAsset.Colors.pointBase.color
+            secondLine.backgroundColor =  MukgenKitAsset.Colors.pointBase.color
         case thirdTextField:
             animate(line: thirdLine)
-            thirdLine.backgroundColor =  PresentationAsset.Colors.pointBase.color
+            thirdLine.backgroundColor =  MukgenKitAsset.Colors.pointBase.color
         
         default: return
         }

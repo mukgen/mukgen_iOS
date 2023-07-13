@@ -1,6 +1,7 @@
 import UIKit
 import Then
 import SnapKit
+import MukgenKit
 
 class TendinousView: UIView {
     
@@ -31,7 +32,7 @@ class TendinousView: UIView {
     
     public var plusButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 30
     }
     
@@ -86,9 +87,9 @@ extension TendinousView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let tendinousCell = collectionView.dequeueReusableCell(withReuseIdentifier: TendinousCell.id, for: indexPath) as! TendinousCell
         tendinousCell.backView.layer.cornerRadius = 15.13
-        tendinousCell.backView.backgroundColor = PresentationAsset.Colors.pointLight4.color
+        tendinousCell.backView.backgroundColor = MukgenKitAsset.Colors.pointLight4.color
         if indexPath.row == 0 {
-            tendinousCell.checkImage.image = PresentationAsset.Images.checked.image
+            tendinousCell.checkImage.image = MukgenKitAsset.Images.checked.image
             return tendinousCell
         }
         

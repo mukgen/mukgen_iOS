@@ -1,16 +1,17 @@
 import UIKit
 import Then
 import SnapKit
+import MukgenKit
 
-    public class DeliveryContentsView: UIView {
-        
-        var bigHeight = -1
-        var width = 353.0
-        var height = 90.0
+public class DeliveryContentsView: UIView {
+    
+    var bigHeight = -1
+    var width = 353.0
+    var height = 90.0
     
     
     private final var controller: UIViewController
-
+    
     private lazy var deliveryContentsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -36,7 +37,7 @@ import SnapKit
     
     public var plusButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 30
     }
     
@@ -92,18 +93,18 @@ extension DeliveryContentsView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
-
+    
     //cell에 관련된 것을 정의합니다.
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let deliveryContentsCell = collectionView.dequeueReusableCell(withReuseIdentifier: DeliveryContentsCell.id, for: indexPath) as! DeliveryContentsCell
         if bigHeight == indexPath.row {
-            deliveryContentsCell.profileImage1.image = PresentationAsset.Images.testProfile1.image
-            deliveryContentsCell.profileImage2.image = PresentationAsset.Images.testProfile2.image
-            deliveryContentsCell.profileImage3.image = PresentationAsset.Images.testProfile3.image
+            deliveryContentsCell.profileImage1.image = MukgenKitAsset.Images.testProfile1.image
+            deliveryContentsCell.profileImage2.image = MukgenKitAsset.Images.testProfile2.image
+            deliveryContentsCell.profileImage3.image = MukgenKitAsset.Images.testProfile3.image
             deliveryContentsCell.perticipatePerson1.text = "이은호"
             deliveryContentsCell.perticipatePerson2.text = "햄스터"
             deliveryContentsCell.perticipatePerson3.text = "이태영"
-            deliveryContentsCell.writer.textColor = PresentationAsset.Colors.primaryBase.color
+            deliveryContentsCell.writer.textColor = MukgenKitAsset.Colors.primaryBase.color
             deliveryContentsCell.contents.textColor = .black
             deliveryContentsCell.contents.font = .systemFont(ofSize: 14.0, weight: .semibold)
             deliveryContentsCell.perticipateIn.isHidden = false
@@ -120,7 +121,7 @@ extension DeliveryContentsView: UICollectionViewDataSource {
             deliveryContentsCell.contents.textColor = .black
             deliveryContentsCell.contents.font = .systemFont(ofSize: 14.0, weight: .regular)
         }
-        deliveryContentsCell.backView.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+        deliveryContentsCell.backView.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
         deliveryContentsCell.backView.layer.cornerRadius = 10.0
         return deliveryContentsCell
     }
