@@ -8,5 +8,6 @@ let project = Project.framework(
         .Module.core,
         .external(name: "SnapKit"),
         .external(name: "Then")
-    ]
+    ],
+    resources: ["Resources/**"]
 )

@@ -16,5 +16,5 @@ let project = Project.framework(
         .external(name: "SnapKit"),
         .external(name: "Then")
     ],
-    resources: .default
+    resources: .none
 )
