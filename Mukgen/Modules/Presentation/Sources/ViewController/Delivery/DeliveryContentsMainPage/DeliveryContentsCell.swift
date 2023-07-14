@@ -1,7 +1,7 @@
-
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class DeliveryContentsCell: UICollectionViewCell {
     
@@ -22,59 +22,56 @@ class DeliveryContentsCell: UICollectionViewCell {
     var contentsTime = UILabel().then {
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.text = "제주도 | 오후 06:00"
-        $0.textColor = PresentationAsset.Colors.primaryLight1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight1.color
     }
     
     var countPeople = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .semibold)
         $0.text = "7 / 8"
-        $0.textColor = PresentationAsset.Colors.primaryDark1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryDark1.color
     }
     
     var perticipatePerson1 = UILabel().then {
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.text = "이은호"
-        $0.textColor = PresentationAsset.Colors.primaryDark1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryDark1.color
     }
     
     var perticipatePerson2 = UILabel().then {
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.text = "햄스터"
-        $0.textColor = PresentationAsset.Colors.primaryDark1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryDark1.color
     }
 
     var perticipatePerson3 = UILabel().then {
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.text = "이태영"
-        $0.textColor = PresentationAsset.Colors.primaryDark1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryDark1.color
     }
     
     public var perticipateIn = UIButton().then {
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         $0.setTitle("참여하기", for: .normal)
         $0.tintColor = .white
-        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 10.0
     }
     
     public var profileImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.testProfile.image
+        $0.image = MukgenKitAsset.Images.testProfile.image
     }
     
     public var profileImage1 = UIImageView().then {
-        $0.image = PresentationAsset.Images.testProfile1.image
+        $0.image = MukgenKitAsset.Images.testProfile1.image
     }
     
     public var profileImage2 = UIImageView().then {
-        $0.image = PresentationAsset.Images.testProfile2.image
+        $0.image = MukgenKitAsset.Images.testProfile2.image
     }
     
     public var profileImage3 = UIImageView().then {
-        $0.image = PresentationAsset.Images.testProfile3.image
+        $0.image = MukgenKitAsset.Images.testProfile3.image
     }
-
-
-
 
     var heartBackView = UIView().then {
         $0.layer.cornerRadius = 8.07
@@ -82,7 +79,7 @@ class DeliveryContentsCell: UICollectionViewCell {
     }
     
     var heartImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.tendinousHeart.image
+        $0.image = MukgenKitAsset.Images.tendinousHeart.image
     }
 
     public var backView = UIImageView().then {
@@ -97,7 +94,7 @@ class DeliveryContentsCell: UICollectionViewCell {
      var heartCount = UILabel().then {
         $0.font = .systemFont(ofSize: 12.11, weight: .bold)
         $0.text = "9"
-        $0.textColor = PresentationAsset.Colors.primaryLight1.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight1.color
     }
     
     var noHeartBackView = UIView().then {
@@ -106,13 +103,13 @@ class DeliveryContentsCell: UICollectionViewCell {
     }
     
     var noHeartImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.noHeart.image
+        $0.image = MukgenKitAsset.Images.noHeart.image
     }
     
     var noHeartCount = UILabel().then {
        $0.font = .systemFont(ofSize: 12.11, weight: .bold)
        $0.text = "9"
-       $0.textColor = PresentationAsset.Colors.primaryLight1.color
+       $0.textColor = MukgenKitAsset.Colors.primaryLight1.color
    }
 
     override init(frame: CGRect) {

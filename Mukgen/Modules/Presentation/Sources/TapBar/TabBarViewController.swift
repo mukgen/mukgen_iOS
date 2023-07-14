@@ -1,13 +1,7 @@
-//
-//  TabBarViewController.swift
-//  Presentation
-//
-//  Created by 박준하 on 2023/06/09.
-//
-
 import UIKit
 import Then
 import SnapKit
+import MukgenKit
 
 public class TapBarViewController : UITabBarController {
     
@@ -18,39 +12,39 @@ public class TapBarViewController : UITabBarController {
         
         let homeVC = UINavigationController(rootViewController: MainViewController())
         let tabOneBarItem = UITabBarItem(title: "홈",
-                                         image: PresentationAsset.Images.home.image,
+                                         image: MukgenKitAsset.Images.home.image,
                                          tag: 1)
         
         homeVC.tabBarItem = tabOneBarItem
         
         let boardVC = UINavigationController(rootViewController: BoardMainViewController())
         let tabTwoBarItem2 = UITabBarItem(title: "게시판",
-                                          image: PresentationAsset.Images.board.image,
+                                          image: MukgenKitAsset.Images.board.image,
                                           tag: 2)
         boardVC.tabBarItem = tabTwoBarItem2
         
         let tendinousVC = UINavigationController(rootViewController: TendinousViewController())
         let tabThrBarItem3 = UITabBarItem(title: "급식 건의",
-                                          image: PresentationAsset.Images.suggestion.image,
+                                          image: MukgenKitAsset.Images.suggestion.image,
                                           tag: 3)
         
         tendinousVC.tabBarItem = tabThrBarItem3
         
         let reviewVC = UINavigationController(rootViewController: ReviewController())
         let tabFouBarItem4 = UITabBarItem(title: "급식 리뷰",
-                                          image: PresentationAsset.Images.review.image,
+                                          image: MukgenKitAsset.Images.review.image,
                                           tag: 4)
         
         reviewVC.tabBarItem = tabFouBarItem4
         
         let deliveryVC = UINavigationController(rootViewController: DeliveryViewController())
         let tabFiveBarItem5 = UITabBarItem(title: "배달 파티",
-                                           image: PresentationAsset.Images.delivery.image,
+                                           image: MukgenKitAsset.Images.delivery.image,
                                            tag: 5)
         deliveryVC.tabBarItem = tabFiveBarItem5
         
-        self.tabBar.tintColor = PresentationAsset.Colors.pointBase.color
-        self.tabBar.unselectedItemTintColor = PresentationAsset.Colors.primaryLight1.color
+        self.tabBar.tintColor = MukgenKitAsset.Colors.pointBase.color
+        self.tabBar.unselectedItemTintColor = MukgenKitAsset.Colors.primaryLight1.color
         self.viewControllers = [homeVC, boardVC, tendinousVC, reviewVC, deliveryVC]
         self.tabBar.backgroundColor = .white
 

@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class MukgenPickCell: UICollectionViewCell {
     
@@ -9,26 +10,26 @@ class MukgenPickCell: UICollectionViewCell {
     var pickText = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .semibold)
         $0.text = "PICK"
-        $0.textColor = PresentationAsset.Colors.pointBase.color
+        $0.textColor = MukgenKitAsset.Colors.pointBase.color
     }
     
     var tasteGoodText = UILabel().then {
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.text = "맛있을 것 같은 급식의 날"
-        $0.textColor = PresentationAsset.Colors.pointBase.color
+        $0.textColor = MukgenKitAsset.Colors.pointBase.color
     }
     
     var todayDate = UILabel().then {
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
         $0.text = "5월 10일"
-        $0.textColor = PresentationAsset.Colors.pointBase.color
+        $0.textColor = MukgenKitAsset.Colors.pointBase.color
     }
 
     public var backView = UIImageView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
         $0.layer.cornerRadius = 10.0
         $0.layer.borderWidth = 2
-        $0.layer.borderColor = PresentationAsset.Colors.pointLight4.color.cgColor
+        $0.layer.borderColor = MukgenKitAsset.Colors.pointLight4.color.cgColor
     }
 
     override init(frame: CGRect) {

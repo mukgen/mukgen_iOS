@@ -8,7 +8,7 @@ public class InputIdPasswordViewController: BaseVC {
     
     public var factory: ModuleFactoryInterface!
     
-    private let attributes = [NSAttributedString.Key.foregroundColor: PresentationAsset.Colors.primaryLight2,
+    private let attributes = [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.primaryLight2,
                               .font : UIFont.systemFont(ofSize: 20, weight: .semibold)] as [NSAttributedString.Key : Any]
     
     private let inputIdPasswordLabel = UILabel().then {
@@ -46,20 +46,20 @@ public class InputIdPasswordViewController: BaseVC {
     }
     
     private var idLine = UIView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight2.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     private var passwordLine = UIView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight2.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     private var checkPasswordLine = UIView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight2.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     
     private let nextPageButton = CustomButton(title: "다음",
-                                              backgroundColor: PresentationAsset.Colors.primaryLight2.color, titleColor: UIColor.white,
+                                              backgroundColor: MukgenKitAsset.Colors.primaryLight2.color, titleColor: UIColor.white,
                                               font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     ).then {
         $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
@@ -171,11 +171,11 @@ extension InputIdPasswordViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case firstTextField: animate(line: idLine)
-            idLine.backgroundColor = PresentationAsset.Colors.pointBase.color
+            idLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         case secondTextField: animate(line: passwordLine)
-            passwordLine.backgroundColor = PresentationAsset.Colors.pointBase.color
+            passwordLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         case thirdTextField: animate(line: checkPasswordLine)
-            checkPasswordLine.backgroundColor = PresentationAsset.Colors.pointBase.color
+            checkPasswordLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         default: return
         }
     }

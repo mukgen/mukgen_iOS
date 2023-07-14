@@ -1,6 +1,7 @@
 import UIKit
 import Then
 import SnapKit
+import MukgenKit
 
 class BoardContentsView: UIView {
     public var widthCell = 353.0
@@ -34,7 +35,7 @@ class BoardContentsView: UIView {
     
     public var plusButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 30
         $0.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
@@ -112,8 +113,8 @@ extension BoardContentsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let hotCell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardHotContentsCell.id, for: indexPath) as! BoardHotContentsCell
         let fullCell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardFullContentsCell.id, for: indexPath) as! BoardFullContentsCell
-        hotCell.backView.backgroundColor = PresentationAsset.Colors.primaryLight3.color
-        fullCell.backView.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+        hotCell.backView.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        fullCell.backView.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
         hotCell.backView.layer.cornerRadius = 10.0
         fullCell.backView.layer.cornerRadius = 10.0
 
@@ -121,7 +122,7 @@ extension BoardContentsView: UICollectionViewDataSource {
         switch indexPath.row
         {
         case 0, 1, 2:
-            hotCell.hotImage.image = PresentationAsset.Images.hot.image
+            hotCell.hotImage.image = MukgenKitAsset.Images.hot.image
             hotCell.boardText.text = "제주도 가고싶다"
             return hotCell
         case 3:

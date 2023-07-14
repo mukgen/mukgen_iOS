@@ -1,6 +1,7 @@
 import UIKit
 import Then
 import SnapKit
+import MukgenKit
 
 class ShowFilterView: UIView {
     
@@ -79,7 +80,7 @@ extension ShowFilterView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowFilterCell.id, for: indexPath) as! ShowFilterCell
         cell.filterBackView.backgroundColor = .white
         cell.filterBackView.layer.borderWidth = 1
-        cell.filterBackView.layer.borderColor = PresentationAsset.Colors.primaryLight2.color.cgColor
+        cell.filterBackView.layer.borderColor = MukgenKitAsset.Colors.primaryLight2.color.cgColor
         cell.filterBackView.layer.cornerRadius = 17.5
         
         switch indexPath.row {

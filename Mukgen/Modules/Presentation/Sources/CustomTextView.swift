@@ -27,7 +27,7 @@ public class CustomTextView: UIView {
         textView = UITextView().then {
             $0.font = .systemFont(ofSize: 20, weight: .bold)
             $0.layer.cornerRadius = 10
-            $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+            $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
             $0.tintColor = .black
             $0.textContainerInset = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
         }
@@ -35,7 +35,7 @@ public class CustomTextView: UIView {
         countLabel = UILabel().then {
             $0.text = "0/\(maxCharacterCount)"
             $0.font = .systemFont(ofSize: 16)
-            $0.textColor = PresentationAsset.Colors.pointLight2.color
+            $0.textColor = MukgenKitAsset.Colors.pointLight2.color
             $0.textAlignment = .right
         }
         
@@ -81,7 +81,7 @@ public class CustomTextView: UIView {
 extension CustomTextView: UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = PresentationAsset.Colors.pointBase.color.cgColor
+        textView.layer.borderColor = MukgenKitAsset.Colors.pointBase.color.cgColor
         
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.textColor = .gray
@@ -100,7 +100,7 @@ extension CustomTextView: UITextViewDelegate {
         countLabel.text = "\(textView.text.count)/\(maxCharacterCount)"
         
         let attributedString = NSMutableAttributedString(string: "\(textView.text.count)/\(maxCharacterCount)")
-        attributedString.addAttribute(.foregroundColor, value: PresentationAsset.Colors.pointBase.color, range: ("\(textView.text.count)/\(maxCharacterCount)" as NSString).range(of:"\(textView.text.count)"))
+        attributedString.addAttribute(.foregroundColor, value: MukgenKitAsset.Colors.pointBase.color, range: ("\(textView.text.count)/\(maxCharacterCount)" as NSString).range(of:"\(textView.text.count)"))
         countLabel.attributedText = attributedString
     }
     
@@ -108,9 +108,9 @@ extension CustomTextView: UITextViewDelegate {
         textView.layer.borderWidth = 0
         
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || textView.text == placeholder {
-            textView.textColor = PresentationAsset.Colors.primaryLight2.color
+            textView.textColor = MukgenKitAsset.Colors.primaryLight2.color
             textView.text = placeholder
-            countLabel.textColor = PresentationAsset.Colors.primaryLight2.color
+            countLabel.textColor = MukgenKitAsset.Colors.primaryLight2.color
             countLabel.text = "0/\(maxCharacterCount)"
         }
     }

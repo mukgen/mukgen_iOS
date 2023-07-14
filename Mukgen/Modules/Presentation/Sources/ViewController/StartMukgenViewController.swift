@@ -8,7 +8,7 @@ final class StartMukgenViewController: BaseVC {
     
     private let startButton: CustomButton = {
         let button = CustomButton(title: "시작하기",
-                                  backgroundColor: PresentationAsset.Colors.primaryDark1.color,
+                                  backgroundColor: MukgenKitAsset.Colors.primaryDark1.color,
                                   titleColor: UIColor.white,
                                   font: UIFont.systemFont(ofSize: 16, weight: .semibold))
         button.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)

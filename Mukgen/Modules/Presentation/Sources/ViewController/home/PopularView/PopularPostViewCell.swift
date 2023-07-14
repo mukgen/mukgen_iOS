@@ -1,7 +1,7 @@
-
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class PopularPostViewCell: UICollectionViewCell {
     
@@ -14,27 +14,27 @@ class PopularPostViewCell: UICollectionViewCell {
     }
     
     private var chatImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.chat.image
+        $0.image = MukgenKitAsset.Images.chat.image
     }
     
     private var viewImage = UIImageView().then {
-        $0.image = PresentationAsset.Images.eye.image
+        $0.image = MukgenKitAsset.Images.eye.image
     }
     
     var chatCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "24"
-        $0.textColor = PresentationAsset.Colors.primaryLight2.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     var viewCount = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
         $0.text = "16"
-        $0.textColor = PresentationAsset.Colors.primaryLight2.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
     }
 
     public var backView = UIImageView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
         $0.layer.cornerRadius = 10.0
     }
 
