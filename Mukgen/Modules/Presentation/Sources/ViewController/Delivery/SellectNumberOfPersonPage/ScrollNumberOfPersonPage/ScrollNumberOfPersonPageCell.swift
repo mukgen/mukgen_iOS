@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class ScrollNumberOfPersonPageCell: UICollectionViewCell {
     
@@ -13,7 +14,7 @@ class ScrollNumberOfPersonPageCell: UICollectionViewCell {
     }
 
     public var backView = UIImageView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
     }
 
     override init(frame: CGRect) {

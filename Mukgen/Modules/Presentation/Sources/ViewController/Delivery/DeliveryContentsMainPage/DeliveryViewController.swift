@@ -39,7 +39,7 @@ public class DeliveryViewController: BaseVC {
     
     var plusButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 30
         $0.addTarget(self, action: #selector(plusDidTap(_:)), for: .touchUpInside)
     }

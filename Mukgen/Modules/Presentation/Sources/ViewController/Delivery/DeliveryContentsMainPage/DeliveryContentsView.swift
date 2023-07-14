@@ -4,20 +4,12 @@ import SnapKit
 import MukgenKit
 
 public class DeliveryContentsView: UIView {
-<<<<<<< HEAD:Mukgen/Modules/Presentation/Sources/ViewController/Delivery/DeliveryContentsMainPage/DeliveryContentsView.swift
         
     var width = 353.0
     var height = 90.0
     var bigHeight = -1
     var count = 0
     var indexPathCount = -1
-=======
-    
-    var bigHeight = -1
-    var width = 353.0
-    var height = 90.0
->>>>>>> #58-tuistAsset:Mukgen/Modules/Presentation/Sources/ViewController/Delivery/DeliveryContents/DeliveryContentsView.swift
-    
     
     private final var controller: UIViewController
     
@@ -43,16 +35,13 @@ public class DeliveryContentsView: UIView {
         layout()
         deliveryContentsCollectionView.reloadData()
     }
-    
-<<<<<<< HEAD:Mukgen/Modules/Presentation/Sources/ViewController/Delivery/DeliveryContentsMainPage/DeliveryContentsView.swift
-=======
+
     public var plusButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
         $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 30
     }
     
->>>>>>> #58-tuistAsset:Mukgen/Modules/Presentation/Sources/ViewController/Delivery/DeliveryContents/DeliveryContentsView.swift
     func layout() {
         self.addSubview(deliveryContentsCollectionView)
         
@@ -102,17 +91,10 @@ extension DeliveryContentsView: UICollectionViewDataSource {
     //cell에 관련된 것을 정의합니다.
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let deliveryContentsCell = collectionView.dequeueReusableCell(withReuseIdentifier: DeliveryContentsCell.id, for: indexPath) as! DeliveryContentsCell
-<<<<<<< HEAD:Mukgen/Modules/Presentation/Sources/ViewController/Delivery/DeliveryContentsMainPage/DeliveryContentsView.swift
         if bigHeight == 0 && indexPathCount == indexPath.row {
-            deliveryContentsCell.profileImage1.image = PresentationAsset.Images.testProfile1.image
-            deliveryContentsCell.profileImage2.image = PresentationAsset.Images.testProfile2.image
-            deliveryContentsCell.profileImage3.image = PresentationAsset.Images.testProfile3.image
-=======
-        if bigHeight == indexPath.row {
             deliveryContentsCell.profileImage1.image = MukgenKitAsset.Images.testProfile1.image
             deliveryContentsCell.profileImage2.image = MukgenKitAsset.Images.testProfile2.image
             deliveryContentsCell.profileImage3.image = MukgenKitAsset.Images.testProfile3.image
->>>>>>> #58-tuistAsset:Mukgen/Modules/Presentation/Sources/ViewController/Delivery/DeliveryContents/DeliveryContentsView.swift
             deliveryContentsCell.perticipatePerson1.text = "이은호"
             deliveryContentsCell.perticipatePerson2.text = "햄스터"
             deliveryContentsCell.perticipatePerson3.text = "이태영"

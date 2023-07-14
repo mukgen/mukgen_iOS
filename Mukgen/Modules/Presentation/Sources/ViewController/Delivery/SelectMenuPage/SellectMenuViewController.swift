@@ -10,7 +10,7 @@ public class SellectMenuViewController: BaseVC {
     
     public var factory: ModuleFactoryInterface!
     
-    private let attributes = [NSAttributedString.Key.foregroundColor: PresentationAsset.Colors.primaryLight2.color,
+    private let attributes = [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.primaryLight2.color,
                           .font : UIFont.systemFont(ofSize: 20, weight: .semibold)]
     
     private let sellectMenuText = UILabel().then {
@@ -23,7 +23,7 @@ public class SellectMenuViewController: BaseVC {
     
     private let pageCount = UILabel().then {
         $0.text = "1 / 4"
-        $0.textColor = PresentationAsset.Colors.primaryLight2.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
     }
@@ -38,11 +38,11 @@ public class SellectMenuViewController: BaseVC {
     }
     
     private var nicknameLine = UIView().then {
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight2.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
     private let nextPageButton = CustomButton(title: "다음",
-                                              backgroundColor: PresentationAsset.Colors.pointBase.color, titleColor: UIColor.white,
+                                              backgroundColor: MukgenKitAsset.Colors.pointBase.color, titleColor: UIColor.white,
                                    font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     ).then {
         $0.addTarget(self, action: #selector(nextPageButtonDidTap(_:)), for: .touchUpInside)
@@ -136,7 +136,7 @@ extension SellectMenuViewController: UITextFieldDelegate {
         switch textField {
         case firstTextField:
             animate(line: nicknameLine)
-            nicknameLine.backgroundColor = PresentationAsset.Colors.pointBase.color
+            nicknameLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         default: return
         }
     }

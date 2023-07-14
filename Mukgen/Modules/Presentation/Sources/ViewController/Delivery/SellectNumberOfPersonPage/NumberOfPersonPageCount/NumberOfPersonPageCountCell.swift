@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import MukgenKit
 
 class NumberOfPersonPageCountCell: UICollectionViewCell {
     
@@ -8,7 +9,7 @@ class NumberOfPersonPageCountCell: UICollectionViewCell {
     
     var countPage = UILabel().then {
         $0.text = "2 / 4"
-        $0.textColor = PresentationAsset.Colors.primaryLight2.color
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
     }
 
