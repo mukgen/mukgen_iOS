@@ -2,11 +2,13 @@ import UIKit
 import Then
 import SnapKit
 
-    public class DeliveryContentsView: UIView {
+public class DeliveryContentsView: UIView {
         
-        var bigHeight = -1
-        var width = 353.0
-        var height = 90.0
+    var width = 353.0
+    var height = 90.0
+    var bigHeight = -1
+    var count = 0
+    var indexPathCount = -1
     
     
     private final var controller: UIViewController
@@ -34,25 +36,12 @@ import SnapKit
         deliveryContentsCollectionView.reloadData()
     }
     
-    public var plusButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
-        $0.layer.cornerRadius = 30
-    }
-    
     func layout() {
         self.addSubview(deliveryContentsCollectionView)
-        self.addSubview(plusButton)
         
         deliveryContentsCollectionView.snp.makeConstraints {
             $0.height.equalTo(640.0)
             $0.top.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        plusButton.snp.makeConstraints {
-            $0.width.height.equalTo(60)
-            $0.bottom.equalToSuperview().inset(20.0)
-            $0.right.equalToSuperview().inset(20.0)
         }
     }
     
@@ -63,13 +52,9 @@ import SnapKit
 
 extension DeliveryContentsView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if bigHeight == indexPath.row {
-            return CGSize(width: 353.0, height: 191)
-        }
-        else
-        {
-            return CGSize(width: 353.0, height: 90)
-        }
+        if bigHeight == 0 && indexPathCount == indexPath.row { height = 191 }
+        if bigHeight == 1 && indexPathCount == indexPath.row { height = 90 }
+        return CGSize(width: width, height: height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -83,7 +68,11 @@ extension DeliveryContentsView: UICollectionViewDelegateFlowLayout {
 
 extension DeliveryContentsView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        bigHeight = indexPath.row
+        if count % 2 == 0 {bigHeight = 0}
+        if count % 2 != 0 {bigHeight = 1}
+        height = 191
+        count += 1
+        indexPathCount = indexPath.row
         collectionView.reloadData()
     }
 }
@@ -96,7 +85,7 @@ extension DeliveryContentsView: UICollectionViewDataSource {
     //cell에 관련된 것을 정의합니다.
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let deliveryContentsCell = collectionView.dequeueReusableCell(withReuseIdentifier: DeliveryContentsCell.id, for: indexPath) as! DeliveryContentsCell
-        if bigHeight == indexPath.row {
+        if bigHeight == 0 && indexPathCount == indexPath.row {
             deliveryContentsCell.profileImage1.image = PresentationAsset.Images.testProfile1.image
             deliveryContentsCell.profileImage2.image = PresentationAsset.Images.testProfile2.image
             deliveryContentsCell.profileImage3.image = PresentationAsset.Images.testProfile3.image
@@ -108,7 +97,7 @@ extension DeliveryContentsView: UICollectionViewDataSource {
             deliveryContentsCell.contents.font = .systemFont(ofSize: 14.0, weight: .semibold)
             deliveryContentsCell.perticipateIn.isHidden = false
         }
-        else {
+        if bigHeight == 1 && indexPathCount == indexPath.row || indexPathCount == -1 {
             deliveryContentsCell.profileImage1.image = nil
             deliveryContentsCell.profileImage2.image = nil
             deliveryContentsCell.profileImage3.image = nil

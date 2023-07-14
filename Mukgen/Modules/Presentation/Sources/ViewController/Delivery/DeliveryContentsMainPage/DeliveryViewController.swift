@@ -37,13 +37,25 @@ public class DeliveryViewController: BaseVC {
         scrollView.showsHorizontalScrollIndicator = false
     }
     
-   
+    var plusButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "plus"), for: .normal)
+        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.layer.cornerRadius = 30
+        $0.addTarget(self, action: #selector(plusDidTap(_:)), for: .touchUpInside)
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         setupLayout()
         view.backgroundColor = .white
+    }
+    
+    @objc func plusDidTap(_ sender: Any)
+    {
+//        let SellectMenuViewController = DeliveryViewController.instance()
+//        SellectMenuViewController.hideBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(SellectMenuViewController(), animated: true)
     }
 }
 
@@ -66,7 +78,13 @@ private extension DeliveryViewController {
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-
+        
+        contentView.addSubview(plusButton)
+        plusButton.snp.makeConstraints {
+            $0.width.height.equalTo(60)
+            $0.bottom.equalToSuperview().inset(20.0)
+            $0.right.equalToSuperview().inset(20.0)
+        }
         
     }
 }
