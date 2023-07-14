@@ -52,10 +52,10 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
     public var beforePageButton = UIButton().then {
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         $0.setTitle("이전", for: .normal)
-        $0.setTitleColor(PresentationAsset.Colors.pointBase.color, for: .normal)
+        $0.setTitleColor(MukgenKitAsset.Colors.pointBase.color, for: .normal)
         $0.layer.borderWidth = 2
         $0.layer.borderColor = UIColor.systemOrange.cgColor
-        $0.backgroundColor = PresentationAsset.Colors.primaryLight3.color
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
         $0.layer.cornerRadius = 10.0
         $0.addTarget(self, action: #selector(beforePageButtonDidTap(_:)), for: .touchUpInside)
     }
@@ -63,7 +63,7 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
     public var nextPageButton = UIButton().then {
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         $0.setTitle("다음", for: .normal)
-        $0.backgroundColor = PresentationAsset.Colors.pointBase.color
+        $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 10.0
         $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
     }
