@@ -151,7 +151,7 @@ public class SelectPlaceViewController: BaseVC {
     }
     
     @objc func nextPageButtonDidTap(_ sender: UIButton) {
-//        self.navigationController?.pushViewController(SelectPlaceViewController(), animated: true)
+        self.navigationController?.pushViewController(SelectTimeViewController(), animated: true)
     }
 
 }
