@@ -71,7 +71,7 @@ public class SellectMenuViewController: BaseVC {
         }
         
         firstTextField.snp.makeConstraints() {
-            $0.top.equalTo(sellectMenuText.snp.bottom).offset(24)
+            $0.top.equalTo(sellectMenuText.snp.bottom).offset(40.0)
             $0.left.equalToSuperview().offset(20)
             $0.width.equalToSuperview()
             $0.height.equalTo(56)
