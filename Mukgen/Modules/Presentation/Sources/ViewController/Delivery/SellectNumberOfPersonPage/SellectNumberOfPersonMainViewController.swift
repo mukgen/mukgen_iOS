@@ -32,7 +32,7 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
         
         let spacingView3 = UIView()
         spacingView3.snp.makeConstraints {
-            $0.height.equalTo(86.0)
+            $0.height.equalTo(100.0)
         }
 
         [
@@ -84,13 +84,11 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
     }
     
     @objc func beforePageButtonDidTap(_ sender: UIButton) {
-        print("아ㅣㄴㅇㄹㄴ")
-//        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func nextPageButtonDidTap(_ sender: UIButton) {
-        print("아ㅣㄴㅇㄹㄴ")
-//        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.pushViewController(, animated: true)
     }
 }
 
@@ -100,8 +98,8 @@ private extension SellectNumberOfPersonMainViewController {
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
-//            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//            $0.bottom.leading.trailing.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.bottom.leading.trailing.equalToSuperview()
         }
         
         scrollView.addSubview(contentView)
@@ -116,19 +114,19 @@ private extension SellectNumberOfPersonMainViewController {
             $0.edges.equalToSuperview()
         }
         
-        contentView.addSubview(beforePageButton)
+        view.addSubview(beforePageButton)
         beforePageButton.snp.makeConstraints {
             $0.width.equalTo(161.5)
             $0.height.equalTo(55.0)
-            $0.top.equalTo(stackView.snp.bottom).offset(263.0)
+            $0.bottom.equalToSuperview().inset(40.0)
             $0.left.equalToSuperview().offset(30.0)
         }
         
-        contentView.addSubview(nextPageButton)
+        view.addSubview(nextPageButton)
         nextPageButton.snp.makeConstraints {
             $0.width.equalTo(161.5)
             $0.height.equalTo(55.0)
-            $0.top.equalTo(stackView.snp.bottom).offset(263.0)
+            $0.bottom.equalToSuperview().inset(40.0)
             $0.left.equalTo(beforePageButton.snp.right).offset(10.0)
         }
 
