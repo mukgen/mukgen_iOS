@@ -84,13 +84,11 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
     }
     
     @objc func beforePageButtonDidTap(_ sender: UIButton) {
-        print("아ㅣㄴㅇㄹㄴ")
-//        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func nextPageButtonDidTap(_ sender: UIButton) {
-        print("아ㅣㄴㅇㄹㄴ")
-//        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.pushViewController(, animated: true)
     }
 }
 
