@@ -4,7 +4,7 @@ import Then
 import MukgenKit
 import Core
 
-public class SellectMenuViewController: BaseVC {
+public class SelectPlaceViewController: BaseVC {
     
     
     
@@ -15,14 +15,14 @@ public class SellectMenuViewController: BaseVC {
     
     private let sellectMenuText = UILabel().then {
         $0.numberOfLines = 2
-        $0.text = "어떤 음식을\n배달 시키시나요?"
+        $0.text = "어디서\n만나실 건가요?"
         $0.backgroundColor = .white
         $0.tintColor = .black
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
     
     private let pageCount = UILabel().then {
-        $0.text = "1 / 4"
+        $0.text = "3 / 4"
         $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 20, weight: .semibold)
@@ -41,11 +41,23 @@ public class SellectMenuViewController: BaseVC {
         $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
-    private let nextPageButton = CustomButton(title: "다음",
-                                              backgroundColor: MukgenKitAsset.Colors.pointBase.color, titleColor: UIColor.white,
-                                   font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-    ).then {
-        $0.addTarget(self, action: #selector(nextPageButtonDidTap(_:)), for: .touchUpInside)
+    public var beforePageButton = UIButton().then {
+        $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        $0.setTitle("이전", for: .normal)
+        $0.setTitleColor(MukgenKitAsset.Colors.pointBase.color, for: .normal)
+        $0.layer.borderWidth = 2
+        $0.layer.borderColor = UIColor.systemOrange.cgColor
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        $0.layer.cornerRadius = 10.0
+        $0.addTarget(self, action: #selector(beforePageButtonDidTap(_:)), for: .touchUpInside)
+    }
+    
+    public var nextPageButton = UIButton().then {
+        $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        $0.setTitle("다음", for: .normal)
+        $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
+        $0.layer.cornerRadius = 10.0
+        $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
     }
     
     public override func layout() {
@@ -85,11 +97,20 @@ public class SellectMenuViewController: BaseVC {
             $0.height.equalTo(2)
         }
         
-        nextPageButton.snp.makeConstraints() {
-            $0.top.equalTo(firstTextField.snp.bottom).offset(447)
-            $0.left.equalToSuperview().offset(20)
-            $0.width.equalTo(353)
-            $0.height.equalTo(55)
+        view.addSubview(beforePageButton)
+        beforePageButton.snp.makeConstraints {
+            $0.width.equalTo(161.5)
+            $0.height.equalTo(55.0)
+            $0.bottom.equalToSuperview().inset(40.0)
+            $0.left.equalToSuperview().offset(30.0)
+        }
+        
+        view.addSubview(nextPageButton)
+        nextPageButton.snp.makeConstraints {
+            $0.width.equalTo(161.5)
+            $0.height.equalTo(55.0)
+            $0.bottom.equalToSuperview().inset(40.0)
+            $0.left.equalTo(beforePageButton.snp.right).offset(10.0)
         }
     }
     
@@ -107,7 +128,7 @@ public class SellectMenuViewController: BaseVC {
         view.backgroundColor = .white
         
         lazy var textFields = [firstTextField]
-        let placeholders = "음식 이름"
+        let placeholders = "장소"
         
         var index = 0
         for textField in textFields {
@@ -125,13 +146,17 @@ public class SellectMenuViewController: BaseVC {
         }
     }
     
+    @objc func beforePageButtonDidTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func nextPageButtonDidTap(_ sender: UIButton) {
-            self.navigationController?.pushViewController(SellectNumberOfPersonMainViewController(), animated: true)
+//        self.navigationController?.pushViewController(SelectPlaceViewController(), animated: true)
     }
 
 }
 
-extension SellectMenuViewController: UITextFieldDelegate {
+extension SelectPlaceViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case firstTextField:

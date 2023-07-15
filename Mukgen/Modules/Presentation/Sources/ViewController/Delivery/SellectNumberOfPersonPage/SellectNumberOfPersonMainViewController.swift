@@ -88,7 +88,7 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
     }
     
     @objc func nextPageButtonDidTap(_ sender: UIButton) {
-//        self.navigationController?.pushViewController(, animated: true)
+        self.navigationController?.pushViewController(SelectPlaceViewController(), animated: true)
     }
 }
 
