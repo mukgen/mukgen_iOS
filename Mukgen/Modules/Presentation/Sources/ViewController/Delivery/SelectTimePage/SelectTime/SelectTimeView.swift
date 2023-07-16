@@ -80,11 +80,11 @@ extension SelectTimeView: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedTime = time[pickerView.selectedRow(inComponent: 0)]
-        let selectedHour = hour[pickerView.selectedRow(inComponent: 1)]
-        let selectedMinute = minuete[pickerView.selectedRow(inComponent: 2)]
+        let time = time[pickerView.selectedRow(inComponent: 0)]
+        let hour = hour[pickerView.selectedRow(inComponent: 1)]
+        let minuete = minuete[pickerView.selectedRow(inComponent: 2)]
         
-        print("\(selectedTime) : \(selectedHour) : \(selectedMinute)\n")
+        print("\(time) : \(hour) : \(minuete)\n")
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
