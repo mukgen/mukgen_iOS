@@ -4,8 +4,8 @@ import SnapKit
 
 class SelectTimeView: UIView {
     private let time = ["오전", "오후"]
-    private let hour = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-    private let minuete = ["0", "10", "20", "30", "40", "50"]
+    private let hour = ["1시", "2시", "3시", "4시", "5시", "6시", "7시", "8시", "9시", "10시", "11시", "12시"]
+    private let minuete = ["0분", "10분", "20분", "30분", "40분", "50분"]
     
     
     private final var controller: UIViewController
@@ -62,25 +62,32 @@ extension SelectTimeView: UIPickerViewDelegate, UIPickerViewDataSource {
         
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch component {
-        case 0:
-            return "\(time[row])"
-        case 1:
-            return "\(hour[row])"
-        default:
-            return "\(minuete[row])"
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+            let label = UILabel()
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+            
+            switch component {
+            case 0:
+                label.text = "\(time[row])"
+            case 1:
+                label.text = "\(hour[row])"
+            default:
+                label.text = "\(minuete[row])"
+            }
+            
+            return label
         }
-    }
-
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
+        let selectedTime = time[pickerView.selectedRow(inComponent: 0)]
+        let selectedHour = hour[pickerView.selectedRow(inComponent: 1)]
+        let selectedMinute = minuete[pickerView.selectedRow(inComponent: 2)]
+        
+        print("\(selectedTime) : \(selectedHour) : \(selectedMinute)\n")
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 56.0
     }
-    
-
 }
