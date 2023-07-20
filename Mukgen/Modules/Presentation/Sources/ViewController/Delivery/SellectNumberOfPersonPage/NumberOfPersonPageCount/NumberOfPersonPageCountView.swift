@@ -13,7 +13,6 @@ class NumberOfPersonPageCountView: UIView {
         collectionView.isPagingEnabled = false
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-
         collectionView.register(NumberOfPersonPageCountCell.self, forCellWithReuseIdentifier: NumberOfPersonPageCountCell.id)
 
         return collectionView
@@ -68,7 +67,6 @@ extension NumberOfPersonPageCountView: UICollectionViewDataSource {
         return 1
     }
 
-    //cell에 관련된 것을 정의합니다.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberOfPersonPageCountCell.id, for: indexPath) as! NumberOfPersonPageCountCell
         cell.backView.backgroundColor = .white
