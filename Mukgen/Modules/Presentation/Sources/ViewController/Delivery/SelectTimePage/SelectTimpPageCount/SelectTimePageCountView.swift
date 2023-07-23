@@ -2,10 +2,10 @@ import UIKit
 import Then
 import SnapKit
 
-class NumberOfPersonPageCountView: UIView {
+class SelectTimePageCountView: UIView {
     private final var controller: UIViewController
     
-    private lazy var NumberOfPersonCollectionView: UICollectionView = {
+    private lazy var SelectTimePageCountCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
 
@@ -13,7 +13,8 @@ class NumberOfPersonPageCountView: UIView {
         collectionView.isPagingEnabled = false
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(NumberOfPersonPageCountCell.self, forCellWithReuseIdentifier: NumberOfPersonPageCountCell.id)
+
+        collectionView.register(SelectTimePageCountCell.self, forCellWithReuseIdentifier: SelectTimePageCountCell.id)
 
         return collectionView
     }()
@@ -21,17 +22,17 @@ class NumberOfPersonPageCountView: UIView {
     init(frame: CGRect ,viewController: UIViewController) {
         self.controller = viewController
         super.init(frame: frame)
-        NumberOfPersonCollectionView.delegate = self
-        NumberOfPersonCollectionView.dataSource = self
+        SelectTimePageCountCollectionView.delegate = self
+        SelectTimePageCountCollectionView.dataSource = self
 
         layout()
-        NumberOfPersonCollectionView.reloadData()
+        SelectTimePageCountCollectionView.reloadData()
     }
 
     func layout() {
-        self.addSubview(NumberOfPersonCollectionView)
+        self.addSubview(SelectTimePageCountCollectionView)
 
-        NumberOfPersonCollectionView.snp.makeConstraints {
+        SelectTimePageCountCollectionView.snp.makeConstraints {
             $0.height.equalTo(24.0)
             $0.top.leading.trailing.equalToSuperview()
         }
@@ -41,7 +42,7 @@ class NumberOfPersonPageCountView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension NumberOfPersonPageCountView: UICollectionViewDelegateFlowLayout {
+extension SelectTimePageCountView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 353.0, height: 24.0)
     }
@@ -55,22 +56,15 @@ extension NumberOfPersonPageCountView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension NumberOfPersonPageCountView: UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("asdf")
-    }
-}
-
-extension NumberOfPersonPageCountView: UICollectionViewDataSource {
+extension SelectTimePageCountView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
 
+    //cell에 관련된 것을 정의합니다.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberOfPersonPageCountCell.id, for: indexPath) as! NumberOfPersonPageCountCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectTimePageCountCell.id, for: indexPath) as! SelectTimePageCountCell
         cell.backView.backgroundColor = .white
         return cell
     }
 }
-
