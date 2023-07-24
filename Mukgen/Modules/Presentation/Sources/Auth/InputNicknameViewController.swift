@@ -71,7 +71,7 @@ public class InputNicknameViewController: BaseVC {
         nextPageButton.snp.makeConstraints() {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(353)
+            $0.width.equalTo(nicknameLine.snp.width)
             $0.height.equalTo(55)
         }
     }
@@ -90,6 +90,11 @@ public class InputNicknameViewController: BaseVC {
             index += 1
         }
         setupTextFieldObservers()
+        setupKeyboardObservers()
+    }
+    
+    deinit {
+        removeKeyboardObservers()
     }
     
     private func updateButtonColor() {
@@ -112,6 +117,32 @@ public class InputNicknameViewController: BaseVC {
         line.alpha = 0.3
         UIView.animate(withDuration: 1) {
             line.alpha = 1
+        }
+    }
+    
+    private func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    private func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+
+            UIView.animate(withDuration: 0.3) {
+                self.nextPageButton.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight + 10) //만약 디자인에서 키보드와 거리가 표기되어있다면 keyoardHeight에 붙는 +를 바꾸면 붙는 간격을 바꿀 수 있습니다
+            }
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.3) {
+            self.nextPageButton.transform = .identity
         }
     }
     
