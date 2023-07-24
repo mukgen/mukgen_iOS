@@ -69,8 +69,8 @@ public class InputNicknameViewController: BaseVC {
         }
         
         nextPageButton.snp.makeConstraints() {
-            $0.top.equalTo(firstTextField.snp.bottom).offset(531)
-            $0.left.equalToSuperview().offset(20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(353)
             $0.height.equalTo(55)
         }
