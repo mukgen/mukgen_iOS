@@ -7,6 +7,7 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    
     public func InputTelVC() -> Presentation.InputTelViewController {
         let vc = InputTelViewController()
         return vc
@@ -42,7 +43,7 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
     
-    public func InputNameVC() -> Presentation.InputNicknameViewController {
+    public func InputNickNameVC() -> Presentation.InputNicknameViewController {
         let vc = InputNicknameViewController()
         return vc
     }
