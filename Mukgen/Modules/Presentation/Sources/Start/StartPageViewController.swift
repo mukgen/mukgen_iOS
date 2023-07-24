@@ -15,9 +15,7 @@ public class StartPageViewController: BaseVC {
             titleColor: UIColor.white,
             font: UIFont.systemFont(ofSize: 16, weight: .semibold)
         )
-        return button.then {
-            $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
-        }
+        return button
     }()
     
     private let loginButton = CustomButton(title: "로그인",
@@ -75,9 +73,11 @@ public class StartPageViewController: BaseVC {
     
     public override func attribute() {
         view.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
     @objc func startButtonDidTap(_ sender: Any) {
-//        self.navigationController?.pushViewController(StartMukgenViewController(), animated: true)
+//        self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
+        print("시작 버튼")
     }
 }

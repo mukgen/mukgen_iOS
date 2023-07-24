@@ -8,7 +8,7 @@ public class InputIdPasswordViewController: BaseVC {
     
     public var factory: ModuleFactoryInterface!
     
-    private let attributes = [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.primaryLight2,
+    private let attributes = [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.primaryLight2.cgColor,
                               .font : UIFont.systemFont(ofSize: 20, weight: .semibold)] as [NSAttributedString.Key : Any]
     
     private let inputIdPasswordLabel = UILabel().then {
@@ -57,15 +57,10 @@ public class InputIdPasswordViewController: BaseVC {
         $0.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
     }
     
-    
     private let nextPageButton = CustomButton(title: "다음",
                                               backgroundColor: MukgenKitAsset.Colors.primaryLight2.color, titleColor: UIColor.white,
                                               font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-    ).then {
-        $0.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
-    }
-    
-
+    )
     
     public override func layout() {
         
@@ -78,7 +73,7 @@ public class InputIdPasswordViewController: BaseVC {
             thirdTextField,
             checkPasswordLine,
             passwordLine
-        ].forEach  { view.addSubview($0) }
+        ].forEach { view.addSubview($0) }
 
         inputIdPasswordLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().offset(123)
@@ -98,7 +93,6 @@ public class InputIdPasswordViewController: BaseVC {
             $0.top.equalTo(firstTextField.snp.bottom).offset(0)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().inset(20)
-            $0.width.equalTo(352)
             $0.height.equalTo(2)
         }
         
@@ -113,7 +107,6 @@ public class InputIdPasswordViewController: BaseVC {
             $0.top.equalTo(secondTextField.snp.bottom).offset(0)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().inset(20)
-            $0.width.equalTo(352)
             $0.height.equalTo(2)
         }
         
@@ -128,17 +121,17 @@ public class InputIdPasswordViewController: BaseVC {
             $0.top.equalTo(thirdTextField.snp.bottom).offset(0)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().inset(20)
-            $0.width.equalTo(352)
             $0.height.equalTo(2)
         }
         
         nextPageButton.snp.makeConstraints() {
-            $0.top.equalTo(secondTextField.snp.bottom).offset(422)
-            $0.left.equalToSuperview().offset(20)
-            $0.width.equalTo(353)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.centerX.equalToSuperview()
+            $0.width.equalToSuperview().inset(20.0)
             $0.height.equalTo(55)
         }
     }
+
     
     public override func attribute() {
         view.backgroundColor = .white
@@ -153,6 +146,8 @@ public class InputIdPasswordViewController: BaseVC {
             textField.delegate = self
             index += 1
         }
+        
+        nextPageButton.addTarget(self, action: #selector(nextPageButtonDidTap), for: .touchUpInside)
     }
     
     private func animate(line: UIView) {
