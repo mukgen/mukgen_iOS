@@ -89,6 +89,23 @@ public class InputNicknameViewController: BaseVC {
             textField.delegate = self
             index += 1
         }
+        setupTextFieldObservers()
+    }
+    
+    private func updateButtonColor() {
+        if firstTextField.text?.isEmpty == false {
+            DispatchQueue.main.async {
+                self.nextPageButton.backgroundColor = MukgenKitAsset.Colors.primaryBase.color
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.nextPageButton.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
+            }
+        }
+    }
+
+    private func setupTextFieldObservers() {
+        firstTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
     }
     
     private func animate(line: UIView) {
@@ -102,6 +119,10 @@ public class InputNicknameViewController: BaseVC {
             self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
     }
 
+    @objc private func textFieldContentDidChange(_ textField: UITextField) {
+        updateButtonColor()
+    }
+
 }
 
 extension InputNicknameViewController: UITextFieldDelegate {
@@ -110,7 +131,15 @@ extension InputNicknameViewController: UITextFieldDelegate {
         case firstTextField:
             animate(line: nicknameLine)
             nicknameLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
-        default: return
+        default:
+            nicknameLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
         }
     }
+    
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+        nicknameLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
+   }
 }
+
+
