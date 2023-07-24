@@ -4,18 +4,18 @@ import Then
 import MukgenKit
 import Core
 
-final class StartPageViewController: BaseVC {
+public class StartPageViewController: BaseVC {
+    
+    public var factory: ModuleFactoryInterface!
         
     private let startButton: CustomButton = {
         let button = CustomButton(
             title: "시작하기",
-            backgroundColor: MukgenKitAsset.Colors.pointBase.color,
+            backgroundColor: MukgenKitAsset.Colors.primaryBase.color,
             titleColor: UIColor.white,
             font: UIFont.systemFont(ofSize: 16, weight: .semibold)
         )
-        return button.then {
-            $0.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
-        }
+        return button
     }()
     
     private let loginButton = CustomButton(title: "로그인",
@@ -28,10 +28,10 @@ final class StartPageViewController: BaseVC {
     }
     
     private let mukgenLogo = UIImageView().then {
-        $0.image = UIImage(named: "MukgenIcon")
+        $0.image = MukgenKitAsset.Images.startMukgenIcon.image
     }
     
-    override func layout() {
+    public override func layout() {
         
         [
             whiteBox,
@@ -41,7 +41,6 @@ final class StartPageViewController: BaseVC {
         ].forEach { view.addSubview($0) }
 
         
-        let buttonWidth = 353
         let buttonHight = 55
         
         mukgenLogo.snp.makeConstraints {
@@ -60,23 +59,25 @@ final class StartPageViewController: BaseVC {
         loginButton.snp.makeConstraints {
             $0.centerX.equalTo(whiteBox.snp.centerX)
             $0.top.equalTo(whiteBox.snp.top).offset(24)
-            $0.width.equalTo(buttonWidth)
+            $0.width.equalToSuperview().inset(20.0)
             $0.height.equalTo(buttonHight)
         }
         
         startButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(loginButton.snp.bottom).offset(24)
-            $0.width.equalTo(buttonWidth)
+            $0.width.equalToSuperview().inset(20.0)
             $0.height.equalTo(buttonHight)
         }
     }
     
-    override func attribute() {
+    public override func attribute() {
         view.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
     @objc func startButtonDidTap(_ sender: Any) {
-//        self.navigationController?.pushViewController(StartMukgenViewController(), animated: true)
+//        self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
+        print("시작 버튼")
     }
 }

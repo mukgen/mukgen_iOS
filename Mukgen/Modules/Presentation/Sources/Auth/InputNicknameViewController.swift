@@ -38,40 +38,36 @@ public class InputNicknameViewController: BaseVC {
     }
     
     public override func layout() {
-        [
-            inputNicknameLabel,
-            firstTextField,
-            nicknameLine,
-            nextPageButton
-        ].forEach { view.addSubview($0) }
+        view.addSubview(inputNicknameLabel)
+        view.addSubview(firstTextField)
+        view.addSubview(nicknameLine)
+        view.addSubview(nextPageButton)
 
-        
-        inputNicknameLabel.snp.makeConstraints() {
+        inputNicknameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(123)
             $0.left.equalToSuperview().offset(20)
-            $0.width.equalToSuperview()
+            $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(29)
         }
-        
-        firstTextField.snp.makeConstraints() {
+
+        firstTextField.snp.makeConstraints { 
             $0.top.equalTo(inputNicknameLabel.snp.bottom).offset(24)
             $0.left.equalToSuperview().offset(20)
-            $0.width.equalToSuperview()
+            $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(56)
         }
-        
-        nicknameLine.snp.makeConstraints() {
+
+        nicknameLine.snp.makeConstraints {
             $0.top.equalTo(firstTextField.snp.bottom).offset(0)
             $0.left.equalToSuperview().offset(20)
-            $0.right.equalToSuperview().inset(20)
-            $0.width.equalTo(352)
+            $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(2)
         }
-        
-        nextPageButton.snp.makeConstraints() {
-            $0.top.equalTo(firstTextField.snp.bottom).offset(531)
+
+        nextPageButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.left.equalToSuperview().offset(20)
-            $0.width.equalTo(353)
+            $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(55)
         }
     }
@@ -89,6 +85,28 @@ public class InputNicknameViewController: BaseVC {
             textField.delegate = self
             index += 1
         }
+        setupTextFieldObservers()
+        setupKeyboardObservers()
+    }
+    
+    deinit {
+        removeKeyboardObservers()
+    }
+    
+    private func updateButtonColor() {
+        if firstTextField.text?.isEmpty == false {
+            DispatchQueue.main.async {
+                self.nextPageButton.backgroundColor = MukgenKitAsset.Colors.primaryBase.color
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.nextPageButton.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
+            }
+        }
+    }
+
+    private func setupTextFieldObservers() {
+        firstTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
     }
     
     private func animate(line: UIView) {
@@ -98,8 +116,42 @@ public class InputNicknameViewController: BaseVC {
         }
     }
     
+    private func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    private func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+
+            UIView.animate(withDuration: 0.3) {
+                self.nextPageButton.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight + 10) //만약 디자인에서 키보드와 거리가 표기되어있다면 keyoardHeight에 붙는 +를 바꾸면 붙는 간격을 바꿀 수 있습니다
+            }
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.3) {
+            self.nextPageButton.transform = .identity
+        }
+    }
+    
     @objc func nextPageButtonDidTap(_ sender: Any) {
-            self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
+        guard let nickname = firstTextField.text, !nickname.isEmpty else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
+    }
+
+    @objc private func textFieldContentDidChange(_ textField: UITextField) {
+        updateButtonColor()
     }
 
 }
@@ -110,7 +162,15 @@ extension InputNicknameViewController: UITextFieldDelegate {
         case firstTextField:
             animate(line: nicknameLine)
             nicknameLine.backgroundColor = MukgenKitAsset.Colors.pointBase.color
-        default: return
+        default:
+            nicknameLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
         }
     }
+    
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+        nicknameLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
+   }
 }
+
+

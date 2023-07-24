@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol ModuleFactoryInterface {
-    func InputNameVC() -> InputNicknameViewController
+    func InputNickNameVC() -> InputNicknameViewController
     func InputIdPasswordVC() -> InputIdPasswordViewController
     
     func MainVC() -> MainViewController
@@ -16,5 +16,8 @@ public protocol ModuleFactoryInterface {
     
     func NewMealPostVC() -> NewMealPostViewController
   
+    func InputTelVC() -> InputTelViewController
+    
+    func StartPageVC() -> StartPageViewController
 }
 

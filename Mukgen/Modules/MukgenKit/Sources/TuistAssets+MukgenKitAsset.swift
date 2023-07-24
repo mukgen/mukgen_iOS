@@ -63,15 +63,15 @@ public enum MukgenKitAsset {
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 // MARK: - Implementation Details
-
 public final class MukgenKitColors {
+    
     public fileprivate(set) var name: String
     
-#if os(macOS)
+    #if os(macOS)
     public typealias Color = NSColor
-#elseif os(iOS) || os(tvOS) || os(watchOS)
+    #elseif os(iOS) || os(tvOS) || os(watchOS)
     public typealias Color = UIColor
-#endif
+    #endif
     
     @available(iOS 11.0, tvOS 11.0, watchOS 4.0, macOS 10.13, *)
     public private(set) lazy var color: Color = {
@@ -80,6 +80,14 @@ public final class MukgenKitColors {
         }
         return color
     }()
+    
+    public var cgColor: CGColor {
+        #if os(macOS)
+        return color.cgColor
+        #elseif os(iOS) || os(tvOS) || os(watchOS)
+        return color.cgColor
+        #endif
+    }
     
     fileprivate init(name: String) {
         self.name = name

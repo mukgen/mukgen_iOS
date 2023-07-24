@@ -4,7 +4,9 @@ import Then
 import MukgenKit
 import Core
 
-final class InputTelViewController: BaseVC {
+public class InputTelViewController: BaseVC {
+    
+    public var factory: ModuleFactoryInterface!
     
     private let inputNicknameLabel = UILabel().then {
         $0.text = "전화번호를 입력해주세요."
@@ -80,7 +82,7 @@ final class InputTelViewController: BaseVC {
                                    font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     )
     
-    override func layout() {
+    public override func layout() {
         
         [
             inputNicknameLabel,
@@ -167,14 +169,14 @@ final class InputTelViewController: BaseVC {
         }
         
         nextPageButton.snp.makeConstraints() {
-            $0.top.equalTo(secondTextField.snp.bottom).offset(502)
-            $0.left.equalToSuperview().offset(20)
-            $0.width.equalTo(353)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.centerX.equalToSuperview()
+            $0.width.equalToSuperview().inset(20.0)
             $0.height.equalTo(55)
         }
     }
     
-    override func attribute() {
+    public override func attribute() {
         view.backgroundColor = .white
         
         lazy var textFields = [firstTextField, secondTextField, thirdTextField]
@@ -187,6 +189,44 @@ final class InputTelViewController: BaseVC {
             textField.delegate = self
             index += 1
         }
+        
+        setupTextFieldObservers()
+        setupKeyboardObservers()
+        configureTextFields()
+    }
+    
+    deinit {
+        removeKeyboardObservers()
+    }
+    
+    private func updateButtonColor() {
+        if firstTextField.text?.isEmpty == false {
+            DispatchQueue.main.async {
+                self.nextPageButton.backgroundColor = MukgenKitAsset.Colors.primaryBase.color
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.nextPageButton.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
+            }
+        }
+    }
+
+    private func configureTextFields() {
+        firstTextField.delegate = self
+        secondTextField.delegate = self
+        thirdTextField.delegate = self
+        
+        firstTextField.tag = 1
+        secondTextField.tag = 2
+        thirdTextField.tag = 3
+        
+        firstTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
+        secondTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
+        thirdTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
+    }
+    
+    private func setupTextFieldObservers() {
+        firstTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
     }
     
     func animate(line: UIView) {
@@ -196,11 +236,40 @@ final class InputTelViewController: BaseVC {
         }
     }
     
+    private func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    private func removeKeyboardObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+
+            UIView.animate(withDuration: 0.3) {
+                self.nextPageButton.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight + 10) //만약 디자인에서 키보드와 거리가 표기되어있다면 keyoardHeight에 붙는 +를 바꾸면 붙는 간격을 바꿀 수 있습니다
+            }
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.3) {
+            self.nextPageButton.transform = .identity
+        }
+    }
+    
+    @objc private func textFieldContentDidChange(_ textField: UITextField) {
+        updateButtonColor()
+    }
 }
 
 
 extension InputTelViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case firstTextField:
             animate(line: firstLine)
@@ -215,4 +284,25 @@ extension InputTelViewController: UITextFieldDelegate {
         default: return
         }
     }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case firstTextField:
+            secondTextField.becomeFirstResponder()
+        case secondTextField:
+            thirdTextField.becomeFirstResponder()
+        case thirdTextField:
+            thirdTextField.resignFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+        firstLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
+        secondLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
+        thirdLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
+   }
 }

@@ -7,6 +7,12 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    
+    public func InputTelVC() -> Presentation.InputTelViewController {
+        let vc = InputTelViewController()
+        return vc
+    }
+    
     public func TendiousVC() -> Presentation.TendinousViewController {
         let vc = TendinousViewController()
         return vc
@@ -37,13 +43,18 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
     
-    public func InputNameVC() -> Presentation.InputNicknameViewController {
+    public func InputNickNameVC() -> Presentation.InputNicknameViewController {
         let vc = InputNicknameViewController()
         return vc
     }
     
     public func InputIdPasswordVC() -> Presentation.InputIdPasswordViewController {
         let vc = InputIdPasswordViewController()
+        return vc
+    }
+    
+    public func StartPageVC() -> Presentation.StartPageViewController {
+        let vc = StartPageViewController()
         return vc
     }
 }
