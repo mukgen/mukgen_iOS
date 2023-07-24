@@ -116,7 +116,11 @@ public class InputNicknameViewController: BaseVC {
     }
     
     @objc func nextPageButtonDidTap(_ sender: Any) {
-            self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
+        guard let nickname = firstTextField.text, !nickname.isEmpty else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
     }
 
     @objc private func textFieldContentDidChange(_ textField: UITextField) {
