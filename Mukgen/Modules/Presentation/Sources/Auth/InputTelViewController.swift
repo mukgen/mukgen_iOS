@@ -192,6 +192,7 @@ public class InputTelViewController: BaseVC {
         
         setupTextFieldObservers()
         setupKeyboardObservers()
+        configureTextFields()
     }
     
     deinit {
@@ -210,6 +211,19 @@ public class InputTelViewController: BaseVC {
         }
     }
 
+    private func configureTextFields() {
+        firstTextField.delegate = self
+        secondTextField.delegate = self
+        thirdTextField.delegate = self
+        
+        firstTextField.tag = 1
+        secondTextField.tag = 2
+        thirdTextField.tag = 3
+        
+        firstTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
+        secondTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
+        thirdTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
+    }
     
     private func setupTextFieldObservers() {
         firstTextField.addTarget(self, action: #selector(textFieldContentDidChange(_:)), for: .editingChanged)
@@ -270,6 +284,21 @@ extension InputTelViewController: UITextFieldDelegate {
         default: return
         }
     }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case firstTextField:
+            secondTextField.becomeFirstResponder()
+        case secondTextField:
+            thirdTextField.becomeFirstResponder()
+        case thirdTextField:
+            thirdTextField.resignFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
          self.view.endEditing(true)
         firstLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
