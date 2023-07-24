@@ -7,6 +7,11 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    public func InputTelVC() -> Presentation.InputTelViewController {
+        let vc = InputTelViewController()
+        return vc
+    }
+    
     public func TendiousVC() -> Presentation.TendinousViewController {
         let vc = TendinousViewController()
         return vc
@@ -46,4 +51,5 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = InputIdPasswordViewController()
         return vc
     }
+    
 }
