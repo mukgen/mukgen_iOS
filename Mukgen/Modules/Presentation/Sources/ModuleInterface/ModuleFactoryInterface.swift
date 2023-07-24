@@ -17,5 +17,7 @@ public protocol ModuleFactoryInterface {
     func NewMealPostVC() -> NewMealPostViewController
   
     func InputTelVC() -> InputTelViewController
+    
+    func StartPageVC() -> StartPageViewController
 }
 

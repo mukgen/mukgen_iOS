@@ -52,4 +52,8 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
     
+    public func StartPageVC() -> Presentation.StartPageViewController {
+        let vc = StartPageViewController()
+        return vc
+    }
 }
