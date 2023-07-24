@@ -38,40 +38,36 @@ public class InputNicknameViewController: BaseVC {
     }
     
     public override func layout() {
-        [
-            inputNicknameLabel,
-            firstTextField,
-            nicknameLine,
-            nextPageButton
-        ].forEach { view.addSubview($0) }
+        view.addSubview(inputNicknameLabel)
+        view.addSubview(firstTextField)
+        view.addSubview(nicknameLine)
+        view.addSubview(nextPageButton)
 
-        
-        inputNicknameLabel.snp.makeConstraints() {
+        inputNicknameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(123)
             $0.left.equalToSuperview().offset(20)
-            $0.width.equalToSuperview()
+            $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(29)
         }
-        
-        firstTextField.snp.makeConstraints() {
+
+        firstTextField.snp.makeConstraints { 
             $0.top.equalTo(inputNicknameLabel.snp.bottom).offset(24)
             $0.left.equalToSuperview().offset(20)
-            $0.width.equalToSuperview()
+            $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(56)
         }
-        
-        nicknameLine.snp.makeConstraints() {
+
+        nicknameLine.snp.makeConstraints {
             $0.top.equalTo(firstTextField.snp.bottom).offset(0)
             $0.left.equalToSuperview().offset(20)
-            $0.right.equalToSuperview().inset(20)
-            $0.width.equalTo(352)
+            $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(2)
         }
-        
-        nextPageButton.snp.makeConstraints() {
+
+        nextPageButton.snp.makeConstraints {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(nicknameLine.snp.width)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(55)
         }
     }
