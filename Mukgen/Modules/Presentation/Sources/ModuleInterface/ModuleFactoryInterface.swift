@@ -19,5 +19,7 @@ public protocol ModuleFactoryInterface {
     func InputTelVC() -> InputTelViewController
     
     func StartPageVC() -> StartPageViewController
+    
+    func TestLoginVC() -> TestLoginViewController
 }
 
