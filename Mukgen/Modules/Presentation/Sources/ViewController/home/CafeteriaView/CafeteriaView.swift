@@ -5,6 +5,8 @@ import MukgenKit
 import Core
 
 class CafeteriaView: UIView {
+    
+    
     private final var controller: UIViewController
     
     private enum Const {
@@ -101,7 +103,10 @@ extension CafeteriaView: UICollectionViewDataSource {
         if indexPath.row == 2 {
             cell.breakfastImage.image = MukgenKitAsset.Images.night.image
             cell.breakfastText.text = "저녁"
+            cell.breakfastMenu1.text = "qkq"
         }
+        
+        
         
         return cell
     }
@@ -135,3 +140,6 @@ extension CafeteriaView: UICollectionViewDelegateFlowLayout {
         else { return }
     }
 }
+
+
+
