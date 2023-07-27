@@ -7,6 +7,12 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    public func TestLoginVC() -> Presentation.TestLoginViewController {
+        let vc = TestLoginViewController()
+        
+        return vc
+    }
+    
     
     public func InputTelVC() -> Presentation.InputTelViewController {
         let vc = InputTelViewController()
