@@ -104,7 +104,7 @@ extension AuthorRankView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
-//    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             let collectionViewWidth = collectionView.bounds.width
             let totalCellWidth = 100 * authors.count
@@ -211,7 +211,7 @@ class AuthorRankCell: UICollectionViewCell {
 extension AuthorRankCell {
     func configure(with author: Author) {
         rankLabel.text = "\(author.rank)"
-        imageView.image = UIImage(named: author.imageUrl) // Replace with the proper way to load the image
+        imageView.image = UIImage(named: author.imageUrl)
         nameLabel.text = author.name
         systemImageView.image = author.systemImage
         detailLabel1.text = author.detail1
