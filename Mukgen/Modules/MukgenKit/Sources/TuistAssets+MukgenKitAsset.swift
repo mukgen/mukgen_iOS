@@ -56,7 +56,7 @@ public enum MukgenKitAsset {
         public static let testProfile1 = MukgenKitImages(name: "TestProfile1")
         public static let testProfile2 = MukgenKitImages(name: "TestProfile2")
         public static let testProfile3 = MukgenKitImages(name: "TestProflie3")
-        
+        public static let starImage = MukgenKitImages(name: "StarImage")
     }
     
 }
