@@ -9,10 +9,17 @@ import SnapKit
 import Then
 import MukgenKit
 
+protocol TodayCafeteriaReviewDelegate: AnyObject {
+    func morePostTapped()
+}
+
 class TodayCafeteriaReview: UIView {
+    
+    weak var delegate: TodayCafeteriaReviewDelegate?
+    
     private final var controller: UIViewController
     
-    private lazy var popularPost = UILabel().then {
+    private lazy var todayPost = UILabel().then {
         $0.font = .systemFont(ofSize: 20.0, weight: .semibold)
         $0.text = "오늘 급식 리뷰"
         $0.textColor = .black
@@ -24,7 +31,7 @@ class TodayCafeteriaReview: UIView {
         $0.setTitleColor(MukgenKitAsset.Colors.pointLight1.color, for: .normal)
     }
     
-    private lazy var popularPostCollectionView: UICollectionView = {
+    private lazy var todayCafeteriaReviewCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
@@ -42,24 +49,26 @@ class TodayCafeteriaReview: UIView {
     init(frame: CGRect ,viewController: UIViewController) {
         self.controller = viewController
         super.init(frame: frame)
-        popularPostCollectionView.delegate = self
-        popularPostCollectionView.dataSource = self
+        todayCafeteriaReviewCollectionView.delegate = self
+        todayCafeteriaReviewCollectionView.dataSource = self
         
         layout()
-        popularPostCollectionView.reloadData()
+        todayCafeteriaReviewCollectionView.reloadData()
+        
+        morePost.addTarget(self, action: #selector(morePostTap), for: .touchUpInside)
     }
     
     func layout() {
-        self.addSubview(popularPostCollectionView)
-        self.addSubview(popularPost)
+        self.addSubview(todayCafeteriaReviewCollectionView)
+        self.addSubview(todayPost)
         self.addSubview(morePost)
         
-        popularPostCollectionView.snp.makeConstraints {
+        todayCafeteriaReviewCollectionView.snp.makeConstraints {
             $0.height.equalTo(363.0)
             $0.top.leading.trailing.equalToSuperview()
         }
         
-        popularPost.snp.makeConstraints {
+        todayPost.snp.makeConstraints {
             $0.top.equalToSuperview().offset(0)
             $0.left.equalToSuperview()
         }
@@ -73,6 +82,11 @@ class TodayCafeteriaReview: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func morePostTap() {
+           delegate?.morePostTapped()
+       }
+    
 }
 
 extension TodayCafeteriaReview: UICollectionViewDelegateFlowLayout {
@@ -98,7 +112,7 @@ extension TodayCafeteriaReview: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodayReviewCell.TodayReviewCell, for: indexPath) as! TodayReviewCell
         cell.backView.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color

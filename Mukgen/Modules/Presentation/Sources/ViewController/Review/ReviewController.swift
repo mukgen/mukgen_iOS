@@ -4,9 +4,15 @@ import Then
 import MukgenKit
 import Core
 
-public class ReviewController: BaseVC {
+public class ReviewController: BaseVC, TodayCafeteriaReviewDelegate {
+    func morePostTapped() {
+        let destinationVC = MoreReviewViewController()
+           navigationController?.pushViewController(destinationVC, animated: true)
+    }
     
     public var factory: ModuleFactoryInterface!
+    
+    weak var delegate: TodayCafeteriaReviewDelegate?
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -19,9 +25,10 @@ public class ReviewController: BaseVC {
     
     private lazy var todayCafeteriaReview: TodayCafeteriaReview = {
         let view = TodayCafeteriaReview(frame: .zero, viewController: self)
+        view.delegate = self
         return view
     }()
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
