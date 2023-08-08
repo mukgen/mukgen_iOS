@@ -18,6 +18,20 @@ public class InputIdPasswordViewController: BaseVC {
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
+    
+    private lazy var placeHolder1 = UILabel().then {
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
+        $0.text = "최소 5자, 최대 15자"
+        $0.backgroundColor = .clear
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
+    }
+    
+    private lazy var placeHolder2 = UILabel().then {
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
+        $0.text = "특수문자 최소 1자 포함, 최대 20자"
+        $0.backgroundColor = .clear
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
+    }
 
     private lazy var textFields: [UITextField] = {
         let textField1 = createTextField(withPlaceholder: "아이디")
@@ -47,12 +61,24 @@ public class InputIdPasswordViewController: BaseVC {
         textFields.forEach { view.addSubview($0) }
         lines.forEach { view.addSubview($0) }
         view.addSubview(nextPageButton)
+        view.addSubview(placeHolder1)
+        view.addSubview(placeHolder2)
 
         inputIdPasswordLabel.snp.makeConstraints() {
             $0.top.equalToSuperview().offset(123)
             $0.left.equalToSuperview().offset(20)
             $0.width.equalToSuperview()
             $0.height.equalTo(58)
+        }
+        
+        placeHolder1.snp.makeConstraints() {
+            $0.top.equalTo(inputIdPasswordLabel.snp.bottom).offset(90.0)
+            $0.leading.trailing.equalToSuperview().offset(20)
+        }
+        
+        placeHolder2.snp.makeConstraints() {
+            $0.top.equalTo(placeHolder1.snp.bottom).offset(60.0)
+            $0.leading.trailing.equalToSuperview().offset(20)
         }
 
         for i in 0..<textFields.count {
@@ -128,7 +154,7 @@ public class InputIdPasswordViewController: BaseVC {
     }
 
     @objc private func nextPageButtonDidTap(_ sender: Any) {
-//        self.navigationController?.pushViewController(InputTelViewController(), animated: true)
+        self.navigationController?.pushViewController(InputTelViewController(), animated: true)
     }
 
     private func animate(line: UIView) {
