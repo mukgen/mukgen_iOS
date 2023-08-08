@@ -9,10 +9,8 @@ public class ModuleFactory {
 extension ModuleFactory: ModuleFactoryInterface {
     public func TestLoginVC() -> Presentation.TestLoginViewController {
         let vc = TestLoginViewController()
-        
         return vc
     }
-    
     
     public func InputTelVC() -> Presentation.InputTelViewController {
         let vc = InputTelViewController()
@@ -63,4 +61,10 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = StartPageViewController()
         return vc
     }
+    
+    public func StartMukgenVC() -> Presentation.StartMukgenViewController {
+        let vc = StartMukgenViewController()
+        return vc
+    }
+
 }

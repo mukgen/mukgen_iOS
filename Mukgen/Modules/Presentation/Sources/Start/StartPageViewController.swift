@@ -28,7 +28,7 @@ public class StartPageViewController: BaseVC {
     }
     
     private let mukgenLogo = UIImageView().then {
-        $0.image = MukgenKitAsset.Images.startMukgenIcon.image
+        $0.image = MukgenKitAsset.Images.mukgenIcon.image
     }
     
     public override func layout() {
@@ -77,7 +77,6 @@ public class StartPageViewController: BaseVC {
     }
     
     @objc func startButtonDidTap(_ sender: Any) {
-//        self.navigationController?.pushViewController(InputIdPasswordViewController(), animated: true)
-        print("시작 버튼")
+        self.navigationController?.pushViewController(StartMukgenViewController(), animated: true)
     }
 }
