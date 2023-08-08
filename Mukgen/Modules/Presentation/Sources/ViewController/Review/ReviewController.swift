@@ -1,17 +1,59 @@
-//
-//  ReviewController.swift
-//  Presentation
-//
-//  Created by 박준하 on 2023/06/09.
-//
-
 import UIKit
+import SnapKit
+import Then
+import MukgenKit
+import Core
 
-class ReviewController: UIViewController {
+public class ReviewController: BaseVC, TodayCafeteriaReviewDelegate {
+    func morePostTapped() {
+        let destinationVC = MoreReviewViewController()
+           navigationController?.pushViewController(destinationVC, animated: true)
+    }
     
-    override func viewDidLoad() {
+    public var factory: ModuleFactoryInterface!
+    
+    weak var delegate: TodayCafeteriaReviewDelegate?
+    
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    
+    private lazy var cafeteriaView: AuthorRankView = {
+        let view = AuthorRankView(controller: self)
+        view.layer.cornerRadius = 10.0
+        return view
+    }()
+    
+    private lazy var todayCafeteriaReview: TodayCafeteriaReview = {
+        let view = TodayCafeteriaReview(frame: .zero, viewController: self)
+        view.delegate = self
+        return view
+    }()
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .green
+        setupLayout()
+        view.backgroundColor = .white
+    }
+}
+
+private extension ReviewController {
+    
+    func setupLayout() {
+        view.addSubview(cafeteriaView)
+        view.addSubview(todayCafeteriaReview)
+        cafeteriaView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview().inset(20.0)
+            $0.height.equalTo(200.0)
+            $0.width.equalTo(353.0)
+        }
+        
+        todayCafeteriaReview.snp.makeConstraints {
+            $0.top.equalTo(cafeteriaView.snp.bottom).offset(50.0)
+            $0.leading.trailing.equalToSuperview().inset(20.0)
+            $0.width.equalTo(353.0)
+            $0.height.equalTo(402)
+        }
     }
 }
