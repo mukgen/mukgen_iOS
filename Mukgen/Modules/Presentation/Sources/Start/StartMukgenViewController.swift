@@ -1,10 +1,12 @@
 import UIKit
 import SnapKit
 import Then
-import Core
 import MukgenKit
+import Core
 
-final class StartMukgenViewController: BaseVC {
+public class StartMukgenViewController: BaseVC {
+    
+    public var factory: ModuleFactoryInterface!
     
     private let startButton: CustomButton = {
         let button = CustomButton(title: "시작하기",
@@ -14,10 +16,6 @@ final class StartMukgenViewController: BaseVC {
         button.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
         return button
     }()
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     private let startLabel = UILabel().then {
         $0.text = "시작하기"
@@ -32,10 +30,10 @@ final class StartMukgenViewController: BaseVC {
     }
     
     private let mukgenStartIcon = UIImageView().then {
-        $0.image = UIImage(named: "StartMukgenIcon")
+        $0.image = MukgenKitAsset.Images.signUpMukgenIcon.image
     }
     
-    override func layout() {
+    public override func layout() {
         
         [
             startButton,
@@ -73,7 +71,7 @@ final class StartMukgenViewController: BaseVC {
         }
     }
     
-    override func attribute() {
+    public override func attribute() {
         view.backgroundColor = .white
     }
     
