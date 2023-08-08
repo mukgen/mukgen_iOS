@@ -20,6 +20,8 @@ public protocol ModuleFactoryInterface {
     
     func StartPageVC() -> StartPageViewController
     
+    func StartMukgenVC() -> StartMukgenViewController
+    
     func TestLoginVC() -> TestLoginViewController
 }
 
