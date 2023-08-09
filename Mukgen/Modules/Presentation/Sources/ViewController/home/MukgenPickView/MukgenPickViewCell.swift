@@ -1,9 +1,22 @@
 import UIKit
+import MealService
 import SnapKit
 import Then
 import MukgenKit
 
 class MukgenPickCell: UICollectionViewCell {
+    
+//    let apiManager = MukgenPickService()
+//    
+//    apiManager.fetchRiceMenu { [weak self] mukgenPickMenuResponse in
+//        guard let mukgenPickMenuResponse = mukgenPickMenuResponse else {
+//            print("Error fetching rice menu")
+//            return
+//        }
+//        DispatchQueue.main.async {
+//            self?.updateUI(with: mukgenPickMenuResponse)
+//        }
+//    }
     
     static let id = "customCell"
     
@@ -59,7 +72,14 @@ class MukgenPickCell: UICollectionViewCell {
             $0.left.equalTo(tasteGoodText.snp.right).offset(100)
         }
     }
-
+    
+    private func updateUI(with mukgenPickMenuResponse: MukgenPickMenuResponse) {
+        todayDate.text = "Month: \(mukgenPickMenuResponse.month)"
+//        dayLabel.text = "Day: \(riceMenu.day)"
+//        riceTypeLabel.text = "Rice Type: \(riceMenu.riceType)"
+//        riceIdLabel.text = "Rice ID: \(riceMenu.riceId)"
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
