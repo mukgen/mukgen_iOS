@@ -76,10 +76,11 @@ extension MukgenPickView: UICollectionViewDataSource {
     //cell에 관련된 것을 정의합니다.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MukgenPickCell.id, for: indexPath) as! MukgenPickCell
-        cell.backView.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        cell.backView.backgroundColor = MukgenKitAsset.Colors.pointLight4.color
         cell.layer.cornerRadius = 10.0
-//        cell.todayDate.text = "Month: \(riceMenu.month)"
         return cell
     }
+    
+
 }
 
