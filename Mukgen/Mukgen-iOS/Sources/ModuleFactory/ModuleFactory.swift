@@ -7,6 +7,12 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    public func TestPickerVC() -> Presentation.TestPickerViewController {
+        let vc = TestPickerViewController()
+        
+        return vc
+    }
+    
     public func TestLoginVC() -> Presentation.TestLoginViewController {
         let vc = TestLoginViewController()
         return vc

@@ -9,6 +9,7 @@ let project = Project.framework(
 //        .SPM.Kingfisher,
 //        .SPM.SnapKit
         .external(name: "SnapKit"),
-        .external(name: "Then")
+        .external(name: "Then"),
+        .external(name: "Moya")
     ]
 )
