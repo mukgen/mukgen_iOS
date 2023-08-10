@@ -6,9 +6,9 @@ import BoardService
 
 class PopularPostViewCell: UICollectionViewCell {
     
-    let apiManager = PopularPostServiceProvider()
-    
     static let PopularPostViewCellid = "PopularPostViewCell"
+    
+    let popularPostServiceProvider = PopularPostServiceProvider()
     
     var popularText1 = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
@@ -84,38 +84,19 @@ class PopularPostViewCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().inset(16)
         }
         
-        apiManager.fetchPopularPost { [weak self] popularPostResponse in
-            guard let popularPostResponse = popularPostResponse else {
-                print("Error fetching rice menu")
+        popularPostServiceProvider.fetchPopularPosts { popularPosts in
+
+            guard let posts = popularPosts else {
+                print("인기 게시물을 가져오는 데 실패했습니다.")
                 return
             }
-            DispatchQueue.main.async {
-                self?.updateUI(with: popularPostResponse)
+
+            for post in posts {
+                print("제목: \(post.title)")
             }
         }
-        
-//        apiManager.fetchPopularPost { [weak self] popularPostResponse in
-//            guard let popularPostResponse = popularPostResponse else {
-//                print("Error fetching rice menu")
-//                return
-//            }
-//            DispatchQueue.main.async {
-//                self?.updateUI(with: popularPostResponse)
-//            }
-//        }
     }
-    
-    private func updateUI(with popularPostResponse: [PopularPostResponse]) {
-        
-        guard !popularPostResponse.isEmpty else {
-            print("No meal data available")
-            return
-        }
-        
-        let firstResponse = popularPostResponse[0]
-        popularText1.text = "\(firstResponse.title)"
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
