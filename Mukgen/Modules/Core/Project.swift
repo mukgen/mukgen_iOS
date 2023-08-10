@@ -7,6 +7,7 @@ let project = Project.framework(
     dependencies: [
         .Module.thirdPartyLib,
         .external(name: "SnapKit"),
-        .external(name: "Then")
+        .external(name: "Then"),
+        .external(name: "Moya")
     ]
 )

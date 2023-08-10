@@ -14,7 +14,8 @@ let project = Project.framework(
         .Module.reViewService,
         .Module.userService,
         .external(name: "SnapKit"),
-        .external(name: "Then")
+        .external(name: "Then"),
+        .external(name: "Moya")
     ],
     resources: .none
 )

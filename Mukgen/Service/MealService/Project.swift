@@ -6,6 +6,9 @@ let project = Project.framework(
     name: "MealService",
     dependencies: [
         .Module.mukgenKit,
-        .Module.thirdPartyLib
+        .Module.thirdPartyLib,
+        .external(name: "SnapKit"),
+        .external(name: "Then"),
+        .external(name: "Moya")
     ]
 )

@@ -9,7 +9,8 @@ let project = Project.app(
         .Module.mukgenKit,
         .Module.core,
         .external(name: "SnapKit"),
-        .external(name: "Then")
+        .external(name: "Then"),
+        .external(name: "Moya")
     ],
     resources: .default
 )

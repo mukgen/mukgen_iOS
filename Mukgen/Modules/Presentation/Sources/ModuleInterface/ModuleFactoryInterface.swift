@@ -23,5 +23,7 @@ public protocol ModuleFactoryInterface {
     func StartMukgenVC() -> StartMukgenViewController
     
     func TestLoginVC() -> TestLoginViewController
+    
+    func TestPickerVC() -> TestPickerViewController
 }
 
