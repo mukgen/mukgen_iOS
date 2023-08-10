@@ -76,7 +76,7 @@ class MukgenPickCell: UICollectionViewCell {
     }
     
     private func fetchRiceMenuAndUpdateUI() {
-        apiManager.fetchRiceMenu1 { [weak self] mukgenPickMenuResponse in
+        apiManager.fetchmukgenPick { [weak self] mukgenPickMenuResponse in
             guard let mukgenPickMenuResponse = mukgenPickMenuResponse else {
                 print("Error fetching rice menu")
                 return

@@ -2,8 +2,11 @@ import UIKit
 import SnapKit
 import Then
 import MukgenKit
+import BoardService
 
 class PopularPostViewCell: UICollectionViewCell {
+    
+    let apiManager = PopularPostServiceProvider()
     
     static let PopularPostViewCellid = "PopularPostViewCell"
     
@@ -80,8 +83,39 @@ class PopularPostViewCell: UICollectionViewCell {
             $0.top.equalToSuperview().offset(16)
             $0.bottom.equalToSuperview().inset(16)
         }
+        
+        apiManager.fetchPopularPost { [weak self] popularPostResponse in
+            guard let popularPostResponse = popularPostResponse else {
+                print("Error fetching rice menu")
+                return
+            }
+            DispatchQueue.main.async {
+                self?.updateUI(with: popularPostResponse)
+            }
+        }
+        
+//        apiManager.fetchPopularPost { [weak self] popularPostResponse in
+//            guard let popularPostResponse = popularPostResponse else {
+//                print("Error fetching rice menu")
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                self?.updateUI(with: popularPostResponse)
+//            }
+//        }
     }
-
+    
+    private func updateUI(with popularPostResponse: [PopularPostResponse]) {
+        
+        guard !popularPostResponse.isEmpty else {
+            print("No meal data available")
+            return
+        }
+        
+        let firstResponse = popularPostResponse[0]
+        popularText1.text = "\(firstResponse.title)"
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

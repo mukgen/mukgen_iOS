@@ -1,11 +1,11 @@
 import Foundation
 import Moya
 
-public enum MukgenAPI {
+public enum MukgenPickAPI {
     case fetchRiceMenu
 }
 
-extension MukgenAPI: TargetType {
+extension MukgenPickAPI: TargetType {
     public var baseURL: URL {
         return URL(string: "https://www.mukgen.info")!
     }
@@ -36,13 +36,13 @@ extension MukgenAPI: TargetType {
     }
     
     public var headers: [String : String]? {
-        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eWxlcjA5MjIiLCJpYXQiOjE2OTE2NTQwNTcsImV4cCI6MTY5MTY1NTg1N30.j0vwCrsW7BLH-krIMqVRPrhNnVUAFFy0A5R8BrCPMUs"]
+        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eWxlcjA5MjIiLCJpYXQiOjE2OTE2NzUxNTQsImV4cCI6MTY5MTY3Njk1NH0.nOArdl0iX5ooWdSRLSZyrstEprdHsV8WYAubfdSS3jY"]
     }
 }
 
 public class MukgenPickServiceProvider {
-    let provider = MoyaProvider<MukgenAPI>()
-    public func fetchRiceMenu1(completion: @escaping (MukgenPickMenuResponse?) -> Void) {
+    let provider = MoyaProvider<MukgenPickAPI>()
+    public func fetchmukgenPick(completion: @escaping (MukgenPickMenuResponse?) -> Void) {
         provider.request(.fetchRiceMenu) { (result) in
             switch result {
             case .success(let response):
@@ -64,3 +64,5 @@ public class MukgenPickServiceProvider {
     public init() {
     }
 }
+
+
