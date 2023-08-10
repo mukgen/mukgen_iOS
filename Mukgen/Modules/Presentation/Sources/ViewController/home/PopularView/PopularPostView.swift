@@ -2,9 +2,12 @@ import UIKit
 import SnapKit
 import Then
 import MukgenKit
+import BoardService
 
 class PopularPostView: UIView {
     private final var controller: UIViewController
+    
+    private var popularPosts: [PopularPostResponse] = []
     
     private lazy var popularPost = UILabel().then {
         $0.font = .systemFont(ofSize: 20.0, weight: .semibold)
