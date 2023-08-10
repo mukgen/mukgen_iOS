@@ -18,11 +18,42 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
         $0.image = MukgenKitAsset.Images.breakfastImage.image
     }
     
-    var breakfastMenu1 = UILabel().then {
+    var breakfastMenu = UILabel().then {
         $0.numberOfLines = 7
         $0.font = .systemFont(ofSize: 14, weight: .regular)
-        let text = "밥/카레소스\n삼겹살국수\n사과주스\n잡곡밥\n구슬아이스크림"
-
+        let text = "없음"
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        
+        let attributedString = NSAttributedString(string: text, attributes: [
+            .font: UIFont.systemFont(ofSize: 14, weight: .regular),
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor: UIColor.black
+        ])
+        
+        $0.attributedText = attributedString
+    }
+    
+    var lunchMenu = UILabel().then {
+        $0.numberOfLines = 7
+        $0.font = .systemFont(ofSize: 14, weight: .regular)
+        let text = "없음"
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        
+        let attributedString = NSAttributedString(string: text, attributes: [
+            .font: UIFont.systemFont(ofSize: 14, weight: .regular),
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor: UIColor.black
+        ])
+        
+        $0.attributedText = attributedString
+    }
+    
+    var dinnerMenu = UILabel().then {
+        $0.numberOfLines = 7
+        $0.font = .systemFont(ofSize: 14, weight: .regular)
+        let text = "없음"
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 6
         
@@ -40,7 +71,9 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
         
         contentView.addSubview(breakfastText)
         contentView.addSubview(breakfastImage)
-        contentView.addSubview(breakfastMenu1)
+        contentView.addSubview(breakfastMenu)
+        contentView.addSubview(lunchMenu)
+        contentView.addSubview(dinnerMenu)
         
         breakfastText.snp.makeConstraints {
             $0.top.equalToSuperview().offset(56.5)
@@ -54,13 +87,21 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().inset(56.5)
         }
         
-        breakfastMenu1.snp.makeConstraints {
+        breakfastMenu.snp.makeConstraints {
             $0.top.equalToSuperview().offset(55.5)
             $0.left.equalTo(breakfastText.snp.right).offset(60.0)
         }
         
-        //이거는 view에 함수를 가져와서 보여주어야하기 때문에 생명주기에 있어야합니다.
-        //일단은 에러를 고쳐주기는 했는데 제가 보기에는 cell에 데이터를 파싱하지말고 collectionVIew 자체에서 cellforLowat에서 데이터를 파싱하는 것을 추천합니다.
+        lunchMenu.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(55.5)
+            $0.left.equalTo(breakfastText.snp.right).offset(60.0)
+        }
+        
+        dinnerMenu.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(55.5)
+            $0.left.equalTo(breakfastText.snp.right).offset(60.0)
+        }
+        
         todayMealAPI.fetchRiceMenu { [weak self] todayMealResponses in
             guard let todayMealResponses = todayMealResponses else {
                 print("Error fetching rice menu")
@@ -79,7 +120,14 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
         }
 
         let firstResponse = todayMealResponses[0]
-        breakfastMenu1.text = "\(firstResponse.items)\n"
+        breakfastMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
+        lunchMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
+        dinnerMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
+        print("\(firstResponse.items)")
+        print("\(firstResponse.items[0])")
+        print("\(firstResponse.items[1])")
+        print("\(firstResponse.items[2])")
+        print("\(firstResponse.items[3])")
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -1,8 +1,20 @@
-//
-//  PopularPostResponse.swift
-//  BoardService
-//
-//  Created by 이은호 on 2023/08/10.
-//
-
 import Foundation
+
+public struct Welcome: Codable {
+    let boardPopularResponseList: [PopularPostResponse]
+}
+
+public struct PopularPostResponse: Codable {
+    enum CodingKeys: String, CodingKey {
+        case boardId = "boardId"
+        case title
+        case commentCount
+        case viewCount
+    }
+    
+    public let boardId: CLong
+    public let title: String
+    public let commentCount: Int
+    public let viewCount: Int
+}
+
