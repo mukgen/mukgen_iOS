@@ -6,17 +6,7 @@ import MukgenKit
 
 class MukgenPickCell: UICollectionViewCell {
     
-//    let apiManager = MukgenPickService()
-//    
-//    apiManager.fetchRiceMenu { [weak self] mukgenPickMenuResponse in
-//        guard let mukgenPickMenuResponse = mukgenPickMenuResponse else {
-//            print("Error fetching rice menu")
-//            return
-//        }
-//        DispatchQueue.main.async {
-//            self?.updateUI(with: mukgenPickMenuResponse)
-//        }
-//    }
+    let apiManager = MukgenPickService()
     
     static let id = "customCell"
     
@@ -71,6 +61,19 @@ class MukgenPickCell: UICollectionViewCell {
             $0.top.equalToSuperview().offset(20)
             $0.left.equalTo(tasteGoodText.snp.right).offset(100)
         }
+        
+        //이거는 view에 함수를 가져와서 보여주어야하기 때문에 생명주기에 있어야합니다.
+        //일단은 에러를 고쳐주기는 했는데 제가 보기에는 cell에 데이터를 파싱하지말고 collectionVIew 자체에서 cellforLowat에서 데이터를 파싱하는 것을 추천합니다.
+        apiManager.fetchRiceMenu { [weak self] mukgenPickMenuResponse in
+            guard let mukgenPickMenuResponse = mukgenPickMenuResponse else {
+                print("Error fetching rice menu")
+                return
+            }
+            DispatchQueue.main.async {
+                self?.updateUI(with: mukgenPickMenuResponse)
+            }
+        }
+        
     }
     
     private func updateUI(with mukgenPickMenuResponse: MukgenPickMenuResponse) {
