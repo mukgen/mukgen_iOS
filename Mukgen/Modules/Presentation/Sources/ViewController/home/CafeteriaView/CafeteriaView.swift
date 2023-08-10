@@ -91,10 +91,14 @@ extension CafeteriaView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CafeteriaCollecionViewCell", for: indexPath) as! CafeteriaCollecionViewCell
-        cell.layout()
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 10.0
         cell.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+        
+        if indexPath.row == 0 {
+            cell.breakfastImage.image = MukgenKitAsset.Images.breakfastImage.image
+            cell.breakfastText.text = "아침"
+        }
 
         if indexPath.row == 1 {
             cell.breakfastImage.image = MukgenKitAsset.Images.lunch.image
@@ -103,7 +107,6 @@ extension CafeteriaView: UICollectionViewDataSource {
         if indexPath.row == 2 {
             cell.breakfastImage.image = MukgenKitAsset.Images.night.image
             cell.breakfastText.text = "저녁"
-            cell.breakfastMenu1.text = "qkq"
         }
         
         
