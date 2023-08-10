@@ -6,7 +6,7 @@ import MukgenKit
 
 class MukgenPickCell: UICollectionViewCell {
     
-    let apiManager = MukgenPickService()
+    let apiManager = MukgenPickServiceProvider()
     
     static let id = "customCell"
     
@@ -30,14 +30,14 @@ class MukgenPickCell: UICollectionViewCell {
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
         $0.textColor = MukgenKitAsset.Colors.pointBase.color
     }
-
+    
     public var backView = UIImageView().then {
         $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
         $0.layer.cornerRadius = 10.0
         $0.layer.borderWidth = 2
         $0.layer.borderColor = MukgenKitAsset.Colors.pointLight4.color.cgColor
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -71,8 +71,11 @@ class MukgenPickCell: UICollectionViewCell {
             $0.left.equalTo(tasteGoodText.snp.right).offset(100)
         }
         
-        //이거는 view에 함수를 가져와서 보여주어야하기 때문에 생명주기에 있어야합니다.
-        //일단은 에러를 고쳐주기는 했는데 제가 보기에는 cell에 데이터를 파싱하지말고 collectionVIew 자체에서 cellforLowat에서 데이터를 파싱하는 것을 추천합니다.
+        fetchRiceMenuAndUpdateUI()
+        
+    }
+    
+    private func fetchRiceMenuAndUpdateUI() {
         apiManager.fetchRiceMenu1 { [weak self] mukgenPickMenuResponse in
             guard let mukgenPickMenuResponse = mukgenPickMenuResponse else {
                 print("Error fetching rice menu")
@@ -82,7 +85,6 @@ class MukgenPickCell: UICollectionViewCell {
                 self?.updateUI(with: mukgenPickMenuResponse)
             }
         }
-        
     }
     
     private func updateUI(with mukgenPickMenuResponse: MukgenPickMenuResponse) {
