@@ -119,15 +119,15 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
             return
         }
 
-        let firstResponse = todayMealResponses[0]
-        breakfastMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
-        lunchMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
-        dinnerMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
-        print("\(firstResponse.items)")
-        print("\(firstResponse.items[0])")
-        print("\(firstResponse.items[1])")
-        print("\(firstResponse.items[2])")
-        print("\(firstResponse.items[3])")
+//        let firstResponse = todayMealResponses[0]
+//        breakfastMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
+//        lunchMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
+//        dinnerMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
+//        print("\(firstResponse.items)")
+//        print("\(firstResponse.items[0])")
+//        print("\(firstResponse.items[1])")
+//        print("\(firstResponse.items[2])")
+//        print("\(firstResponse.items[3])")
     }
     
     required init?(coder aDecoder: NSCoder) {

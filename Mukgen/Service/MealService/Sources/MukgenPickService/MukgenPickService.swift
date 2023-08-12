@@ -36,7 +36,7 @@ extension MukgenPickAPI: TargetType {
     }
     
     public var headers: [String : String]? {
-        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eWxlcjA5MjIiLCJpYXQiOjE2OTE2NzUxNTQsImV4cCI6MTY5MTY3Njk1NH0.nOArdl0iX5ooWdSRLSZyrstEprdHsV8WYAubfdSS3jY"]
+        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eWxlcjA5MjIiLCJpYXQiOjE2OTE3MjMwNTQsImV4cCI6MTY5MTcyNDg1NH0.Rnxn7hxaIjv7-d4VRiocWM3Vh4p-6BuACKm8EV5ogOo"]
     }
 }
 
