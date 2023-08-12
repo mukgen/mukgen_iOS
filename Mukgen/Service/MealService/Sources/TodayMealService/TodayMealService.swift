@@ -4,7 +4,7 @@ import UIKit
 open class TodayMealService {
     public let baseURL = "https://www.mukgen.info"
     public let endpoint = "/meal/today"
-    public let token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eWxlcjA5MjIiLCJpYXQiOjE2OTE2NzUxNTQsImV4cCI6MTY5MTY3Njk1NH0.nOArdl0iX5ooWdSRLSZyrstEprdHsV8WYAubfdSS3jY"
+    public let token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eWxlcjA5MjIiLCJpYXQiOjE2OTE3MjMwNTQsImV4cCI6MTY5MTcyNDg1NH0.Rnxn7hxaIjv7-d4VRiocWM3Vh4p-6BuACKm8EV5ogOo"
     //에러에서는 init이 기본값이 internal이다 이기 떄문에 기본을 public으로 수정
     public init() {}
     

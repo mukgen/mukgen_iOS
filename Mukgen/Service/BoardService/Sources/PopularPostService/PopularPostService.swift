@@ -36,7 +36,7 @@ extension PopularPostAPI: TargetType {
     }
 
     public var headers: [String : String]? {
-        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnb29kanVuaGEiLCJpYXQiOjE2OTE2NzgyODEsImV4cCI6MTY5MTY4MDA4MX0.HkwF-KrgQ0u17PqzGubwxXUlVwR9Vn8Ku8to5wn7hd4"]
+        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eWxlcjA5MjIiLCJpYXQiOjE2OTE3MjMwNTQsImV4cCI6MTY5MTcyNDg1NH0.Rnxn7hxaIjv7-d4VRiocWM3Vh4p-6BuACKm8EV5ogOo"]
     }
 }
 

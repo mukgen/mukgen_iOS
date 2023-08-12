@@ -84,7 +84,7 @@ class PopularPostViewCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().inset(16)
         }
         
-        popularPostServiceProvider.fetchPopularPosts { popularPosts in
+        popularPostServiceProvider.fetchPopularPosts { [self] popularPosts in
 
             guard let posts = popularPosts else {
                 print("인기 게시물을 가져오는 데 실패했습니다.")
