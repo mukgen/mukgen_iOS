@@ -10,6 +10,8 @@ let project = Project.framework(
 //        .SPM.SnapKit
         .external(name: "SnapKit"),
         .external(name: "Then"),
-        .external(name: "Moya")
+        .external(name: "Moya"),
+        .external(name: "SwiftKeychainWrapper")
+
     ]
 )
