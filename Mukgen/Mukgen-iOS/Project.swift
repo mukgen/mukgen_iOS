@@ -10,7 +10,9 @@ let project = Project.app(
         .Module.core,
         .external(name: "SnapKit"),
         .external(name: "Then"),
-        .external(name: "Moya")
+        .external(name: "Moya"),
+        .external(name: "SwiftKeychainWrapper")
+
     ],
     resources: .default
 )

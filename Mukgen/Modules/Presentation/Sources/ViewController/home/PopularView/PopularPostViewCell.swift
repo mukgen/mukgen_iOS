@@ -3,6 +3,7 @@ import SnapKit
 import Then
 import MukgenKit
 import BoardService
+import SwiftKeychainWrapper
 
 class PopularPostViewCell: UICollectionViewCell {
     

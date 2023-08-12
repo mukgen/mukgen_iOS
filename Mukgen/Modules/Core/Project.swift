@@ -8,6 +8,7 @@ let project = Project.framework(
         .Module.thirdPartyLib,
         .external(name: "SnapKit"),
         .external(name: "Then"),
-        .external(name: "Moya")
+        .external(name: "Moya"),
+        .external(name: "SwiftKeychainWrapper")
     ]
 )
