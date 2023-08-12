@@ -17,7 +17,6 @@ let project = Project.framework(
         .external(name: "Then"),
         .external(name: "Moya"),
         .external(name: "SwiftKeychainWrapper")
-
     ],
     resources: .none
 )
