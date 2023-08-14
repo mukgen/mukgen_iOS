@@ -87,6 +87,6 @@ public class TestLoginViewController: UIViewController {
                 }
             }
         }
+//        print("\(String(describing: Header.accessToken))")
     }
-    
 }
