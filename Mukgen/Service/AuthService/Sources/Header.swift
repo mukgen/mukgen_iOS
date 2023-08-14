@@ -5,16 +5,13 @@ public struct Token {
     static var localAccessToken: String?
     static var accessToken: String? {
         get {
-            localAccessToken = KeychainWrapper.standard.string(forKey: "acccess_token")
+            localAccessToken = KeychainWrapper.standard.string(forKey: "access_token")
             return localAccessToken
         }
         set(newToken) {
-            KeychainWrapper.standard.set(newToken ?? "nil", forKey: "acccess_token")
+            KeychainWrapper.standard.set(newToken ?? "nil", forKey: "access_token")
             localAccessToken = newToken
         }
-    }
-    static func removeToken() {
-        self.accessToken = nil
     }
 }
 

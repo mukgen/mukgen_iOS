@@ -1,4 +1,5 @@
 import Foundation
+import SwiftKeychainWrapper
 import UIKit
 import Moya
 
@@ -47,28 +48,18 @@ public class AuthService {
             let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
             
             switch statusCode {
-            case 200:
+            case 200, 201:
                 do {
                     let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+                    self?.setRefreshToken(token: loginResponse.tokenResponse.refreshToken)
+                    Token.accessToken = loginResponse.tokenResponse.accessToken
+                    KeychainWrapper.standard.set(loginResponse.tokenResponse.accessToken, forKey: "access_token")
                     completion(.success(loginResponse))
+                    print("토큰 저장됨")
                 } catch {
                     completion(.failure(error))
                 }
-            case 201:
-                do {
-                    let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-                    completion(.success(loginResponse))
-                } catch {
-                    completion(.failure(error))
-                }
-            case 404:
-                do {
-                    let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
-                    completion(.failure(NSError(domain: errorResponse.message, code: statusCode, userInfo: nil)))
-                } catch {
-                    completion(.failure(error))
-                }
-            case 400:
+            case 404, 400:
                 do {
                     let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
                     completion(.failure(NSError(domain: errorResponse.message, code: statusCode, userInfo: nil)))
@@ -82,6 +73,14 @@ public class AuthService {
         task.resume()
     }
     
+    public func getToken() {
+        if let accessToken = KeychainWrapper.standard.string(forKey: "access_token") {
+            print("Stored access token:", accessToken)
+        } else {
+            print("No access token found in Keychain")
+        }
+    }
+
     // 토큰 주는 코드
     public func setRefreshToken(token: String) {
             refreshToken = token

@@ -57,7 +57,7 @@ public class TestLoginViewController: UIViewController {
         
         getTokenButton.setTitle("Give Me Token!!", for: .normal)
         getTokenButton.backgroundColor = .red
-        getTokenButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        getTokenButton.addTarget(self, action: #selector(giveMeSaveToken), for: .touchUpInside)
         getTokenButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
@@ -88,5 +88,11 @@ public class TestLoginViewController: UIViewController {
             }
         }
 //        print("\(String(describing: Header.accessToken))")
+    }
+    
+    @objc func giveMeSaveToken() {
+        print("----------------------")
+        print("--------\(self.authService.getToken())--------")
+        print("----------------------")
     }
 }
