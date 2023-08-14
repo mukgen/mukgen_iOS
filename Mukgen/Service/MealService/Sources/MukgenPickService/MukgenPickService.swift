@@ -1,5 +1,7 @@
 import Foundation
 import Moya
+import AuthService
+
 
 public enum MukgenPickAPI {
     case fetchRiceMenu
@@ -36,8 +38,9 @@ extension MukgenPickAPI: TargetType {
     }
     
     public var headers: [String : String]? {
-        return ["Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0eWxlcjA5MjIiLCJpYXQiOjE2OTE3MjMwNTQsImV4cCI6MTY5MTcyNDg1NH0.Rnxn7hxaIjv7-d4VRiocWM3Vh4p-6BuACKm8EV5ogOo"]
+        return Header.accessToken.header()
     }
+
 }
 
 public class MukgenPickServiceProvider {

@@ -1,5 +1,7 @@
 import Foundation
 import UIKit
+import Moya
+
 
 public class AuthService {
     
@@ -9,7 +11,7 @@ public class AuthService {
     
     // 로그인하면 자동으로 토큰 줍니다 그거 사용해도되요
     public func login(accountId: String, password: String, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
-        let urlString = "http://www.mukgen.info/auth/login"
+        let urlString = "https://www.mukgen.info/auth/login"
         guard let url = URL(string: urlString) else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
@@ -114,6 +116,7 @@ public class AuthService {
 
                 do {
                     let tokens = try JSONDecoder().decode(TokenResponse.self, from: data)
+                    Token.accessToken = tokens.accessToken
                     self.setRefreshToken(token: tokens.refreshToken)
                     completion(.success((accessToken: tokens.accessToken, refreshToken: tokens.refreshToken)))
                 } catch {
@@ -122,5 +125,4 @@ public class AuthService {
             }
             task.resume()
         }
-
 }
