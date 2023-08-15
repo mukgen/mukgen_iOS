@@ -4,8 +4,6 @@
 //
 //  Created by 박준하 on 2023/08/15.
 //
-
-
 import UIKit
 import SnapKit
 import Then
@@ -21,11 +19,9 @@ public class TextAlertViewController: UIViewController {
         $0.setTitleColor(.systemBlue, for: .normal)
     }
     
-    private let darkeningView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.12)
-        return view
-    }()
+    private let darkeningView = UIView().then {
+        $0.backgroundColor = UIColor.black.withAlphaComponent(0.12)
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +48,7 @@ public class TextAlertViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.darkeningView.alpha = 1
         }
-
+        
         let customAlert = CustomAlertView(
             labelText: "TaeYoung1234 님\n환영합니다!",
             buttonLabelText: "확인",
