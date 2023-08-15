@@ -38,9 +38,11 @@ open class CustomAlertView: UIView {
         confirmButton.setTitle(buttonLabelText, for: .normal)
         confirmButton.backgroundColor = .orange
         confirmButton.addTarget(self, action: #selector(closeAlert), for: .touchUpInside)
+        confirmButton.layer.cornerRadius = 7.12
 
         self.backgroundColor = .clear
         backgroundView.backgroundColor = .white
+        backgroundView.layer.cornerRadius = 7.12
     }
     private func setupConstraints(){
         insertSubview(backgroundView, at: 0)
@@ -55,7 +57,7 @@ open class CustomAlertView: UIView {
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(14.0)
-            $0.centerX.equalToSuperview()
+            $0.leading.equalTo(backgroundView.snp.leading).inset(14.0)
         }
 
         confirmButton.snp.makeConstraints {
