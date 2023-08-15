@@ -27,5 +27,7 @@ public protocol ModuleFactoryInterface {
     func TestPickerVC() -> TestPickerViewController
     
     func InputEmailVC() -> InputEmailViewController
+    
+    func textAlertVC() -> TextAlertViewController
 }
 

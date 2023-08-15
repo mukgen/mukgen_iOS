@@ -7,7 +7,7 @@ import MealService
 
 class CafeteriaCollecionViewCell: UICollectionViewCell {
     
-    let todayMealAPI = TodayMealService()
+    let todayMealAPI = TodayMealServiceProvider()
     
     var breakfastText = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -102,13 +102,14 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
             $0.left.equalTo(breakfastText.snp.right).offset(60.0)
         }
         
-        todayMealAPI.fetchRiceMenu { [weak self] todayMealResponses in
-            guard let todayMealResponses = todayMealResponses else {
-                print("Error fetching rice menu")
-                return
-            }
-            DispatchQueue.main.async {
-                self?.updateUI(with: todayMealResponses)
+        todayMealAPI.fetchTodayMeal { [weak self] (result: Result<[TodayMealResponse], Error>) in
+            switch result {
+            case .success(let todayMealResponses):
+                DispatchQueue.main.async {
+                    self?.updateUI(with: todayMealResponses)
+                }
+            case .failure(let error):
+                print("Error fetching rice menu: \(error.localizedDescription)")
             }
         }
     }
@@ -119,15 +120,35 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
             return
         }
 
-//        let firstResponse = todayMealResponses[0]
-//        breakfastMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
-//        lunchMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
-//        dinnerMenu.text = "\(firstResponse.items[0])\n\(firstResponse.items[1])\n\(firstResponse.items[2])\n\(firstResponse.items[3])\n"
-//        print("\(firstResponse.items)")
-//        print("\(firstResponse.items[0])")
-//        print("\(firstResponse.items[1])")
-//        print("\(firstResponse.items[2])")
-//        print("\(firstResponse.items[3])")
+        for mealData in todayMealResponses {
+            guard let mealType = mealData.mealType() else {
+                print("Invalid meal type")
+                continue
+            }
+
+            switch mealType {
+            case .breakfast:
+                self.updateLabelText(label: breakfastMenu, items: mealData.items)
+            case .lunch:
+                self.updateLabelText(label: lunchMenu, items: mealData.items)
+            case .dinner:
+                self.updateLabelText(label: dinnerMenu, items: mealData.items)
+            }
+        }
+    }
+
+    private func updateLabelText(label: UILabel, items: [String]) {
+        let text = items.joined(separator: "\n")
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+
+        let attributedString = NSAttributedString(string: text, attributes: [
+            .font: UIFont.systemFont(ofSize: 14, weight: .regular),
+            .paragraphStyle: paragraphStyle,
+            .foregroundColor: UIColor.black
+        ])
+
+        label.attributedText = attributedString
     }
     
     required init?(coder aDecoder: NSCoder) {

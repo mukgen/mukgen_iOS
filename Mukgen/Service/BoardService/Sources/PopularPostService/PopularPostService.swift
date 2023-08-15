@@ -1,6 +1,5 @@
 import Foundation
 import Moya
-import AuthService
 
 public enum PopularPostAPI {
     case fetchPopularPosts
@@ -39,29 +38,29 @@ extension PopularPostAPI: TargetType {
     public var headers: [String : String]? {
         return Header.accessToken.header()
     }
-    
 }
 
 public class PopularPostServiceProvider {
     let provider = MoyaProvider<PopularPostAPI>()
-    public func fetchPopularPosts(completion: @escaping ([PopularPostResponse]?) -> Void) {
+    
+    public init() { }
+    
+    public func fetchPopularPosts(completion: @escaping (Result<[PopularPostResponse], Error>) -> Void) {
         provider.request(.fetchPopularPosts) { (result) in
             switch result {
             case .success(let response):
                 do {
                     let welcome = try JSONDecoder().decode(Welcome.self, from: response.data)
                     print(welcome.boardPopularResponseList)
-                    completion(welcome.boardPopularResponseList)
+                    completion(.success(welcome.boardPopularResponseList))
                 } catch {
                     print("Error: \(error.localizedDescription)")
-                    completion(nil)
+                    completion(.failure(error))
                 }
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
-                completion(nil)
+                completion(.failure(error))
             }
         }
     }
-
-    public init() { }
 }

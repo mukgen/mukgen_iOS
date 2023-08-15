@@ -6,7 +6,6 @@ import Core
 
 class CafeteriaView: UIView {
     
-    
     private final var controller: UIViewController
     
     private enum Const {

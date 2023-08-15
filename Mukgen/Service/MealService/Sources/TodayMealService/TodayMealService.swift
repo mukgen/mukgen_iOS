@@ -1,36 +1,66 @@
 import Foundation
-import UIKit
-import AuthService
+import Moya
 
-open class TodayMealService {
-    public let baseURL = "https://www.mukgen.info"
-    public let endpoint = "/meal/today"
-    public let token = "Bearer\(String(describing: Header.accessToken.header()))"
-    //에러에서는 init이 기본값이 internal이다 이기 떄문에 기본을 public으로 수정
-    public init() {}
-    
-    open func fetchRiceMenu(completion: @escaping ([TodayMealResponse]?) -> Void) {
-        let url = URL(string: baseURL + endpoint)
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        request.addValue("\(token)", forHTTPHeaderField: "Authorization")
+public enum TodayMealAPI {
+    case fetchTodayMeal
+}
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                completion(nil)
-            } else if let data = data {
-                let decoder = JSONDecoder()
-                do {
-                    let welcome = try decoder.decode(Welcome.self, from: data)
-                    print(welcome.responseList)
-                    completion(welcome.responseList)
-                } catch {
-                    print("Error: \(error.localizedDescription)")
-                    completion(nil)
-                }
-            }
-        }.resume()
+extension TodayMealAPI: TargetType {
+    public var baseURL: URL {
+        return URL(string: "https://www.mukgen.info")!
+    }
+
+    public var path: String {
+        switch self {
+        case .fetchTodayMeal:
+            return "/meal/today"
+        }
+    }
+
+    public var method: Moya.Method {
+        switch self {
+        case .fetchTodayMeal:
+            return .get
+        }
+    }
+
+    public var sampleData: Data {
+        return Data()
+    }
+
+    public var task: Task {
+        switch self {
+        case .fetchTodayMeal:
+            return .requestPlain
+        }
+    }
+
+    public var headers: [String : String]? {
+        return Header.accessToken.header()
     }
 }
 
+public class TodayMealServiceProvider {
+    let provider = MoyaProvider<TodayMealAPI>()
+
+    public init() {}
+
+    public func fetchTodayMeal(completion: @escaping (Result<[TodayMealResponse], Error>) -> Void) {
+        provider.request(.fetchTodayMeal) { (result) in
+            switch result {
+            case .success(let response):
+                do {
+                    let welcome = try JSONDecoder().decode(Welcome.self, from: response.data)
+                    print(welcome.responseList)
+                    completion(.success(welcome.responseList))
+                } catch {
+                    print("Error: \(error.localizedDescription)")
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+}
