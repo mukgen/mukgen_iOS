@@ -7,7 +7,7 @@ import MealService
 
 class CafeteriaCollecionViewCell: UICollectionViewCell {
     
-    let todayMealAPI = TodayMealService()
+    let todayMealAPI = TodayMealServiceProvider()
     
     var breakfastText = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -102,13 +102,14 @@ class CafeteriaCollecionViewCell: UICollectionViewCell {
             $0.left.equalTo(breakfastText.snp.right).offset(60.0)
         }
         
-        todayMealAPI.fetchRiceMenu { [weak self] todayMealResponses in
-            guard let todayMealResponses = todayMealResponses else {
-                print("Error fetching rice menu")
-                return
-            }
-            DispatchQueue.main.async {
-                self?.updateUI(with: todayMealResponses)
+        todayMealAPI.fetchTodayMeal { [weak self] (result: Result<[TodayMealResponse], Error>) in
+            switch result {
+            case .success(let todayMealResponses):
+                DispatchQueue.main.async {
+                    self?.updateUI(with: todayMealResponses)
+                }
+            case .failure(let error):
+                print("Error fetching rice menu: \(error.localizedDescription)")
             }
         }
     }
