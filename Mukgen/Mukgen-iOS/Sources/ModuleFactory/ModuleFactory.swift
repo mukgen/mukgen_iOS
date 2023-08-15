@@ -72,5 +72,10 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = StartMukgenViewController()
         return vc
     }
+    
+    public func InputEmailVC() -> Presentation.InputEmailViewController {
+        let vc = InputEmailViewController()
+        return vc
+    }
 
 }

@@ -25,5 +25,7 @@ public protocol ModuleFactoryInterface {
     func TestLoginVC() -> TestLoginViewController
     
     func TestPickerVC() -> TestPickerViewController
+    
+    func InputEmailVC() -> InputEmailViewController
 }
 
