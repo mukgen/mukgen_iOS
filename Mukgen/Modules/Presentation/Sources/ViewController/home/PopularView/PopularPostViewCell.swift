@@ -9,7 +9,7 @@ class PopularPostViewCell: UICollectionViewCell {
     
     static let PopularPostViewCellid = "PopularPostViewCell"
     
-    let popularPostServiceProvider = PopularPostServiceProvider()
+//    let popularPostServiceProvider = PopularPostServiceProvider()
     
     var popularText1 = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
@@ -84,18 +84,18 @@ class PopularPostViewCell: UICollectionViewCell {
             $0.top.equalToSuperview().offset(16)
             $0.bottom.equalToSuperview().inset(16)
         }
-        
-        popularPostServiceProvider.fetchPopularPosts { [self] popularPosts in
-
-            guard let posts = popularPosts else {
-                print("인기 게시물을 가져오는 데 실패했습니다.")
-                return
-            }
-
-            for post in posts {
-                print("제목: \(post.title)")
-            }
-        }
+//        
+//        popularPostServiceProvider.fetchPopularPosts { [self] popularPosts in
+//
+//            guard let posts = popularPosts else {
+//                print("인기 게시물을 가져오는 데 실패했습니다.")
+//                return
+//            }
+//
+//            for post in posts {
+//                print("제목: \(post.title)")
+//            }
+//        }
     }
 
     required init?(coder aDecoder: NSCoder) {
