@@ -16,8 +16,8 @@ public class InputNicknameViewController: BaseVC {
         $0.backgroundColor = .white
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
-    
-    private var firstTextField = UITextField().then {
+
+    private var firstTextField = CustomTextField().then {
         $0.tintColor = .black
         $0.borderStyle = UITextField.BorderStyle.none
         $0.returnKeyType = UIReturnKeyType.done
@@ -94,9 +94,9 @@ public class InputNicknameViewController: BaseVC {
     }
     
     private func updateButtonColor() {
-        if firstTextField.text?.isEmpty == false {
+        if firstTextField.text?.isEmpty == false, firstTextField.text!.count <= 8 {
             DispatchQueue.main.async {
-                self.nextPageButton.backgroundColor = MukgenKitAsset.Colors.primaryBase.color
+                self.nextPageButton.backgroundColor = MukgenKitAsset.Colors.pointBase.color
             }
         } else {
             DispatchQueue.main.async {
@@ -152,12 +152,18 @@ public class InputNicknameViewController: BaseVC {
 
     @objc private func textFieldContentDidChange(_ textField: UITextField) {
         updateButtonColor()
+        
+        if let customTextField = textField as? CustomTextField {
+            customTextField.validateNickname()
+        }
     }
-
 }
 
 extension InputNicknameViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let customTextField = textField as? CustomTextField {
+            customTextField.validateNickname()
+        }
         switch textField {
         case firstTextField:
             animate(line: nicknameLine)
@@ -172,5 +178,23 @@ extension InputNicknameViewController: UITextFieldDelegate {
         nicknameLine.backgroundColor = MukgenKitAsset.Colors.primaryLight2.color
    }
 }
+
+extension CustomTextField {
+    func validateNickname() -> Bool {
+        guard let text = self.text, !text.isEmpty, text.count >= 1 else {
+            setMessage("최대 8자", color: MukgenKitAsset.Colors.primaryLight2.color)
+            return false
+    }
+    
+    if text.count > 8 {
+        setMessage("별명은 최대 8자까지 가능합니다.", color: .red)
+        return false
+    }
+        
+        setMessage(nil)
+        return true
+    }
+}
+
 
 
