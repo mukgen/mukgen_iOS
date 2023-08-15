@@ -7,6 +7,12 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    public func textAlertVC() -> Presentation.TextAlertViewController {
+        let vc = TextAlertViewController()
+        
+        return vc
+    }
+    
     public func TestPickerVC() -> Presentation.TestPickerViewController {
         let vc = TestPickerViewController()
         

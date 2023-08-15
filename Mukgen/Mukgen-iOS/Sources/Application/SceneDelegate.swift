@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let moduleFactory = ModuleFactory.shared
 
-        let rootViewController = moduleFactory.InputNickNameVC()
+        let rootViewController = moduleFactory.TestLoginVC()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         
         window?.rootViewController = navigationController
