@@ -54,6 +54,7 @@ public class AuthService {
                     self?.setRefreshToken(token: loginResponse.tokenResponse.refreshToken)
                     Token.accessToken = loginResponse.tokenResponse.accessToken
                     KeychainWrapper.standard.set(loginResponse.tokenResponse.accessToken, forKey: "access_token")
+
                     completion(.success(loginResponse))
                     print("토큰 저장됨")
                 } catch {
