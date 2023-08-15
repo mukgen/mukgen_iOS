@@ -1,7 +1,5 @@
 import Foundation
 import Moya
-import AuthService
-
 
 public enum MukgenPickAPI {
     case fetchRiceMenu
