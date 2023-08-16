@@ -66,14 +66,14 @@ class CafeteriaView: UIView {
         ].forEach { addSubview($0) }
 
         todayCafeteriaTitle.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(0)
+            $0.top.equalToSuperview().offset(20)
             $0.left.equalToSuperview().offset(20)
         }
 
         collectionView.snp.makeConstraints {
+            $0.top.equalTo(todayCafeteriaTitle.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.top.equalToSuperview().offset(0.0)
-            $0.height.equalTo(256)
+            $0.height.equalTo(226)
             $0.bottom.equalToSuperview()
         }
     }

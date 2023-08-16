@@ -25,7 +25,7 @@ class ShowFilterCell: UICollectionViewCell {
     
     public var filterBackView = UIImageView().then {
         $0.backgroundColor = .white
-        $0.layer.cornerRadius = 10
+        $0.layer.cornerRadius = 17.5
 
     }
     
@@ -48,7 +48,7 @@ class ShowFilterCell: UICollectionViewCell {
         
         filterToggle.layer.borderWidth = 1
         filterToggle.layer.borderColor = MukgenKitAsset.Colors.primaryLight2.color.cgColor
-        filterToggle.layer.cornerRadius = 10
+        filterToggle.layer.cornerRadius = 17.5
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleDidTap))
         filterToggle.addGestureRecognizer(tapGesture)

@@ -58,6 +58,8 @@ public enum MukgenKitAsset {
         public static let signUpMukgenIcon = MukgenKitImages(name: "SignUpMukgenIcon")
         public static let starImage = MukgenKitImages(name: "StarImage")
         public static let gpt = MukgenKitImages(name: "Gpt")
+        public static let navMukgne = MukgenKitImages(name: "navMukgne")
+        public static let navUser = MukgenKitImages(name: "User")
     }
     
 }
