@@ -119,6 +119,7 @@ extension ShowFilterView: UICollectionViewDataSource {
 
         cell.filterToggle.setTitleColor(toggleStates[indexPath.row] ? .white : MukgenKitAsset.Colors.primaryLight2.color, for: .normal)
         cell.filterBackView.backgroundColor = toggleStates[indexPath.row] ? MukgenKitAsset.Colors.pointBase.color : .white
+        cell.filterToggle.layer.borderColor = toggleStates[indexPath.row] ?  UIColor.clear.cgColor : MukgenKitAsset.Colors.primaryLight2.color.cgColor
 
         switch indexPath.row {
         case 0:
