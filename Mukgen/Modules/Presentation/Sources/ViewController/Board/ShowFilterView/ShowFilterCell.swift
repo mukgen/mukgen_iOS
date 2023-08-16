@@ -7,9 +7,11 @@ class ShowFilterCell: UICollectionViewCell {
     
     static let id = "customCell"
     
+    public var onToggleTap: (() -> Void)?
+    
     public var filterToggle = UIButton().then {
         $0.layer.cornerRadius = 100
-        $0.backgroundColor = .red
+        $0.backgroundColor = .clear
         $0.setTitleColor(MukgenKitAsset.Colors.primaryLight1.color, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
         $0.setTitle("전체", for: .normal)
@@ -23,7 +25,8 @@ class ShowFilterCell: UICollectionViewCell {
     
     public var filterBackView = UIImageView().then {
         $0.backgroundColor = .white
-        
+        $0.layer.cornerRadius = 10
+
     }
     
     override init(frame: CGRect) {
@@ -43,6 +46,16 @@ class ShowFilterCell: UICollectionViewCell {
             
         }
         
+        filterToggle.layer.borderWidth = 1
+        filterToggle.layer.borderColor = MukgenKitAsset.Colors.primaryLight2.color.cgColor
+        filterToggle.layer.cornerRadius = 10
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleDidTap))
+        filterToggle.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func toggleDidTap() {
+        onToggleTap?()
     }
     
     required init?(coder aDecoder: NSCoder) {

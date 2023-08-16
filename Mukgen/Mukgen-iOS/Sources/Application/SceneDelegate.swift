@@ -12,10 +12,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let moduleFactory = ModuleFactory.shared
 
-        let rootViewController = moduleFactory.textAlertVC()
-        let navigationController = UINavigationController(rootViewController: rootViewController)
+        let rootViewController = moduleFactory.TapBarVC()
+//        let navigationController = UINavigationController(rootViewController: rootViewController)
         
-        window?.rootViewController = navigationController
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
     }
 

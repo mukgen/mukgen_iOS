@@ -7,6 +7,20 @@ class ShowFilterView: UIView {
     
     private final var controller: UIViewController
     
+    private lazy var mealBoardTitle = UILabel().then {
+        $0.font = .systemFont(ofSize: 24.0, weight: .semibold)
+        $0.text = "급식 게시판"
+        $0.textColor = .black
+    }
+    
+    private var selectedIndex: Int = 0 {
+        didSet {
+            showFilterCollectionView.reloadItems(at: [IndexPath(row: oldValue, section: 0), IndexPath(row: selectedIndex, section: 0)])
+        }
+    }
+        
+    var toggleStates: [Bool] = [true, false, false]
+
     private lazy var showFilterCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -31,22 +45,41 @@ class ShowFilterView: UIView {
         showFilterCollectionView.reloadData()
     }
     
+    func toggleDidTap(_ index: Int) {
+        guard index != selectedIndex else { return }
+
+        toggleStates[selectedIndex] = false
+        toggleStates[index] = true
+
+        let previousIndex = selectedIndex
+        selectedIndex = index
+
+        showFilterCollectionView.reloadItems(at: [
+            IndexPath(row: previousIndex, section: 0),
+            IndexPath(row: selectedIndex, section: 0)
+        ])
+    }
+    
     func layout() {
+        self.addSubview(mealBoardTitle)
         self.addSubview(showFilterCollectionView)
         
+        mealBoardTitle.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(42)
+            $0.left.equalToSuperview().offset(20)
+        }
+        
         showFilterCollectionView.snp.makeConstraints {
+            $0.top.equalTo(mealBoardTitle.snp.bottom).offset(14.0)
             $0.height.equalTo(35.0)
-            $0.top.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    @objc func toggleDidTap(_ sender: Any) {
-//
-//    }
 }
 
 extension ShowFilterView: UICollectionViewDelegateFlowLayout {
@@ -66,7 +99,13 @@ extension ShowFilterView: UICollectionViewDelegateFlowLayout {
 extension ShowFilterView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let previousIndex = selectedIndex
+        selectedIndex = indexPath.row
+
+        collectionView.reloadItems(at: [
+            IndexPath(row: previousIndex, section: 0),
+            IndexPath(row: selectedIndex, section: 0)
+        ])
     }
 }
 
@@ -74,25 +113,28 @@ extension ShowFilterView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
-
-    //cell에 관련된 것을 정의합니다.
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowFilterCell.id, for: indexPath) as! ShowFilterCell
-        cell.filterBackView.backgroundColor = .white
-        cell.filterBackView.layer.borderWidth = 1
-        cell.filterBackView.layer.borderColor = MukgenKitAsset.Colors.primaryLight2.color.cgColor
-        cell.filterBackView.layer.cornerRadius = 17.5
-        
+
+        cell.filterToggle.setTitleColor(toggleStates[indexPath.row] ? .white : MukgenKitAsset.Colors.primaryLight2.color, for: .normal)
+        cell.filterBackView.backgroundColor = toggleStates[indexPath.row] ? MukgenKitAsset.Colors.pointBase.color : .white
+
         switch indexPath.row {
         case 0:
-            break
-        case 1 :
+            cell.filterToggle.setTitle("전체", for: .normal)
+        case 1:
             cell.filterToggle.setTitle("일간", for: .normal)
-        default:
+        case 2:
             cell.filterToggle.setTitle("주간", for: .normal)
+        default:
+            break
         }
+
+        cell.onToggleTap = { [weak self] in
+            self?.toggleDidTap(indexPath.row)
+        }
+
         return cell
     }
 }
-
-
