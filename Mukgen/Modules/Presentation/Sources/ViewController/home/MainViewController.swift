@@ -20,6 +20,14 @@ public class MainViewController: BaseVC {
         }
     }
     
+    let userButton = UIButton().then {
+        $0.setImage(MukgenKitAsset.Images.navUser.image, for: .normal)
+        $0.addTarget(self, action: #selector(rightBarButtonTapped), for: .touchUpInside)
+        $0.snp.makeConstraints {
+            $0.height.width.equalTo(24)
+        }
+    }
+    
     private lazy var stackView = UIStackView().then { stackView in
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
@@ -63,12 +71,18 @@ public class MainViewController: BaseVC {
     func setupNavigationBar() {
 
         let leftBarButtonItem = UIBarButtonItem(customView: mukgenBuuton)
+        let rightBarButtonItem = UIBarButtonItem(customView: userButton)
 
         navigationItem.leftBarButtonItem = leftBarButtonItem
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
     @objc func leftBarButtonTapped() {
         print("메인 먹젠 클릭")
+    }
+    
+    @objc func rightBarButtonTapped() {
+        print("User 버튼 클릭")
     }
 }
 
@@ -92,8 +106,6 @@ private extension MainViewController {
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-
-        
     }
 }
 
