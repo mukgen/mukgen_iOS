@@ -22,17 +22,15 @@ public class InputIdPasswordViewController: BaseVC {
     private lazy var showPWButton1 = UIButton().then {
         $0.setImage(MukgenKitAsset.Images.eye.image, for: .normal)
         $0.backgroundColor = .clear
-        $0.addTarget(self, action: #selector(showPWField), for: .touchDown)
         $0.addTarget(self, action: #selector(hidePWField), for: [.touchUpInside, .touchDragExit])
-        $0.addTarget(self, action: #selector(showPWField), for: .touchDragEnter)
+        $0.addTarget(self, action: #selector(showPWField), for: [.touchDown, .touchDragEnter])
     }
     
     private lazy var showPWButton2 = UIButton().then {
         $0.setImage(MukgenKitAsset.Images.eye.image, for: .normal)
         $0.backgroundColor = .clear
-        $0.addTarget(self, action: #selector(showCheckPWField), for: .touchDown)
         $0.addTarget(self, action: #selector(hideCheckPWField), for: [.touchUpInside, .touchDragExit])
-        $0.addTarget(self, action: #selector(showCheckPWField), for: .touchDragEnter)
+        $0.addTarget(self, action: #selector(showCheckPWField), for: [.touchDown, .touchDragEnter])
 
     }
     
@@ -140,32 +138,24 @@ public class InputIdPasswordViewController: BaseVC {
     
     @objc private func showPWField() {
         textFields[1].isSecureTextEntry = false
-        changeImageColor(to: MukgenKitAsset.Colors.pointBase.color, for: showPWButton1)
+        showPWButton1.setImage(MukgenKitAsset.Images.colorEye.image, for: .normal)
     }
 
     @objc private func hidePWField() {
         textFields[1].isSecureTextEntry = true
-        changeImageColor(to: MukgenKitAsset.Colors.primaryLight1.color, for: showPWButton1)
+        showPWButton1.setImage(MukgenKitAsset.Images.eye.image, for: .normal)
     }
     
     @objc private func showCheckPWField() {
         textFields[2].isSecureTextEntry = false
-        changeImageColor(to: MukgenKitAsset.Colors.pointBase.color, for: showPWButton2)
+        showPWButton2.setImage(MukgenKitAsset.Images.colorEye.image, for: .normal)
     }
 
     @objc private func hideCheckPWField() {
         textFields[2].isSecureTextEntry = true
-        changeImageColor(to: MukgenKitAsset.Colors.primaryLight1.color, for: showPWButton2)
+        showPWButton2.setImage(MukgenKitAsset.Images.eye.image, for: .normal)
     }
-    
-    private func changeImageColor(to color : UIColor ,for button : UIButton){
-        if let image  = button.imageView?.image{
-            let tintedImage  = image.withRenderingMode(.alwaysTemplate)
-            button.setImage(tintedImage ,for:.normal )
-            button.tintColor=color
-        }
-    }
-    
+        
     private func createTextField(withPlaceholder placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.tintColor = .black
