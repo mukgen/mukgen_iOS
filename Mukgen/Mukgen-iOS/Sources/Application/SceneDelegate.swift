@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let moduleFactory = ModuleFactory.shared
 
-        let rootViewController = moduleFactory.textAlertVC()
+        let rootViewController = moduleFactory.InputIdPasswordVC()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         
         window?.rootViewController = navigationController
