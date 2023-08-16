@@ -19,6 +19,7 @@ class BoardTitleView: UIView {
         return collectionView
     }()
     
+    
     init(frame: CGRect ,viewController: UIViewController) {
         self.controller = viewController
         super.init(frame: frame)
@@ -33,8 +34,9 @@ class BoardTitleView: UIView {
         self.addSubview(boardTitleCollectionView)
         
         boardTitleCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.height.equalTo(29.0)
-            $0.top.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
         }
     }
     
