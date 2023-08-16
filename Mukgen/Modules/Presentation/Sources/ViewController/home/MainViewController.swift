@@ -11,6 +11,15 @@ public class MainViewController: BaseVC {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
+    let mukgenBuuton = UIButton().then {
+        $0.setImage(MukgenKitAsset.Images.navMukgne.image, for: .normal)
+        $0.addTarget(self, action: #selector(leftBarButtonTapped), for: .touchUpInside)
+        $0.snp.makeConstraints {
+            $0.height.equalTo(32)
+            $0.width.equalTo(104)
+        }
+    }
+    
     private lazy var stackView = UIStackView().then { stackView in
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
@@ -48,8 +57,21 @@ public class MainViewController: BaseVC {
         view.backgroundColor = .white
 //        getMeal()
 //        mukgenPick()
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar() {
+
+        let leftBarButtonItem = UIBarButtonItem(customView: mukgenBuuton)
+
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+
+    @objc func leftBarButtonTapped() {
+        print("메인 먹젠 클릭")
     }
 }
+
 
 private extension MainViewController {
     
