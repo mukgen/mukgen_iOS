@@ -29,5 +29,7 @@ public protocol ModuleFactoryInterface {
     func InputEmailVC() -> InputEmailViewController
     
     func textAlertVC() -> TextAlertViewController
+    
+    func checkEmailVC() -> CheckEmailViewController
 }
 
