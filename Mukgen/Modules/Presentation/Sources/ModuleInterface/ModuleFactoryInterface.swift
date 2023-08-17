@@ -33,5 +33,7 @@ public protocol ModuleFactoryInterface {
     func checkEmailVC() -> CheckEmailViewController
     
     func myPageVC() -> MyPageViewController
+    
+    func selectMealVC() -> SelectMealViewController
 }
 
