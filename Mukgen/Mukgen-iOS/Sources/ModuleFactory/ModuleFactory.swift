@@ -93,4 +93,9 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = MyPageViewController()
         return vc
     }
+    
+    public func selectMealVC() -> Presentation.SelectMealViewController {
+        let vc = SelectMealViewController()
+        return vc
+    }
 }
