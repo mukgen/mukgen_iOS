@@ -61,6 +61,13 @@ public enum MukgenKitAsset {
         public static let colorEye = MukgenKitImages(name: "ColorEye")
         public static let navMukgne = MukgenKitImages(name: "navMukgne")
         public static let navUser = MukgenKitImages(name: "User")
+        public static let myPageTestImage = MukgenKitImages(name: "MyPageTestImage")
+        public static let changeMyPageImg = MukgenKitImages(name: "ChangeMyPageImg")
+        public static let myPostBoard = MukgenKitImages(name: "MyPostBoard")
+        public static let myPostDelivery = MukgenKitImages(name: "MyPostDelivery")
+        public static let myPostStar = MukgenKitImages(name: "MyPostStar")
+        public static let myPostSuggestion = MukgenKitImages(name: "MyPostSuggestion")
+        public static let userPageArrow = MukgenKitImages(name: "UserPageArrow")
     }
     
 }
