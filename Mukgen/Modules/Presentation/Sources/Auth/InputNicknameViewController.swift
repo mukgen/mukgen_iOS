@@ -154,7 +154,7 @@ public class InputNicknameViewController: BaseVC {
         updateButtonColor()
         
         if let customTextField = textField as? CustomTextField {
-            customTextField.validateNickname()
+            _ = customTextField.validateNickname()
         }
     }
 }
@@ -162,7 +162,7 @@ public class InputNicknameViewController: BaseVC {
 extension InputNicknameViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         if let customTextField = textField as? CustomTextField {
-            customTextField.validateNickname()
+            _ = customTextField.validateNickname()
         }
         switch textField {
         case firstTextField:
