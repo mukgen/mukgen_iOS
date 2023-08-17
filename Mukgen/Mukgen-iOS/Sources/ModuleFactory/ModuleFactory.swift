@@ -9,7 +9,7 @@ public class ModuleFactory {
 extension ModuleFactory: ModuleFactoryInterface {
     public func textAlertVC() -> Presentation.TextAlertViewController {
         let vc = TextAlertViewController()
-        
+
         return vc
     }
     
@@ -81,6 +81,11 @@ extension ModuleFactory: ModuleFactoryInterface {
     
     public func InputEmailVC() -> Presentation.InputEmailViewController {
         let vc = InputEmailViewController()
+        return vc
+    }
+    
+    public func checkEmailVC() -> Presentation.CheckEmailViewController {
+        let vc = CheckEmailViewController()
         return vc
     }
 
