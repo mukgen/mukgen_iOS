@@ -18,25 +18,23 @@ public class BoardMainViewController: BaseVC {
         stackView.distribution = .equalSpacing
         stackView.spacing = 0.0
         
-        let boardTitleView = BoardTitleView(frame: .zero, viewController: self)
+//        let boardTitleView = BoardTitleView(frame: .zero, viewController: self)
         let showFilterView =  ShowFilterView(frame: .zero, viewController: self)
-        let boardContentsView =  BoardContentsView(frame: .zero, viewController: self)
+        let boardContentsView = BoardContentsView(frame: .zero, viewController: self)
         
-        let spacingView1 = UIView()
-        spacingView1.snp.makeConstraints {
-            $0.height.equalTo(64)
-        }
-        
-        let spacingView2 = UIView()
-        spacingView2.snp.makeConstraints {
-            $0.height.equalTo(64)
-        }
+//        let spacingView1 = UIView()
+//        spacingView1.snp.makeConstraints {
+//            $0.height.equalTo(32)
+//        }
+//
+//        let spacingView2 = UIView()
+//        spacingView2.snp.makeConstraints {
+//            $0.height.equalTo(100)
+//        }
 
         [
-            boardTitleView,
-            spacingView1,
+//            spacingView1,
             showFilterView,
-            spacingView2,
             boardContentsView
             
         ].forEach { stackView.addArrangedSubview($0) }

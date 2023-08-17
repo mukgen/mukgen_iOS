@@ -17,6 +17,14 @@ public class ReviewController: BaseVC, TodayCafeteriaReviewDelegate {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
+    let userButton = UIButton().then {
+        $0.setImage(MukgenKitAsset.Images.navUser.image, for: .normal)
+        $0.addTarget(self, action: #selector(rightBarButtonTapped), for: .touchUpInside)
+        $0.snp.makeConstraints {
+            $0.height.width.equalTo(24)
+        }
+    }
+    
     private lazy var cafeteriaView: AuthorRankView = {
         let view = AuthorRankView(controller: self)
         view.layer.cornerRadius = 10.0
@@ -29,11 +37,24 @@ public class ReviewController: BaseVC, TodayCafeteriaReviewDelegate {
         return view
     }()
     
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLayout()
         view.backgroundColor = .white
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar() {
+
+        let rightBarButtonItem = UIBarButtonItem(customView: userButton)
+
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    @objc func rightBarButtonTapped() {
+        print("User 버튼 클릭")
     }
 }
 

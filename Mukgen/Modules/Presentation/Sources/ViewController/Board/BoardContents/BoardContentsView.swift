@@ -45,8 +45,10 @@ class BoardContentsView: UIView {
         self.addSubview(plusButton)
         
         BoardContentsCollectionView.snp.makeConstraints {
-            $0.height.equalTo(533.0)
-            $0.top.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalToSuperview().offset(14.0)
+            $0.height.equalTo(570.0)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         
         plusButton.snp.makeConstraints {
