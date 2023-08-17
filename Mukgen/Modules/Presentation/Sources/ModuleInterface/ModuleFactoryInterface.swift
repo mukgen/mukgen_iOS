@@ -31,5 +31,7 @@ public protocol ModuleFactoryInterface {
     func textAlertVC() -> TextAlertViewController
     
     func checkEmailVC() -> CheckEmailViewController
+    
+    func myPageVC() -> MyPageViewController
 }
 
