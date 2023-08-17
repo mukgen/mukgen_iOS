@@ -89,4 +89,8 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
 
+    public func myPageVC() -> Presentation.MyPageViewController {
+        let vc = MyPageViewController()
+        return vc
+    }
 }
