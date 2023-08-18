@@ -6,16 +6,30 @@ import Core
 
 public class SelectTimeViewController: BaseVC {
     
-    public var factory: ModuleFactoryInterface!
+    private let sellectTimeText = UILabel().then {
+        $0.numberOfLines = 2
+        $0.text = "몇시에\n만나실 건가요?"
+        $0.backgroundColor = .white
+        $0.tintColor = .black
+        $0.font = .systemFont(ofSize: 24, weight: .semibold)
+    }
+    
+    private let pageCount = UILabel().then {
+        $0.text = "4 / 4"
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
+        $0.backgroundColor = .white
+        $0.font = .systemFont(ofSize: 20, weight: .semibold)
+    }
+
     
     private let recruitButton = CustomButton(title: "모집하기",
-                                              backgroundColor: MukgenKitAsset.Colors.pointBase.color, titleColor: UIColor.white,
-                                   font: UIFont.systemFont(ofSize: 16, weight: .semibold)
+                                             backgroundColor: MukgenKitAsset.Colors.pointBase.color, titleColor: UIColor.white,
+                                             font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     )
     
     private let beforePageButton = CustomButton(title: "뒤로",
-                                              backgroundColor: MukgenKitAsset.Colors.primaryLight3.color, titleColor: UIColor.black,
-                                   font: UIFont.systemFont(ofSize: 16, weight: .semibold)
+                                                backgroundColor: MukgenKitAsset.Colors.primaryLight3.color, titleColor: UIColor.black,
+                                                font: UIFont.systemFont(ofSize: 16, weight: .semibold)
     ).then {
         $0.addTarget(self, action: #selector(beforePageButtonDidTap(_:)), for: .touchUpInside)
     }
@@ -28,31 +42,15 @@ public class SelectTimeViewController: BaseVC {
         stackView.distribution = .equalSpacing
         stackView.spacing = 0.0
         
-        let selectTimePageCountView = SelectTimePageCountView(frame: .zero, viewController: self)
-        let selectTimePageTitleView = SelectTimePageTitleView(frame: .zero, viewController: self)
         let selectTimeView = SelectTimeView(frame: .zero, viewController: self)
-       
+        
         let spacingView1 = UIView()
         spacingView1.snp.makeConstraints {
-            $0.height.equalTo(20.0)
+            $0.height.equalTo(176)
         }
         
-        let spacingView2 = UIView()
-        spacingView2.snp.makeConstraints {
-            $0.height.equalTo(48.0)
-        }
-        
-        let spacingView3 = UIView()
-        spacingView3.snp.makeConstraints {
-            $0.height.equalTo(78.0)
-        }
-
         [
             spacingView1,
-            selectTimePageCountView,
-            spacingView2,
-            selectTimePageTitleView,
-            spacingView3,
             selectTimeView,
             
         ].forEach { stackView.addArrangedSubview($0) }
@@ -71,13 +69,13 @@ public class SelectTimeViewController: BaseVC {
     public override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
-
+    
     public override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
     
     @objc func beforePageButtonDidTap(_ sender: UIButton) {
-            self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -99,6 +97,21 @@ private extension SelectTimeViewController {
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        view.addSubview(pageCount)
+        view.addSubview(sellectTimeText)
+        
+        pageCount.snp.makeConstraints() {
+            $0.top.equalToSuperview().offset(134)
+            $0.right.equalToSuperview().inset(20)
+        }
+        
+        sellectTimeText.snp.makeConstraints() {
+            $0.top.equalTo(pageCount.snp.bottom).offset(24.0)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(58)
         }
         
         view.addSubview(recruitButton)
