@@ -6,8 +6,6 @@ import Core
 
 public class SellectNumberOfPersonMainViewController: BaseVC {
     
-    public var factory: ModuleFactoryInterface!
-    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -15,38 +13,36 @@ public class SellectNumberOfPersonMainViewController: BaseVC {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 0.0
-        
-        let numberOfPersonPageCountView = NumberOfPersonPageCountView(frame: .zero, viewController: self)
-        let numberOfPersonPageTitleView = NumberOfPersonPageTitleView(frame: .zero, viewController: self)
-        let scrollNumberOfPersonPageView = ScrollNumberOfPersonPageView(frame: .zero, viewController: self)
 
+        let scrollNumberOfPersonPageView = ScrollNumberOfPersonPageView(frame: .zero, viewController: self)
+        
         let spacingView1 = UIView()
         spacingView1.snp.makeConstraints {
-            $0.height.equalTo(20.0)
-        }
-        
-        let spacingView2 = UIView()
-        spacingView2.snp.makeConstraints {
-            $0.height.equalTo(68.0)
-        }
-        
-        let spacingView3 = UIView()
-        spacingView3.snp.makeConstraints {
-            $0.height.equalTo(100.0)
+            $0.height.equalTo(216.0)
         }
 
         [
             spacingView1,
-            numberOfPersonPageCountView,
-            spacingView2,
-            numberOfPersonPageTitleView,
-            spacingView3,
             scrollNumberOfPersonPageView,
             
         ].forEach { stackView.addArrangedSubview($0) }
         scrollView.showsVerticalScrollIndicator = false
         scrollView.isScrollEnabled = false
         scrollView.showsHorizontalScrollIndicator = false
+    }
+    
+    private let pageCount = UILabel().then {
+        $0.text = "2 / 4"
+        $0.textColor = MukgenKitAsset.Colors.primaryLight2.color
+        $0.backgroundColor = .white
+        $0.font = .systemFont(ofSize: 20, weight: .semibold)
+    }
+    
+    private let inputNicknameLabel = UILabel().then {
+        $0.numberOfLines = 2
+        $0.text = "몇명을\n모집하시나요?."
+        $0.backgroundColor = .white
+        $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
     
     public var beforePageButton = UIButton().then {
@@ -114,6 +110,18 @@ private extension SellectNumberOfPersonMainViewController {
             $0.edges.equalToSuperview()
         }
         
+        contentView.addSubview(pageCount)
+        pageCount.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(76.0)
+            $0.trailing.equalToSuperview().offset(-20)
+        }
+        
+        contentView.addSubview(inputNicknameLabel)
+        inputNicknameLabel.snp.makeConstraints {
+            $0.top.equalTo(pageCount.snp.bottom).offset(24.0)
+            $0.leading.equalToSuperview().offset(20.0)
+        }
+        
         view.addSubview(beforePageButton)
         beforePageButton.snp.makeConstraints {
             $0.width.equalTo(161.5)
@@ -129,6 +137,5 @@ private extension SellectNumberOfPersonMainViewController {
             $0.bottom.equalToSuperview().inset(40.0)
             $0.left.equalTo(beforePageButton.snp.right).offset(10.0)
         }
-
     }
 }
