@@ -34,7 +34,8 @@ class ScrollNumberOfPersonPageView: UIView {
             pickerView.snp.makeConstraints {
                 $0.height.equalTo(240.0)
                 $0.bottom.top.equalToSuperview()
-                $0.top.leading.trailing.equalToSuperview()
+                $0.leading.equalToSuperview().offset(10)
+                $0.trailing.equalToSuperview().inset(10)
             }
         }
         
@@ -62,14 +63,16 @@ extension ScrollNumberOfPersonPageView: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        // 원하는 행 높이를 반환합니다.
-        return 56.0 // 예시로 50 포인트로 설정
+        return 56.0
     }
     
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 353
+        }
+    
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titles = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]// 행 제목 배열
+        let titles = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
         
-        // 행에 대한 폰트 및 속성 설정
         let attributes: [NSAttributedString.Key: Any]
         
         switch row {
@@ -79,7 +82,7 @@ extension ScrollNumberOfPersonPageView: UIPickerViewDelegate, UIPickerViewDataSo
             ]
         default:
             attributes = [
-                .font: UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+                .font: UIFont.systemFont(ofSize: 20.0, weight: .semibold)
             ]
         }
         

@@ -41,7 +41,7 @@ public class DeliveryViewController: BaseVC {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
         $0.backgroundColor = MukgenKitAsset.Colors.pointBase.color
         $0.layer.cornerRadius = 30
-        $0.addTarget(self, action: #selector(plusDidTap(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(plusDidTap), for: .touchUpInside)
     }
     
     public override func viewDidLoad() {
@@ -51,11 +51,10 @@ public class DeliveryViewController: BaseVC {
         view.backgroundColor = .white
     }
     
-    @objc func plusDidTap(_ sender: Any)
+    @objc func plusDidTap()
     {
-//        let SellectMenuViewController = DeliveryViewController.instance()
-//        SellectMenuViewController.hideBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(SellectMenuViewController(), animated: true)
+        print("클릭됨")
+        navigationController?.pushViewController(SellectMenuViewController(), animated: true)
     }
 }
 
