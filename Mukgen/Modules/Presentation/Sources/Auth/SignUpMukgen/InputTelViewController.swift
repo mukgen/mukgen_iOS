@@ -245,6 +245,26 @@ public class InputTelViewController: BaseVC {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    func countTextField(_ textField: UITextField, _ count: Int, shouldChangeCharactersIn range: NSRange, replacementString string: String, goTextField: UITextField) {
+        let ct = textField.text ?? ""
+        let updatedText = (ct as NSString).replacingCharacters(in: range, with: string)
+
+        if updatedText.count == count {
+            DispatchQueue.main.async {
+                goTextField.becomeFirstResponder()
+            }
+        }
+        
+        if textField == thirdTextField {
+            if updatedText.count == count {
+                DispatchQueue.main.async {
+                    goTextField.resignFirstResponder()
+                }
+            }
+        }
+    }
+    
 
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -283,6 +303,22 @@ extension InputTelViewController: UITextFieldDelegate {
         
         default: return
         }
+    }
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        switch textField {
+        case firstTextField:
+            countTextField(textField, 3, shouldChangeCharactersIn: range, replacementString: string, goTextField: secondTextField)
+        case secondTextField:
+            countTextField(textField, 4, shouldChangeCharactersIn: range, replacementString: string, goTextField: thirdTextField)
+            
+        case thirdTextField:
+            countTextField(textField, 4, shouldChangeCharactersIn: range, replacementString: string, goTextField: thirdTextField)
+        default:
+            return true
+        }
+        return true
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

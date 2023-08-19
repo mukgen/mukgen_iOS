@@ -66,7 +66,7 @@ public class InputEmailViewController: BaseVC {
         
         
         progressEmailLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(123.0)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(40.0)
             $0.leading.equalToSuperview().offset(20.0)
         }
         
@@ -118,6 +118,7 @@ public class InputEmailViewController: BaseVC {
         }
         setupTextFieldObservers()
         setupKeyboardObservers()
+        _ = inputEmailTF.validateEmail()
     }
     
     deinit {
@@ -197,9 +198,6 @@ public class InputEmailViewController: BaseVC {
 
 extension InputEmailViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        if let customTextField = textField as? CustomTextField {
-            _ = customTextField.validateEmail()
-        }
         switch textField {
         case inputEmailTF:
             animate(line: underLine)

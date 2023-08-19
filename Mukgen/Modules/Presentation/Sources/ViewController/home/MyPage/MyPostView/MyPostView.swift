@@ -6,25 +6,25 @@ import MukgenKit
 class MyPostView: UIView {
     private final var controller: UIViewController
     
-    private lazy var myPostCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+    let collectionLayout = UICollectionViewFlowLayout().then {
+        $0.scrollDirection = .horizontal
+    }
+    
+    private lazy var myPostCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout).then {
+    
+        $0.isPagingEnabled = false
+        $0.backgroundColor = .clear
+        $0.showsHorizontalScrollIndicator = false
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isPagingEnabled = false
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
+        $0.register(MyPostCollectionViewCell.self, forCellWithReuseIdentifier: MyPostCollectionViewCell.id)
         
-        collectionView.register(MyPostCollectionViewCell.self, forCellWithReuseIdentifier: MyPostCollectionViewCell.id)
-        
-        return collectionView
-    }()
+        $0.delegate = self
+        $0.dataSource = self
+    }
     
     init(frame: CGRect,viewController:UIViewController) {
         self.controller = viewController
         super.init(frame: frame)
-        myPostCollectionView.delegate = self
-        myPostCollectionView.dataSource = self
         
         layout()
         myPostCollectionView.reloadData()
@@ -35,7 +35,8 @@ class MyPostView: UIView {
         
         myPostCollectionView.snp.makeConstraints {
             $0.height.equalTo(100.0)
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
         }
     }
     
@@ -50,7 +51,7 @@ extension MyPostView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0.0, left: 30.0, bottom: 0.0, right: 20.0)
+        UIEdgeInsets(top: 0.0, left: 30.0, bottom: 0.0, right: 30.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

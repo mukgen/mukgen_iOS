@@ -8,6 +8,37 @@ public class MyPageViewController: BaseVC {
     
     public var factory: ModuleFactoryInterface!
     
+    private lazy var myimage = UIImageView().then {
+        $0.image = MukgenKitAsset.Images.myPageTestImage.image
+    }
+    
+    private lazy var changeMyPageImgButton = UIButton().then {
+        $0.setImage(MukgenKitAsset.Images.changeMyPageImg.image, for: .normal)
+        $0.backgroundColor = .clear
+    }
+    
+    private lazy var userNmae = UILabel().then {
+        $0.text = "부현수"
+        $0.backgroundColor = .clear
+        $0.font = .systemFont(ofSize: 20, weight: .semibold)
+    }
+    
+    private lazy var userPageIcon = UIImageView().then {
+        $0.image = MukgenKitAsset.Images.userPageArrow.image
+    }
+     
+    private lazy var userPage = UIButton().then {
+        $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
+        $0.setTitle("회원 정보", for: .normal)
+        $0.setTitleColor(MukgenKitAsset.Colors.primaryLight2.color, for: .normal)
+        $0.contentHorizontalAlignment = .left
+        $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    private lazy var lineView = UIImageView().then {
+        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
+    }
+    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -30,37 +61,6 @@ public class MyPageViewController: BaseVC {
         return stackView
     }()
     
-    private lazy var myimage = UIImageView().then {
-        $0.image = MukgenKitAsset.Images.myPageTestImage.image
-    }
-    
-    private lazy var changeMyPageImgButton = UIButton().then {
-        $0.setImage(MukgenKitAsset.Images.changeMyPageImg.image, for: .normal)
-        $0.backgroundColor = .clear
-    }
-    
-    private lazy var userNmae = UILabel().then {
-        $0.text = "부현수"
-        $0.backgroundColor = .clear
-        $0.font = .systemFont(ofSize: 20, weight: .semibold)
-    }
-    
-    private lazy var userPageIcon = UIImageView().then {
-        $0.image = MukgenKitAsset.Images.userPageArrow.image
-    }
-    
-    private lazy var userPage = UIButton().then {
-        $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
-        $0.setTitle("회원 정보", for: .normal)
-        $0.setTitleColor(MukgenKitAsset.Colors.primaryLight2.color, for: .normal)
-        $0.contentHorizontalAlignment = .left
-        $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    }
-    
-    private lazy var lineView = UIImageView().then {
-        $0.backgroundColor = MukgenKitAsset.Colors.primaryLight3.color
-    }
-
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,8 +69,8 @@ public class MyPageViewController: BaseVC {
     }
     
     @objc func buttonTapped() {
-           print("버튼이 클릭되었습니다.")
-       }
+        print("버튼이 클릭되었습니다.")
+    }
 }
 
 private extension MyPageViewController {
