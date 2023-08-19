@@ -98,4 +98,9 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = SelectMealViewController()
         return vc
     }
+    
+    public func loginVC() -> Presentation.LoginViewController {
+        let vc = LoginViewController()
+        return vc
+    }
 }
