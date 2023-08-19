@@ -8,20 +8,14 @@ public class StartPageViewController: BaseVC {
     
     public var factory: ModuleFactoryInterface!
         
-    private let startButton: CustomButton = {
-        let button = CustomButton(
-            title: "시작하기",
-            backgroundColor: MukgenKitAsset.Colors.primaryBase.color,
-            titleColor: UIColor.white,
-            font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-        )
-        return button
-    }()
+    private let startButton = CustomButton(title: "시작하기",
+                                           backgroundColor: MukgenKitAsset.Colors.pointBase.color,
+                                           titleColor: UIColor.white,
+                                           font: UIFont.systemFont(ofSize: 16, weight: .semibold))
     
     private let loginButton = CustomButton(title: "로그인",
                                            backgroundColor: MukgenKitAsset.Colors.primaryLight3.color, titleColor: UIColor.black,
-                                           font: UIFont.systemFont(ofSize: 16, weight: .semibold)
-    )
+                                           font: UIFont.systemFont(ofSize: 16, weight: .semibold))
     
     private let whiteBox = UILabel().then {
         $0.backgroundColor = .white
@@ -33,41 +27,36 @@ public class StartPageViewController: BaseVC {
     
     public override func layout() {
         
-        [
-            whiteBox,
-            startButton,
-            loginButton,
-            mukgenLogo
-        ].forEach { view.addSubview($0) }
-
-        
-        let buttonHight = 55
+        view.addSubviews([whiteBox,
+                          startButton,
+                          loginButton,
+                          mukgenLogo])
         
         mukgenLogo.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(272)
-            $0.width.equalTo(160)
-            $0.height.equalTo(189)
+            $0.centerY.equalToSuperview().offset(-79.0)
+            $0.width.equalTo(160.0)
+            $0.height.equalTo(189.0)
         }
         whiteBox.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.height.equalTo(192)
+            $0.height.equalTo(192.0)
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
         
         loginButton.snp.makeConstraints {
             $0.centerX.equalTo(whiteBox.snp.centerX)
-            $0.top.equalTo(whiteBox.snp.top).offset(24)
+            $0.top.equalTo(whiteBox.snp.top).offset(24.0)
             $0.width.equalToSuperview().inset(20.0)
-            $0.height.equalTo(buttonHight)
+            $0.height.equalTo(55.0)
         }
         
         startButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(loginButton.snp.bottom).offset(24)
             $0.width.equalToSuperview().inset(20.0)
-            $0.height.equalTo(buttonHight)
+            $0.height.equalTo(55.0)
         }
     }
     
