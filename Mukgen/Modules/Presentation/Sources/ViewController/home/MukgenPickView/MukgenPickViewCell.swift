@@ -6,8 +6,6 @@ import MukgenKit
 
 class MukgenPickCell: UICollectionViewCell {
     
-    let apiManager = MukgenPickServiceProvider()
-    
     static let id = "customCell"
     
     var pickText = UILabel().then {
@@ -70,25 +68,7 @@ class MukgenPickCell: UICollectionViewCell {
             $0.top.equalToSuperview().offset(20)
             $0.left.equalTo(tasteGoodText.snp.right).offset(100)
         }
-        
-        fetchRiceMenuAndUpdateUI()
-        
-    }
-    
-    private func fetchRiceMenuAndUpdateUI() {
-        apiManager.fetchmukgenPick { [weak self] mukgenPickMenuResponse in
-            guard let mukgenPickMenuResponse = mukgenPickMenuResponse else {
-                print("Error fetching rice menu")
-                return
-            }
-            DispatchQueue.main.async {
-                self?.updateUI(with: mukgenPickMenuResponse)
-            }
-        }
-    }
-    
-    private func updateUI(with mukgenPickMenuResponse: MukgenPickMenuResponse) {
-        todayDate.text = "\(mukgenPickMenuResponse.month)월 \(mukgenPickMenuResponse.day)일"
+               
     }
     
     required init?(coder aDecoder: NSCoder) {

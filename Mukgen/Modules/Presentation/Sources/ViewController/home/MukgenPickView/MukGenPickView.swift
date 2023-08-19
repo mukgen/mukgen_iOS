@@ -7,6 +7,9 @@ import MealService
 class MukgenPickView: UIView {
     private final var controller: UIViewController
     
+    let apiManager = MukgenPickServiceProvider()
+    var box: MukgenPickMenuResponse?
+    
     private lazy var mukgenPickCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -28,6 +31,7 @@ class MukgenPickView: UIView {
         mukgenPickCollectionView.dataSource = self
         
         layout()
+        fetchRiceMenuAndUpdateUI()
         mukgenPickCollectionView.reloadData()
     }
     
@@ -43,6 +47,21 @@ class MukgenPickView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func fetchRiceMenuAndUpdateUI() {
+        apiManager.fetchmukgenPick { [weak self] mukgenPickMenuResponse in
+            guard let mukgenPickMenuResponse = mukgenPickMenuResponse else {
+                print("Error fetching rice menu")
+                return
+            }
+            DispatchQueue.main.async {
+                self!.box = mukgenPickMenuResponse
+                print("✨ \(mukgenPickMenuResponse) ✨")
+                self!.mukgenPickCollectionView.reloadData()
+            }
+        }
+    }
+ 
 }
 
 extension MukgenPickView: UICollectionViewDelegateFlowLayout {
@@ -67,17 +86,22 @@ extension MukgenPickView: UICollectionViewDelegate {
 }
 
 extension MukgenPickView: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
-    
-
-    //cell에 관련된 것을 정의합니다.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MukgenPickCell.id, for: indexPath) as! MukgenPickCell
         cell.backView.backgroundColor = MukgenKitAsset.Colors.pointLight4.color
         cell.layer.cornerRadius = 10.0
+//        cell.todayDate.text = "\(box?.month)월 \(box?.day)일"
+        
+        if let box = box {
+            cell.todayDate.text = "\(box.month)월 \(box.day)일"
+        } else {
+            cell.todayDate.text = ""
+        }
         return cell
     }
     
