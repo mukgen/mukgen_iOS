@@ -7,7 +7,6 @@ import Core
 public class CheckEmailViewController: BaseVC {
     public var factory: ModuleFactoryInterface!
     
-    
     private let attributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: MukgenKitAsset.Colors.primaryLight2.cgColor,
         .font: UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -19,7 +18,7 @@ public class CheckEmailViewController: BaseVC {
         $0.font = .systemFont(ofSize: 24, weight: .semibold)
     }
     
-    private lazy var  guideCheckEmailLabel = UILabel().then {
+    private lazy var guideCheckEmailLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 16, weight: .regular)
         $0.numberOfLines = 2
         let email = "leh1314@dsm.hs.kr"
