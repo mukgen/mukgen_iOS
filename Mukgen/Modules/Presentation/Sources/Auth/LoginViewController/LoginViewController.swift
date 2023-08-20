@@ -8,14 +8,13 @@ import AuthService
 public class LoginViewController: BaseVC {
     
     public var factory: ModuleFactoryInterface!
+    let authService = AuthService()
     
     private let attributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: MukgenKitAsset.Colors.primaryLight2.cgColor,
         .font: UIFont.systemFont(ofSize: 20, weight: .semibold)
     ]
-    
-    let authService = AuthService()
-    
+        
     private lazy var inputIdPasswordLabel = UILabel().then {
         $0.numberOfLines = 2
         $0.text = "로그인을 위한\n정보를 입력해주세요."

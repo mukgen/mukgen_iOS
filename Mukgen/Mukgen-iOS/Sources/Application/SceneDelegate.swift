@@ -12,8 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let moduleFactory = ModuleFactory.shared
 
-        let rootViewController = moduleFactory.InputEmailVC()
-//        let navigationController = UINavigationController(rootViewController: rootViewController)
+        let rootViewController = moduleFactory.TapBarVC()
         
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
