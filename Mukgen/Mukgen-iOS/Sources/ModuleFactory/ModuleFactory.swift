@@ -7,6 +7,7 @@ public class ModuleFactory {
 }
 
 extension ModuleFactory: ModuleFactoryInterface {
+    
     public func textAlertVC() -> Presentation.TextAlertViewController {
         let vc = TextAlertViewController()
 
@@ -103,4 +104,10 @@ extension ModuleFactory: ModuleFactoryInterface {
         let vc = LoginViewController()
         return vc
     }
+    
+    public func mugkenPickVC() -> Presentation.MukgenPickPageVC {
+        let vc = MukgenPickPageVC()
+        return vc
+    }
+    
 }
