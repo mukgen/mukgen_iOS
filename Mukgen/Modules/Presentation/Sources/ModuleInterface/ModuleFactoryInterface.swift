@@ -37,5 +37,7 @@ public protocol ModuleFactoryInterface {
     func selectMealVC() -> SelectMealViewController
     
     func loginVC() -> LoginViewController
+    
+    func mugkenPickVC() -> MukgenPickPageVC
 }
 

@@ -74,6 +74,7 @@ public class SelectPlaceViewController: BaseVC {
         sellectPlaceText.snp.makeConstraints() {
             $0.top.equalTo(pageCount.snp.bottom).offset(24.0)
             $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
             $0.width.equalToSuperview()
             $0.height.equalTo(58)
         }
