@@ -72,7 +72,7 @@ open class CustomAlertView: UIView {
     @objc fileprivate func closeAlert() {
         removeFromSuperview ()
         if let action = buttonAction{
-            action ()
+            action()
         }
     }
     
