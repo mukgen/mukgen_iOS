@@ -10,7 +10,7 @@ let project = Project.framework(
             .external(name: "SnapKit"),
             .external(name: "Then"),
             .external(name: "Moya"),
-        .external(name: "SwiftKeychainWrapper")
-
+        .external(name: "SwiftKeychainWrapper"),
+        .external(name: "RxSwift")
     ]
 )

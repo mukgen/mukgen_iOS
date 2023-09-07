@@ -11,7 +11,8 @@ let project = Project.app(
         .external(name: "SnapKit"),
         .external(name: "Then"),
         .external(name: "Moya"),
-        .external(name: "SwiftKeychainWrapper")
+        .external(name: "SwiftKeychainWrapper"),
+        .external(name: "RxSwift")
     ],
     resources: .default
 )

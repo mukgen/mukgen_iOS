@@ -10,4 +10,5 @@ public extension TargetDependency.SPM {
     static let Moya = TargetDependency.external(name: "Moya")
     static let SwiftKeychainWrapper = TargetDependency.external(name: "SwiftKeychainWrapper")
     static let FlareLane = TargetDependency.external(name: "FlareLane")
+    static let RxSwift = TargetDependency.external(name: "RxSwift")
 }
