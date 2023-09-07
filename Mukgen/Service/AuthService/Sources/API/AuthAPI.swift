@@ -1,5 +1,10 @@
 import Foundation
 import Moya
+import RxMoya
+import UIKit
+import RxSwift
+import RxCocoa
+import RxRelay
 
 public enum AuthAPI {
     case login(accountId: String, password: String)
