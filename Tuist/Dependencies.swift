@@ -7,12 +7,14 @@ let dependencies = Dependencies(
             .remote(url: "https://github.com/devxoul/Then", requirement: .upToNextMajor(from: "3.0.0")),
             .remote(url: "https://github.com/Moya/Moya", requirement: .upToNextMajor(from: "15.0.0")),
             .remote(url: "https://github.com/jrendel/SwiftKeychainWrapper", requirement: .upToNextMajor(from: "4.0.1")),
+            .remote(url: "https://github.com/ReactiveX/RxSwift", requirement: .upToNextMajor(from: "6.5.0")),
          ],
          productTypes: [
             "SnapKit": .framework,
             "Then": .framework,
             "Moya": .framework,
             "SwiftKeychainWrapper": .framework,
+            "RxSwift": .framework
          ]
      ),
      platforms: [.iOS]
