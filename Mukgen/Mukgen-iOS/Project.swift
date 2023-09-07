@@ -2,17 +2,21 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 import UtilityPlugin
 
-let project = Project.app(
+let project = Project.makeModule(
     name: "Mukgen-iOS",
+    platform: .iOS,
+    product: .app,
     dependencies: [
-        .Module.presentation,
-        .Module.mukgenKit,
-        .Module.core,
-        .external(name: "SnapKit"),
-        .external(name: "Then"),
-        .external(name: "Moya"),
-        .external(name: "SwiftKeychainWrapper"),
-        .external(name: "RxSwift")
+        .Project.mukgenKit,
+        .Project.authService,
+        .Project.boardService,
+        .Project.deliveryService,
+        .Project.mealService,
+        .Project.mealSaggestionService,
+        .Project.reViewService,
+        .Project.userService,
+        .Project.presentation
     ],
-    resources: .default
+    resources: ["Resources/**"],
+    infoPlist: .extendingDefault(with: Project.baseinfoPlist)
 )

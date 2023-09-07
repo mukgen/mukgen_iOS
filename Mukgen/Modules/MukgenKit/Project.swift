@@ -1,16 +1,11 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
-import UtilityPlugin
 
-let project = Project.framework(
+let project = Project.makeModule(
     name: "MukgenKit",
+    product: .staticFramework,
     dependencies: [
-        .Module.core,
-        .external(name: "SnapKit"),
-        .external(name: "Then"),
-        .external(name: "Moya"),
-        .external(name: "SwiftKeychainWrapper"),
-        .external(name: "RxSwift")
+        .Project.core
     ],
     resources: ["Resources/**"]
 )

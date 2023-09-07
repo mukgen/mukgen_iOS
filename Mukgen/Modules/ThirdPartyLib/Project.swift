@@ -1,17 +1,16 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
-import UtilityPlugin
 
-let project = Project.framework(
+let project = Project.makeModule(
     name: "ThirdPartyLib",
+    product: .framework,
+    packages: [],
     dependencies: [
-//        .SPM.Then,
-//        .SPM.Kingfisher,
-//        .SPM.SnapKit
-        .external(name: "SnapKit"),
-        .external(name: "Then"),
-        .external(name: "Moya"),
-        .external(name: "SwiftKeychainWrapper"),
-        .external(name: "RxSwift")
+        .SPM.SnapKit,
+        .SPM.Then,
+        .SPM.Moya,
+        .SPM.RxCocoa,
+        .SPM.RxMoya,
+        .SPM.RxSwift
     ]
 )
