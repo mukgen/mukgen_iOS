@@ -1,10 +1,3 @@
-//
-//  CustomDatePickerView.swift
-//  Core
-//
-//  Created by 박준하 on 2023/08/09.
-//
-
 import UIKit
 
 open class CustomDatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
