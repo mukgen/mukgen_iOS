@@ -1,22 +1,19 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
-import UtilityPlugin
 
-let project = Project.framework(
+let project = Project.makeModule(
     name: "Presentation",
+    product: .staticFramework,
     dependencies: [
-        .Module.mukgenKit,
-        .Module.authService,
-        .Module.boardService,
-        .Module.deliveryService,
-        .Module.mealService,
-        .Module.mealSaggestionService,
-        .Module.reViewService,
-        .Module.userService,
-        .external(name: "SnapKit"),
-        .external(name: "Then"),
-        .external(name: "Moya"),
-        .external(name: "SwiftKeychainWrapper")
+        .Project.mukgenKit,
+        .Project.authService,
+        .Project.boardService,
+        .Project.deliveryService,
+        .Project.mealService,
+        .Project.mealSaggestionService,
+        .Project.reViewService,
+        .Project.userService,
+        .Project.core
     ],
-    resources: .none
+    resources: ["Resources/**"]
 )

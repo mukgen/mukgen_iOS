@@ -7,7 +7,7 @@ public enum PopularPostAPI {
 
 extension PopularPostAPI: TargetType {
     public var baseURL: URL {
-        return URL(string: "https://www.mukgen.info")!
+        return URL(string: "https://stag-server.xquare.app/mukgen")!
     }
 
     public var path: String {

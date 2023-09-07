@@ -1,9 +1,3 @@
-//
-//  TodayCafeteriaReview.swift
-//  Presentation
-//
-//  Created by 박준하 on 2023/07/31.
-//
 import UIKit
 import SnapKit
 import Then

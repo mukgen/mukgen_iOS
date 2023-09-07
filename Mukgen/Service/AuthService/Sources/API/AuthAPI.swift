@@ -1,13 +1,10 @@
-//
-//  AuthAPI.swift
-//  AuthService
-//
-//  Created by 박준하 on 2023/08/15.
-//
-
 import Foundation
 import Moya
-import SwiftKeychainWrapper
+import RxMoya
+import UIKit
+import RxSwift
+import RxCocoa
+import RxRelay
 
 public enum AuthAPI {
     case login(accountId: String, password: String)
@@ -17,7 +14,7 @@ public enum AuthAPI {
 extension AuthAPI: TargetType {
 
     public var baseURL: URL {
-        return URL(string: "https://www.mukgen.info")!
+        return URL(string: "https://stag-server.xquare.app/mukgen")!
     }
 
     public var path: String {

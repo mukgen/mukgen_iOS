@@ -2,13 +2,10 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 import UtilityPlugin
 
-let project = Project.framework(
+let project = Project.makeModule(
     name: "Core",
+    product: .staticFramework,
     dependencies: [
-        .Module.thirdPartyLib,
-        .external(name: "SnapKit"),
-        .external(name: "Then"),
-        .external(name: "Moya"),
-        .external(name: "SwiftKeychainWrapper")
+        .Project.thirdPartyLib
     ]
 )

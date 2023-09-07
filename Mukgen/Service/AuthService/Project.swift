@@ -2,15 +2,17 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 import UtilityPlugin
 
-let project = Project.framework(
+let project = Project.makeModule(
     name: "AuthService",
+    product: .staticFramework,
     dependencies: [
-        .Module.mukgenKit,
-        .Module.thirdPartyLib,
-            .external(name: "SnapKit"),
-            .external(name: "Then"),
-            .external(name: "Moya"),
-        .external(name: "SwiftKeychainWrapper")
-
+        .Project.thirdPartyLib,
+        .SPM.SnapKit,
+        .SPM.Then,
+        .SPM.Moya,
+        .SPM.RxCocoa,
+        .SPM.RxMoya,
+        .SPM.RxSwift,
+        .SPM.RxRelay
     ]
 )

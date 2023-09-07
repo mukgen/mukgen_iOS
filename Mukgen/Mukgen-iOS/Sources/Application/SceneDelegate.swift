@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let moduleFactory = ModuleFactory.shared
-        let rootViewController = moduleFactory.StartPageVC()
+        let rootViewController = moduleFactory.TapBarVC()
 //        let navigationController = UINavigationController(rootViewController: rootViewController)
         
         window?.rootViewController = rootViewController

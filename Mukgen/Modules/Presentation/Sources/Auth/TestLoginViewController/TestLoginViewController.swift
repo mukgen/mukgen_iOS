@@ -72,27 +72,27 @@ public class TestLoginViewController: UIViewController {
             return
         }
         
-        authService.login(accountId: accountId, password: password) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let loginResponse):
-                    print("Login successful. Welcome, \(loginResponse.message)!")
-                    print("accessToken: \(loginResponse.tokenResponse.accessToken)")
-                    print("refreshToken: \(loginResponse.tokenResponse.refreshToken)")
-
-                    self?.authService.setRefreshToken(token: loginResponse.tokenResponse.refreshToken)
-                    
-                case .failure(let error):
-                    print("Login failed. Error: \(error.localizedDescription)")
-                }
-            }
-        }
+//        authService.login(accountId: accountId, password: password) { [weak self] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let loginResponse):
+//                    print("Login successful. Welcome, \(loginResponse.message)!")
+//                    print("accessToken: \(loginResponse.tokenResponse.accessToken)")
+//                    print("refreshToken: \(loginResponse.tokenResponse.refreshToken)")
+//
+//                    self?.authService.setRefreshToken(token: loginResponse.tokenResponse.refreshToken)
+//
+//                case .failure(let error):
+//                    print("Login failed. Error: \(error.localizedDescription)")
+//                }
+//            }
+//        }
 //        print("\(String(describing: Header.accessToken))")
     }
     
     @objc func giveMeSaveToken() {
         print("----------------------")
-        print("--------\(self.authService.getToken())--------")
+//        print("--------\(self.authService.getToken())--------")
         print("----------------------")
     }
 }

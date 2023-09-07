@@ -11,7 +11,7 @@ public struct PopularPostResponse: Codable {
         case commentCount
         case viewCount
     }
-
+    
     public let boardId: CLong
     public let title: String
     public let commentCount: Int
