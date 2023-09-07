@@ -1,114 +1,93 @@
 import ProjectDescription
 import UtilityPlugin
 
-/// Project helpers are functions that simplify the way you define your project.
-/// Share code to create targets, settings, dependencies,
-/// Create your own conventions, e.g: a func that makes sure all shared targets are "static frameworks"
-/// See https://docs.tuist.io/guides/helpers/
-///
 public extension Project {
-
-    static let bundleId = "com.info.mukgen"
-
-    // MARK: make App
-
-    static func app(
+    static func makeModule(
         name: String,
-        product: Product = .app,
-        dependencies: [TargetDependency] = [],
-        resources: ProjectDescription.ResourceFileElements? = nil
-    ) -> Project {
-        return project(
-            name: name,
-            product: product,
-            dependencies: dependencies,
-            resources: resources
-        )
-    }
-
-    // MARK: make Framework(from a Project)
-
-    static func framework(
-        name: String,
-        product: Product = .framework,
-        dependencies: [TargetDependency] = [],
-        resources: ProjectDescription.ResourceFileElements? = nil
-    ) -> Project {
-        return project(
-            name: name,
-            product: product,
-            dependencies: dependencies,
-            resources: resources
-        )
-    }
-
-    // MARK: make Project
-
-    static func project(
-        name: String,
+        platform: Platform = .iOS,
         product: Product,
+        organizationName: String = "Mukgen-iOS",
+        packages: [Package] = [],
+        deploymentTarget: DeploymentTarget? = .iOS(targetVersion: "14.0", devices: [.iphone, .ipad]),
         dependencies: [TargetDependency] = [],
-        resources: ProjectDescription.ResourceFileElements? = nil
-    ) -> Project{
+        sources: SourceFilesList = ["Sources/**"],
+        resources: ResourceFileElements? = nil,
+        infoPlist: InfoPlist = .default
+    ) -> Project {
+        
+        let settings: Settings = .settings(
+            base:
+                product == .app ? .init().setCodeSignManualForApp() : .init().setCodeSignManual(),
+            debug: .init()
+                .setProvisioningDevelopment(),
+            release: .init()
+                .setProvisioningAppstore(),
+            defaultSettings: .recommended)
+        
+        let bundleId = (name == "Mukgen-iOS") ? "com.mukgen-iOS.release" : "\(organizationName).\(name)"
+        
+        let appTarget = Target(
+            name: name,
+            platform: platform,
+            product: product,
+            bundleId: bundleId,
+            deploymentTarget: deploymentTarget,
+            infoPlist: infoPlist,
+            sources: sources,
+            resources: resources,
+            scripts: [.SwiftLintString],
+            dependencies: dependencies
+        )
+        
+        let targets: [Target] = [appTarget]
+        let schemes: [Scheme] = [.makeScheme(target: .debug, name: name)]
+        
         return Project(
             name: name,
-            settings: .makeSetting(),
-            targets: [
-                Target(
-                    name: name,
-                    platform: .iOS,
-                    product: product,
-                    bundleId: "\(bundleId).\(name)",
-                    deploymentTarget: .defaultTarget,
-                    infoPlist: .defaultFile,
-                    sources: ["Sources/**"],
-                    resources: resources,
-                    dependencies: dependencies
-                ),
-                Target(
-                    name: "\(name)Tests",
-                    platform: .iOS,
-                    product: .unitTests,
-                    bundleId: "\(bundleId).\(name)Tests",
-                    deploymentTarget: .defaultTarget,
-                    infoPlist: .defaultFile,
-                    sources: ["Tests/**"],
-                    dependencies: [.target(name: name)]
-                )
-            ],
-            schemes: [.makeScheme(target: .debug, name: name)]
+            organizationName: organizationName,
+            packages: packages,
+            settings: settings,
+            targets: targets,
+            schemes: schemes
         )
     }
-}
-
-// MARK: make Settings
-
-public extension Settings{
-    static func makeSetting() -> Settings {
-        return settings(
-            base: [:],
-            configurations: [
-                .debug(name: .debug),
-                .release(name: .release)
+    
+    static let baseinfoPlist: [String: InfoPlist.Value] = [
+            "CFBundleShortVersionString": "1.0.0",
+            "CFBundleVersion": "1",
+            "CFBundleIdentifier": "com.info-iOS.release",
+            "CFBundleDisplayName": "Mukgen",
+            "UILaunchStoryboardName": "LaunchScreen",
+            "UIApplicationSceneManifest": [
+                "UIApplicationSupportsMultipleScenes": false,
+                "UISceneConfigurations": [
+                    "UIWindowSceneSessionRoleApplication": [
+                        [
+                            "UISceneConfigurationName": "Default Configuration",
+                            "UISceneDelegateClassName": "$(PRODUCT_MODULE_NAME).SceneDelegate"
+                        ],
+                    ]
+                ]
             ],
-            defaultSettings: .recommended
-        )
-    }
+            "UIAppFonts": [
+                // FIXME: - 폰트 추가 후 수정
+//                "Item 0": "폰트이름.otf",
+            ],
+            "App Transport Security Settings": ["Allow Arbitrary Loads": true],
+            "NSAppTransportSecurity": ["NSAllowsArbitraryLoads": true],
+            "ITSAppUsesNonExemptEncryption": false,
+            "UIBackgroundModes": ["fetch", "remote-notification"],
+            "UIUserInterfaceStyle": "Light"
+        ]
 }
 
-// MARK: make Scheme
+extension Scheme {
 
-public extension Scheme {
     static func makeScheme(target: ConfigurationName, name: String) -> Scheme {
         return Scheme(
             name: name,
             shared: true,
             buildAction: .buildAction(targets: ["\(name)"]),
-            testAction: .targets(
-                ["\(name)Tests"],
-                configuration: target,
-                options: .options(coverage: true, codeCoverageTargets: ["\(name)"])
-            ),
             runAction: .runAction(configuration: target),
             archiveAction: .archiveAction(configuration: target),
             profileAction: .profileAction(configuration: target),
