@@ -105,9 +105,9 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
     
-    public func mugkenPickVC() -> Presentation.MukgenPickPageVC {
-        let vc = MukgenPickPageVC()
-        return vc
-    }
-    
+//    public func mugkenPickVC() -> Presentation.MukgenPickPageVC {
+//        let vc = MukgenPickPageVC()
+//        return vc
+//    }
+//
 }

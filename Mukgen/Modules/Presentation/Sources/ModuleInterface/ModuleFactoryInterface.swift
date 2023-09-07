@@ -38,6 +38,6 @@ public protocol ModuleFactoryInterface {
     
     func loginVC() -> LoginViewController
     
-    func mugkenPickVC() -> MukgenPickPageVC
+//    func mugkenPickVC() -> MukgenPickPageVC
 }
 
