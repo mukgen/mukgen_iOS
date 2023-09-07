@@ -175,51 +175,51 @@ public class LoginViewController: BaseVC {
             print("Please enter Account ID and Password.")
             return
         }
-        
-        authService.login(accountId: accountId, password: password) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let loginResponse):
-                    self?.textFields[1].isCorrectIdPW()
-                    
-                    self?.darkeningView.frame = self?.view.bounds ?? .zero
-                    self?.darkeningView.alpha = 0
-                    self?.view.addSubview(self?.darkeningView ?? UIView())
-                    
-                    UIView.animate(withDuration: 0.3) {
-                        self?.darkeningView.alpha = 1
-                    }
-                    
-                    let customAlert = CustomAlertView(
-                        labelText: "\(accountId) 님\n환영합니다!",
-                        buttonLabelText: "확인",
-                        buttonAction: { [weak self] in
-                            print("알림 버튼이 눌렸습니다.")
-                            self?.removeDarkeningView()
-                        }
-                    )
-                    self?.view.addSubview(customAlert)
-                    customAlert.snp.makeConstraints {
-                        $0.center.equalToSuperview()
-                    }
-                    print("Login successful. Welcome, \(loginResponse.message)!")
-                    print("accessToken: \(loginResponse.tokenResponse.accessToken)")
-                    print("refreshToken: \(loginResponse.tokenResponse.refreshToken)")
-                    
-                    self?.authService.setRefreshToken(token: loginResponse.tokenResponse.refreshToken)
-                    
-                case .failure(let error):
-                    self?.textFields[1].isIncorrectIdPW()
-                    print("Login failed. Error: \(error.localizedDescription)")
-                }
-            }
-        }
+//
+//        authService.login(accountId: accountId, password: password) { [weak self] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let loginResponse):
+//                    self?.textFields[1].isCorrectIdPW()
+//
+//                    self?.darkeningView.frame = self?.view.bounds ?? .zero
+//                    self?.darkeningView.alpha = 0
+//                    self?.view.addSubview(self?.darkeningView ?? UIView())
+//
+//                    UIView.animate(withDuration: 0.3) {
+//                        self?.darkeningView.alpha = 1
+//                    }
+//
+//                    let customAlert = CustomAlertView(
+//                        labelText: "\(accountId) 님\n환영합니다!",
+//                        buttonLabelText: "확인",
+//                        buttonAction: { [weak self] in
+//                            print("알림 버튼이 눌렸습니다.")
+//                            self?.removeDarkeningView()
+//                        }
+//                    )
+//                    self?.view.addSubview(customAlert)
+//                    customAlert.snp.makeConstraints {
+//                        $0.center.equalToSuperview()
+//                    }
+//                    print("Login successful. Welcome, \(loginResponse.message)!")
+//                    print("accessToken: \(loginResponse.tokenResponse.accessToken)")
+//                    print("refreshToken: \(loginResponse.tokenResponse.refreshToken)")
+//
+//                    self?.authService.setRefreshToken(token: loginResponse.tokenResponse.refreshToken)
+//
+//                case .failure(let error):
+//                    self?.textFields[1].isIncorrectIdPW()
+//                    print("Login failed. Error: \(error.localizedDescription)")
+//                }
+//            }
+//        }
         //            self.navigationController?.pushViewController(TapBarV(), animated: true)
     }
     
     @objc func giveMeSaveToken() {
         print("----------------------")
-        print("--------\(self.authService.getToken())--------")
+//        print("--------\(self.authService.getToken())--------")
         print("----------------------")
     }
     

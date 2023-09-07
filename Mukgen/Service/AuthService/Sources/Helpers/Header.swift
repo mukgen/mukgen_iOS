@@ -1,18 +1,18 @@
 import Foundation
-import SwiftKeychainWrapper
 
 public struct Token {
     static var localAccessToken: String?
-    static var accessToken: String? {
-        get {
-            localAccessToken = KeychainWrapper.standard.string(forKey: "access_token")
-            return localAccessToken
-        }
-        set(newToken) {
-            KeychainWrapper.standard.set(newToken ?? "nil", forKey: "access_token")
-            localAccessToken = newToken
-        }
-    }
+    static var accessToken: String?
+//    {
+//        get {
+//            localAccessToken = KeychainWrapper.standard.string(forKey: "access_token")
+//            return localAccessToken
+//        }
+//        set(newToken) {
+//            KeychainWrapper.standard.set(newToken ?? "nil", forKey: "access_token")
+//            localAccessToken = newToken
+//        }
+//    }
 }
 
 public enum Header {

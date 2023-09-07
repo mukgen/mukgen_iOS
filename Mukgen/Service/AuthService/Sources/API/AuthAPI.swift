@@ -1,6 +1,5 @@
 import Foundation
 import Moya
-import SwiftKeychainWrapper
 
 public enum AuthAPI {
     case login(accountId: String, password: String)
