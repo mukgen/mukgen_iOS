@@ -1,12 +1,11 @@
 import ProjectDescription
 
 
-/// Dependencies + Module
 extension TargetDependency {
-    public enum Module {}
+    public enum Project {}
 }
 
-extension TargetDependency.Module {
+extension TargetDependency.Project {
     public static let presentation = TargetDependency.project(target: "Presentation", path: .relativeToRoot("Mukgen/Modules/Presentation"))
     public static let mukgenKit = TargetDependency.project(target: "MukgenKit", path: .relativeToRoot("Mukgen/Modules/MukgenKit"))
     public static let thirdPartyLib = TargetDependency.project(target: "ThirdPartyLib", path: .relativeToRoot("Mukgen/Modules/ThirdPartyLib"))
