@@ -6,6 +6,6 @@ let project = Project.makeModule(
     name: "AuthService",
     product: .staticFramework,
     dependencies: [
-        .Project.thirdPartyLib
+        .Project.core
     ]
 )

@@ -6,6 +6,6 @@ let project = Project.makeModule(
     name: "ReViewService",
     product: .staticFramework,
     dependencies: [
-        .Project.thirdPartyLib
+        .Project.core
     ]
 )
