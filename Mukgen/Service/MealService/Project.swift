@@ -6,6 +6,6 @@ let project = Project.makeModule(
     name: "MealService",
     product: .staticFramework,
     dependencies: [
-        .Project.thirdPartyLib
+        .Project.core
     ]
 )

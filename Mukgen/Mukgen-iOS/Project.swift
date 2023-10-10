@@ -7,14 +7,6 @@ let project = Project.makeModule(
     platform: .iOS,
     product: .app,
     dependencies: [
-        .Project.mukgenKit,
-        .Project.authService,
-        .Project.boardService,
-        .Project.deliveryService,
-        .Project.mealService,
-        .Project.mealSaggestionService,
-        .Project.reViewService,
-        .Project.userService,
         .Project.presentation
     ],
     resources: ["Resources/**"],

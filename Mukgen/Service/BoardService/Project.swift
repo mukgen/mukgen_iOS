@@ -6,6 +6,6 @@ let project = Project.makeModule(
     name: "BoardService",
     product: .staticFramework,
     dependencies: [
-        .Project.thirdPartyLib
+        .Project.core
     ]
 )

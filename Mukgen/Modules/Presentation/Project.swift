@@ -12,8 +12,7 @@ let project = Project.makeModule(
         .Project.mealService,
         .Project.mealSaggestionService,
         .Project.reViewService,
-        .Project.userService,
-        .Project.core
+        .Project.userService
     ],
     resources: ["Resources/**"]
 )
