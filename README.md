@@ -1,6 +1,6 @@
 # mukgen
-![graph](https://github.com/mukgen/mukgen_iOS_V1/assets/102890390/7f6cccb9-bd6b-4741-9cdb-133064f4d28f)
 
+<img width="1371" alt="스크린샷 2023-10-10 오후 7 46 15" src="https://github.com/mukgen/mukgen_iOS_V1/assets/102890390/06b7f036-51e5-4f11-849e-d9741db16c10">
 
 ## 🍴 프로젝트 시작
 
