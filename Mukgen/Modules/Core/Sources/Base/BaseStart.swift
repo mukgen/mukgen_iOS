@@ -36,7 +36,7 @@ open class BaseSV: BaseVC {
             $0.width.equalToSuperview().inset(20.0)
             $0.height.equalTo(55.0)
         }
-        
+
         secondButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(firstButton.snp.bottom).offset(24)

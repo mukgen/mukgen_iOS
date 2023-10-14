@@ -39,11 +39,11 @@ class BoardContentsView: UIView {
         $0.layer.cornerRadius = 30
         $0.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
-    
+
     func layout() {
         self.addSubview(BoardContentsCollectionView)
         self.addSubview(plusButton)
-        
+    
         BoardContentsCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(14.0)
             $0.height.equalTo(570.0)

@@ -3,10 +3,10 @@ import SnapKit
 import Then
 
 extension UIViewController {
-    func showAlert(labelText: String ,buttonLabelText: String, Botton Action:@escaping ()->Void ) {
+    func showAlert(labelText: String, buttonLabelText: String, bottonAction: @escaping () -> Void) {
         guard let window = UIApplication.shared.windows.first else { return }
         
-        let alertView = CustomAlertView(labelText: labelText, buttonLabelText: buttonLabelText, buttonAction: Action)
+        let alertView = CustomAlertView(labelText: labelText, buttonLabelText: buttonLabelText, buttonAction: bottonAction)
         
         window.addSubview(alertView)
         

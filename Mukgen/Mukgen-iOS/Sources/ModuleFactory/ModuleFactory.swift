@@ -101,8 +101,8 @@ extension ModuleFactory: ModuleFactoryInterface {
         return vc
     }
     
-    public func loginVC() -> Presentation.LoginViewController {
-        let vc = LoginViewController()
+    public func loginVC() -> Presentation.LoginViewController1 {
+        let vc = LoginViewController1()
         return vc
     }
     

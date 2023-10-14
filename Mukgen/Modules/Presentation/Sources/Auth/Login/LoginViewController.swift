@@ -4,8 +4,10 @@ import Then
 import Core
 import MukgenKit
 import AuthService
+import RxSwift
+import RxCocoa
 
-public class LoginViewController: BaseVC {
+public class LoginViewController1: BaseVC {
     
     public var factory: ModuleFactoryInterface!
     let authService = AuthService()
@@ -15,7 +17,7 @@ public class LoginViewController: BaseVC {
         .font: UIFont.systemFont(ofSize: 20, weight: .semibold)
     ]
         
-    private lazy var inputIdPasswordLabel = UILabel().then {
+    private lazy var inputIdPasswordUILabel = UILabel().then {
         $0.numberOfLines = 2
         $0.text = "로그인을 위한\n정보를 입력해주세요."
         $0.backgroundColor = .white
@@ -61,12 +63,12 @@ public class LoginViewController: BaseVC {
         textFields.forEach { view.addSubview($0) }
         lines.forEach { view.addSubview($0) }
         [
-            inputIdPasswordLabel,
+            inputIdPasswordUILabel,
             showPWButton,
             nextPageButton
         ].forEach { view.addSubview($0) }
         
-        inputIdPasswordLabel.snp.makeConstraints() {
+        inputIdPasswordUILabel.snp.makeConstraints() {
             $0.top.equalToSuperview().offset(123)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
@@ -83,7 +85,7 @@ public class LoginViewController: BaseVC {
         for i in 0..<textFields.count {
             textFields[i].snp.makeConstraints() {
                 if i == 0 {
-                    $0.top.equalTo(inputIdPasswordLabel.snp.bottom).offset(24)
+                    $0.top.equalTo(inputIdPasswordUILabel.snp.bottom).offset(24)
                 } else {
                     $0.top.equalTo(textFields[i - 1].snp.bottom).offset(24)
                 }
@@ -107,6 +109,7 @@ public class LoginViewController: BaseVC {
             $0.height.equalTo(55)
         }
     }
+    
     
     public override func attribute() {
         super.attribute()
@@ -175,46 +178,6 @@ public class LoginViewController: BaseVC {
             print("Please enter Account ID and Password.")
             return
         }
-//
-//        authService.login(accountId: accountId, password: password) { [weak self] result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let loginResponse):
-//                    self?.textFields[1].isCorrectIdPW()
-//
-//                    self?.darkeningView.frame = self?.view.bounds ?? .zero
-//                    self?.darkeningView.alpha = 0
-//                    self?.view.addSubview(self?.darkeningView ?? UIView())
-//
-//                    UIView.animate(withDuration: 0.3) {
-//                        self?.darkeningView.alpha = 1
-//                    }
-//
-//                    let customAlert = CustomAlertView(
-//                        labelText: "\(accountId) 님\n환영합니다!",
-//                        buttonLabelText: "확인",
-//                        buttonAction: { [weak self] in
-//                            print("알림 버튼이 눌렸습니다.")
-//                            self?.removeDarkeningView()
-//                        }
-//                    )
-//                    self?.view.addSubview(customAlert)
-//                    customAlert.snp.makeConstraints {
-//                        $0.center.equalToSuperview()
-//                    }
-//                    print("Login successful. Welcome, \(loginResponse.message)!")
-//                    print("accessToken: \(loginResponse.tokenResponse.accessToken)")
-//                    print("refreshToken: \(loginResponse.tokenResponse.refreshToken)")
-//
-//                    self?.authService.setRefreshToken(token: loginResponse.tokenResponse.refreshToken)
-//
-//                case .failure(let error):
-//                    self?.textFields[1].isIncorrectIdPW()
-//                    print("Login failed. Error: \(error.localizedDescription)")
-//                }
-//            }
-//        }
-        //            self.navigationController?.pushViewController(TapBarV(), animated: true)
     }
     
     @objc func giveMeSaveToken() {
@@ -240,7 +203,9 @@ public class LoginViewController: BaseVC {
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
+extension LoginViewController1: UITextFieldDelegate {
+
+    
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         
         switch textField {
