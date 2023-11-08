@@ -1,30 +1,25 @@
 import UIKit
+import Core
 import Presentation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    func scene(_ scene: UIScene,
-        willConnectTo session: UISceneSession,
-        options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = (scene as? UIWindowScene) else { return }
-        
-        window = UIWindow(frame: scene.coordinateSpace.bounds)
-        window?.windowScene = scene
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
         
         let moduleFactory = ModuleFactory.shared
-        let rootViewController = moduleFactory.companyListVC()
-
-        window?.rootViewController = UINavigationController(rootViewController: rootViewController)
+        let rootViewController = moduleFactory.DeliveryVC()
+        
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
-    }
+    func sceneDidBecomeActive(_ scene: UIScene) {}
 
     func sceneWillResignActive(_ scene: UIScene) {}
 
