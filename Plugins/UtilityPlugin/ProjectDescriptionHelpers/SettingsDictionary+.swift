@@ -50,14 +50,14 @@ public extension SettingsDictionary {
     }
     
     func setProvisioningDevelopment() -> SettingsDictionary {
-        merging(["PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "MUKGEN iOS Debug")])
-            .merging(["PROVISIONING_PROFILE": SettingValue(stringLiteral: "MUKGEN iOS Debug")])
+        merging(["PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "Mukgen iOS Debug")])
+            .merging(["PROVISIONING_PROFILE": SettingValue(stringLiteral: "Mukgen iOS Debug")])
     }
     
     func setProvisioningAppstore() -> SettingsDictionary {
-        merging(["PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "MUKGEN iOS Release")])
+        merging(["PROVISIONING_PROFILE_SPECIFIER": SettingValue(stringLiteral: "Mukgen iOS Release")])
             .merging(["CODE_SIGN_IDENTITY[sdk=iphoneos*]": SettingValue(stringLiteral: "iPhone Distribution")])
-            .merging(["PROVISIONING_PROFILE": SettingValue(stringLiteral: "MUKGEN iOS Release")])
+            .merging(["PROVISIONING_PROFILE": SettingValue(stringLiteral: "Mukgen iOS Release")])
     }
 }
 

@@ -6,7 +6,7 @@ public extension Project {
         name: String,
         platform: Platform = .iOS,
         product: Product,
-        organizationName: String = "Mukgen-iOS",
+        organizationName: String = "Mukgen",
         packages: [Package] = [],
         deploymentTarget: DeploymentTarget? = .iOS(targetVersion: "14.0", devices: [.iphone, .ipad]),
         dependencies: [TargetDependency] = [],
@@ -24,7 +24,7 @@ public extension Project {
                 .setProvisioningAppstore(),
             defaultSettings: .recommended)
         
-        let bundleId = (name == "Mukgen-iOS") ? "com.mukgen-iOS.release" : "\(organizationName).\(name)"
+        let bundleId = (name == "Mukgen") ? "com.mukgen.release" : "\(organizationName).\(name)"
         
         let appTarget = Target(
             name: name,
@@ -55,7 +55,7 @@ public extension Project {
     static let baseinfoPlist: [String: InfoPlist.Value] = [
             "CFBundleShortVersionString": "1.0.0",
             "CFBundleVersion": "1",
-            "CFBundleIdentifier": "com.info-iOS.release",
+            "CFBundleIdentifier": "com.mukgen.release",
             "CFBundleDisplayName": "Mukgen",
             "UILaunchStoryboardName": "LaunchScreen",
             "UIApplicationSceneManifest": [
