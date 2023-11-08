@@ -1,7 +1,6 @@
 import UIKit
 import SnapKit
 import Then
-import MukgenKit
 
 open class CustomTextField: UITextField {
     public let messageLabel = UILabel()
@@ -34,7 +33,3 @@ open class CustomTextField: UITextField {
         messageLabel.textColor = color
     }
 }
-
-
-
-

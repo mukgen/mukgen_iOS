@@ -1,12 +1,11 @@
 import UIKit
 import SnapKit
 import Then
-import MukgenKit
 import Core
 
 public class CustomTextView: UIView {
     let titleLabel: UILabel
-    let textView: UITextView
+    public let textView: UITextView
     let countLabel: UILabel
     
     let placeholder = "내용을 입력해주세요"
