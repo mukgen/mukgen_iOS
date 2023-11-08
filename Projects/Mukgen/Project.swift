@@ -7,7 +7,6 @@ let project = Project.makeModule(
     platform: .iOS,
     product: .app,
     dependencies: [
-        .Project.Data,
         .Project.Presentation
     ],
     resources: ["Resources/**"],

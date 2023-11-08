@@ -4,8 +4,6 @@ import Then
 import RxCocoa
 import RxSwift
 import Core
-import INFOKit
-import INetwork
 
 public class LoginViewController: UIViewController {
     
