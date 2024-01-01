@@ -13,7 +13,7 @@ public enum MukgenButtonType: String, RawRepresentable {
     case backTitle
     case beforeTitle
     
-    public var logoTitle: String? {
+    public var subTitle: String? {
         switch self {
         case .loginTitle1:
             return "로그인"
