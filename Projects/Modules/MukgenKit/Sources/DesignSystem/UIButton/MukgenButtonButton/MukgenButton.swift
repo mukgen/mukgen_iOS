@@ -15,7 +15,7 @@ open class MukgenButton: UIButton {
     ) {
         super.init(frame: .zero)
         
-        textLabel.text = type.logoTitle
+        textLabel.text = type.title
         textLabel.textColor = type.titleColor
         self.backgroundColor = type.backgroundColor
         self.layer.cornerRadius = 10
