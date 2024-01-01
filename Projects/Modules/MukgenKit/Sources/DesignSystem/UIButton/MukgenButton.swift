@@ -2,28 +2,25 @@ import UIKit
 import SnapKit
 import Then
 
-open class CustomButton: UIButton {
+open class MukgenButton: UIButton {
     
     private let textLabel = UILabel().then {
         $0.textAlignment = .center
         $0.numberOfLines = 1
-        $0.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
     }
     
     public init(
-        title: String,
-        backgroundColor: UIColor,
-        titleColor: UIColor,
-        font: UIFont? = UIFont.systemFont(ofSize: 15, weight: .bold)
+        type: MukgenButtonType
     ) {
         super.init(frame: .zero)
         
-        self.backgroundColor = backgroundColor
-        textLabel.text = title
-        textLabel.textColor = titleColor
-        textLabel.font = font
-        
-        layer.cornerRadius = 10
+        textLabel.text = type.logoTitle
+        textLabel.textColor = type.titleColor
+        self.backgroundColor = type.backgroundColor
+        self.layer.cornerRadius = 10
+        self.layer.borderWidth = 1
+        self.layer.borderColor = type.borderColor?.cgColor
         
         setupUI()
     }
@@ -38,11 +35,10 @@ open class CustomButton: UIButton {
         textLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }
-        
-        snp.makeConstraints {
-            $0.width.equalTo(353.0)
-            $0.height.equalTo(55.0)
-        }
+    }
+    
+    public func buttonColorChange(color: UIColor = MukgenKitAsset.Colors.pointBase.color) {
+        self.backgroundColor = color
     }
 }
 
