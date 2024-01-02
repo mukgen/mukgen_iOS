@@ -79,5 +79,12 @@ open class MukgenTitleLabel: UIView{
             }
         }
     }
+    
+    public func appendEmail(emailId: String) {
+        let attributedString = NSMutableAttributedString(string: emailId, attributes: [NSAttributedString.Key.foregroundColor: MukgenKitAsset.Colors.pointBase.color])
+        attributedString.append(NSAttributedString(string: subTitleLabel.text ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black]))
+        subTitleLabel.attributedText = attributedString
+    }
+
 }
 
