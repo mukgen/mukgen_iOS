@@ -25,7 +25,7 @@ public enum MukgenTitleLabelType: String, RawRepresentable {
         case .telTitle:
             return "전화번호를 입력해주세요."
         case .nicknameTitle:
-            return "등록하기"
+            return "별명을 입력해주세요."
         }
     }
 
